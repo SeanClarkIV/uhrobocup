@@ -22,11 +22,11 @@ def stand():
 def kick1():
     Head     = [+00, +00]
 
-    LeftArm  = [+90, +00, +00, +00, +00, +00]
+    LeftArm  = [+90, +90, +00, +00, +00, +00]
     RightArm = [+90, -00, -00, -00, +00, +00]
 
-    LeftLeg  = [+00, +10, -10, +00, +05, +05]
-    RightLeg = [+00, -00, -10, +00, +20, +05]
+    LeftLeg  = [+00, -15, -10, +00, +00, +10]
+    RightLeg = [+00, -15, -10, +10, -20, +10]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
@@ -38,8 +38,8 @@ def kick():
     LeftArm  = [+90, +90, +00, +00, +00, +00]
     RightArm = [+90, -00, -00, -00, +00, +00]
 
-    LeftLeg  = [+00, +10, -20, +00, +00, +10]
-    RightLeg = [+00, -20, -20, +90, -40, +00]
+    LeftLeg  = [+00, -15, -10, +00, +00, +10]
+    RightLeg = [+00, -20, -10, +20, -40, +00]
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
@@ -49,12 +49,22 @@ def kick2():
     LeftArm  = [+90, +90, +00, +00, +00, +00]
     RightArm = [+90, -00, -00, -00, +00, +00]
 
-    LeftLeg  = [+00, +10, -20, +00, +00, +10]
-    RightLeg = [+00, -20, -20, +00, -10, +00]
+    LeftLeg  = [+00, -10, -10, +00, +00, +10]
+    RightLeg = [+00, -10, -10, +00, -10, +00]
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+def kick3():
+    Head     = [+00, +00]
 
+    LeftArm  = [+90, +90, +00, +00, +00, +00]
+    RightArm = [+90, -00, -00, -00, +00, +00]
+
+    LeftLeg  = [+00, -10, -10, +00, +00, +10]
+    RightLeg = [+00, -10, -10, +90, -40, +00]
+    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
+    return pTargetAngles
 def main():
     proxy = config.loadProxy("ALMotion")
 
@@ -77,13 +87,14 @@ def main():
     # Ask motion to do this with a blocking call
     proxy.angleInterpolationWithSpeed(pNames, stand(), pMaxSpeedFraction)
     time.sleep(4)
-    proxy.angleInterpolationWithSpeed(pNames, kick1(), .01)
+    proxy.angleInterpolationWithSpeed(pNames, kick1(), .1)
     time.sleep(4)
-    proxy.angleInterpolationWithSpeed(pNames, kick(), pMaxSpeedFraction)
+    proxy.angleInterpolationWithSpeed(pNames, kick(), .05)
     time.sleep(4)
     proxy.angleInterpolationWithSpeed(pNames, kick2(), pMaxSpeedFraction2)
     time.sleep(4)
     proxy.angleInterpolationWithSpeed(pNames, stand(), pMaxSpeedFraction)
+
 
 if __name__ == "__main__":
     main()
