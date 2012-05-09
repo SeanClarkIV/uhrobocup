@@ -6,7 +6,7 @@ def main():
     proxy = config.loadProxy("ALMotion")
 
     # Turn Stiffness On in order to have the robot do moves.
-    config.StiffnessOn(proxy)    
+    config.StiffnessOn(proxy)
 
     #------------------------------ send the commands -----------------------------
     # We use the "Body" name to signify the collection of all joints
@@ -15,7 +15,7 @@ def main():
     pMaxSpeedFraction = 0.1
     pMaxSpeedFraction2 = 1.0
     # Ask motion to do this with a blocking call
-  
+
     proxy.angleInterpolationWithSpeed(pNames, kick.stand(), pMaxSpeedFraction)
     time.sleep(1)
     proxy.angleInterpolationWithSpeed(pNames, kick.step1(), .05)
@@ -25,8 +25,8 @@ def main():
     proxy.angleInterpolationWithSpeed(pNames, kick.step3(), .25)
     time.sleep(1)
     proxy.angleInterpolationWithSpeed(pNames, kick.step4(), .5)
-    time.sleep(1.5)
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .3)
+    time.sleep(2)
+    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .1)
 
 if __name__ == "__main__":
     main()
