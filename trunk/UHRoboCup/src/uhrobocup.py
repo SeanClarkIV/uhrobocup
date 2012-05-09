@@ -25,7 +25,7 @@ def kick1():
     LeftArm  = [+90, +00, +00, +00, +00, +00]
     RightArm = [+90, -00, -00, -00, +00, +00]
 
-    LeftLeg  = [+00, +05, -00, +00, +00, +05]
+    LeftLeg  = [+00, +02, -00, +00, +00, +02]
     RightLeg = [+00, -00, -00, +00, -00, +00]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
