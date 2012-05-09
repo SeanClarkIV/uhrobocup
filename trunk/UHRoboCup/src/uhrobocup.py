@@ -25,8 +25,8 @@ def kick1():
     LeftArm  = [+90, +00, +00, +00, +00, +00]
     RightArm = [+90, -00, -00, -00, +00, +00]
 
-    LeftLeg  = [+00, +02, -00, +00, +00, +02]
-    RightLeg = [+00, -00, -00, +00, -00, +00]
+    LeftLeg  = [+00, +05, -5, +10, +00, +05]
+    RightLeg = [+00, -00, -5, +00, -00, +05]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
@@ -86,6 +86,8 @@ def main():
     proxy.angleInterpolationWithSpeed(pNames, kick(), pMaxSpeedFraction)
     time.sleep(4)
     proxy.angleInterpolationWithSpeed(pNames, kick2(), pMaxSpeedFraction2)
+    time.sleep(4)
+    proxy.angleInterpolationWithSpeed(pNames, stand(), pMaxSpeedFraction)
 
 if __name__ == "__main__":
     main()
