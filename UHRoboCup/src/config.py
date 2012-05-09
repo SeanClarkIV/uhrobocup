@@ -1,7 +1,7 @@
 import motion
 from naoqi import ALProxy
 
-IP = "192.168.1.101" # set your Ip adress here
+IP = "192.168.1.103" # set your Ip adress here
 
 PORT = 9559
 
@@ -56,53 +56,12 @@ def PoseInit(proxy, pMaxSpeedFraction = 0.2):
   # Get the Robot Configuration
   robotConfig = proxy.getRobotConfig()
   robotName = ""
-  for i in range(len(robotConfig[0])):
-    if (robotConfig[0][i] == "Model Type"):
-      robotName = robotConfig[1][i]
+  Head     = [HeadYawAngle, HeadPitchAngle]
+  LeftArm  = [ShoulderPitchAngle, +ShoulderRollAngle, +ElbowYawAngle, +ElbowRollAngle, WristYawAngle, HandAngle]
+  RightArm = [ShoulderPitchAngle, -ShoulderRollAngle, -ElbowYawAngle, -ElbowRollAngle, WristYawAngle, HandAngle]
 
-  if (robotName == "naoH25") or\
-     (robotName == "naoAcademics"):
-
-
-      Head     = [HeadYawAngle, HeadPitchAngle]
-
-      LeftArm  = [ShoulderPitchAngle, +ShoulderRollAngle, +ElbowYawAngle, +ElbowRollAngle, WristYawAngle, HandAngle]
-      RightArm = [ShoulderPitchAngle, -ShoulderRollAngle, -ElbowYawAngle, -ElbowRollAngle, WristYawAngle, HandAngle]
-
-      LeftLeg  = [HipYawPitchAngle, +HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, +AnkleRollAngle]
-      RightLeg = [HipYawPitchAngle, -HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, -AnkleRollAngle]
-
-  elif (robotName == "naoH21") or\
-       (robotName == "naoRobocup"):
-
-      Head     = [HeadYawAngle, HeadPitchAngle]
-
-      LeftArm  = [ShoulderPitchAngle, +ShoulderRollAngle, +ElbowYawAngle, +ElbowRollAngle]
-      RightArm = [ShoulderPitchAngle, -ShoulderRollAngle, -ElbowYawAngle, -ElbowRollAngle]
-
-      LeftLeg  = [HipYawPitchAngle, +HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, +AnkleRollAngle]
-      RightLeg = [HipYawPitchAngle, -HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, -AnkleRollAngle]
-
-  elif (robotName == "naoT14"):
-
-      Head     = [HeadYawAngle, HeadPitchAngle]
-
-      LeftArm  = [ShoulderPitchAngle, +ShoulderRollAngle, +ElbowYawAngle, +ElbowRollAngle, WristYawAngle, HandAngle]
-      RightArm = [ShoulderPitchAngle, -ShoulderRollAngle, -ElbowYawAngle, -ElbowRollAngle, WristYawAngle, HandAngle]
-
-      LeftLeg  = []
-      RightLeg = []
-
-  elif (robotName == "naoT2"):
-
-      Head     = [HeadYawAngle, HeadPitchAngle]
-
-      LeftArm  = []
-      RightArm = []
-
-      LeftLeg  = []
-      RightLeg = []
-
+  LeftLeg  = [HipYawPitchAngle, +HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, +AnkleRollAngle]
+  RightLeg = [HipYawPitchAngle, -HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, -AnkleRollAngle]
   # Gather the joints together
   pTargetAngles = Head + LeftArm + LeftLeg + RightLeg + RightArm
 
