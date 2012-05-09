@@ -25,8 +25,8 @@ def kick1():
     LeftArm  = [+90, +00, +00, +00, +00, +00]
     RightArm = [+90, -00, -00, -00, +00, +00]
 
-    LeftLeg  = [+00, +05, -5, +10, +00, +05]
-    RightLeg = [+00, -00, -5, +00, -00, +05]
+    LeftLeg  = [+00, +10, -10, +00, +05, +05]
+    RightLeg = [+00, -00, -10, +00, +20, +05]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
@@ -77,7 +77,7 @@ def main():
     # Ask motion to do this with a blocking call
     proxy.angleInterpolationWithSpeed(pNames, stand(), pMaxSpeedFraction)
     time.sleep(4)
-    proxy.angleInterpolationWithSpeed(pNames, kick1(), pMaxSpeedFraction)
+    proxy.angleInterpolationWithSpeed(pNames, kick1(), .01)
     time.sleep(4)
     proxy.angleInterpolationWithSpeed(pNames, kick(), pMaxSpeedFraction)
     time.sleep(4)
