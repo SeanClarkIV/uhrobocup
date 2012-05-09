@@ -3,68 +3,9 @@
 ''' PoseInit: Small example to make Nao go to an initial position. '''
 
 import config
-import motion
 import time
+import kick
 
-def stand():
-    Head     = [+00, +00]
-
-    LeftArm  = [+90, +00, +00, +00, +00, +00]
-    RightArm = [+90, -00, -00, -00, +00, +00]
-
-    LeftLeg  = [+00, +00, -00, +00, +00, +00]
-    RightLeg = [+00, -00, -00, +00, -00, +00]
-
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
-    pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
-    return pTargetAngles
-
-def kick1():
-    Head     = [+00, +00]
-
-    LeftArm  = [+90, +90, +00, +00, +00, +00]
-    RightArm = [+90, -00, -00, -00, +00, +00]
-
-    LeftLeg  = [+00, -15, -10, +00, +00, +10]
-    RightLeg = [+00, -15, -10, +10, -20, +10]
-
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
-    pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
-    return pTargetAngles
-
-def kick():
-    Head     = [+00, +00]
-
-    LeftArm  = [+90, +90, +00, +00, +00, +00]
-    RightArm = [+90, -00, -00, -00, +00, +00]
-
-    LeftLeg  = [+00, -15, -10, +00, +00, +10]
-    RightLeg = [+00, -20, -10, +20, -40, +00]
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
-    pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
-    return pTargetAngles
-def kick2():
-    Head     = [+00, +00]
-
-    LeftArm  = [+90, +90, +00, +00, +00, +00]
-    RightArm = [+90, -00, -00, -00, +00, +00]
-
-    LeftLeg  = [+00, -10, -10, +00, +00, +10]
-    RightLeg = [+00, -10, -10, +00, -10, +00]
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
-    pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
-    return pTargetAngles
-def kick3():
-    Head     = [+00, +00]
-
-    LeftArm  = [+90, +90, +00, +00, +00, +00]
-    RightArm = [+90, -00, -00, -00, +00, +00]
-
-    LeftLeg  = [+00, -15, -10, +00, +00, +10]
-    RightLeg = [+00, -20, -10, +90, -40, +00]
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
-    pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
-    return pTargetAngles
 def main():
     proxy = config.loadProxy("ALMotion")
 
@@ -85,17 +26,17 @@ def main():
     pMaxSpeedFraction = 0.1
     pMaxSpeedFraction2 = 1.0
     # Ask motion to do this with a blocking call
-    proxy.angleInterpolationWithSpeed(pNames, stand(), pMaxSpeedFraction)
+    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), pMaxSpeedFraction)
     time.sleep(4)
-    proxy.angleInterpolationWithSpeed(pNames, kick1(), .1)
+    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), .1)
     time.sleep(4)
-    proxy.angleInterpolationWithSpeed(pNames, kick(), .05)
+    proxy.angleInterpolationWithSpeed(pNames, kick.step2(), .05)
     time.sleep(4)
-    proxy.angleInterpolationWithSpeed(pNames, kick3(), pMaxSpeedFraction)
+    proxy.angleInterpolationWithSpeed(pNames, kick.step3(), pMaxSpeedFraction)
     time.sleep(4)
-    proxy.angleInterpolationWithSpeed(pNames, kick2(), pMaxSpeedFraction2)
+    proxy.angleInterpolationWithSpeed(pNames, kick.step4(), pMaxSpeedFraction2)
     time.sleep(4)
-    proxy.angleInterpolationWithSpeed(pNames, stand(), pMaxSpeedFraction)
+    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), pMaxSpeedFraction)
 
 
 if __name__ == "__main__":
