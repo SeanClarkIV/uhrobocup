@@ -56,7 +56,7 @@ def main():
 
 
     # Gather the joints together
-    pTargetAngles = stand()
+    pTargetAngles = kick()
 
     # Convert to radians
     pTargetAngles = [ x * motion.TO_RAD for x in pTargetAngles]
