@@ -1,7 +1,3 @@
-#-*- coding: iso-8859-15 -*-
-
-''' PoseInit: Small example to make Nao go to an initial position. '''
-
 import config
 import time
 import kick
@@ -10,14 +6,7 @@ def main():
     proxy = config.loadProxy("ALMotion")
 
     # Turn Stiffness On in order to have the robot do moves.
-    config.StiffnessOn(proxy)
-
-    # Get the Robot Configuration
-    robotConfig = proxy.getRobotConfig()
-    robotName = ""
-
-    # Convert to radians
-    
+    config.StiffnessOn(proxy)    
 
     #------------------------------ send the commands -----------------------------
     # We use the "Body" name to signify the collection of all joints
@@ -37,7 +26,6 @@ def main():
     proxy.angleInterpolationWithSpeed(pNames, kick.step4(), pMaxSpeedFraction2)
     time.sleep(4)
     proxy.angleInterpolationWithSpeed(pNames, kick.stand(), pMaxSpeedFraction)
-
 
 if __name__ == "__main__":
     main()
