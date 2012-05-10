@@ -1,6 +1,7 @@
 import config
 import time
 import kick
+import walk
 
 def main():
     proxy = config.loadProxy("ALMotion")
@@ -15,17 +16,18 @@ def main():
     pMaxSpeedFraction = 0.1
     # Ask motion to do this with a blocking call
 
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), pMaxSpeedFraction)
-    time.sleep(1)
-    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), .05)
-    time.sleep(2)
-    proxy.angleInterpolationWithSpeed(pNames, kick.step2(), .5)
-    time.sleep(.75)
-    proxy.angleInterpolationWithSpeed(pNames, kick.step3(), .25)
-    time.sleep(1)
-    proxy.angleInterpolationWithSpeed(pNames, kick.step4(), .5)
-    time.sleep(2)
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .1)
+    #Kicking section
 
+    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), pMaxSpeedFraction2)
+    
+    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.6)
+    
+    proxy.angleInterpolationWithSpeed(pNames, kick.step2(), 1.0)
+    
+    proxy.angleInterpolationWithSpeed(pNames, kick.step3(), 1.0)
+    
+    proxy.angleInterpolationWithSpeed(pNames, kick.step4(), 1.0)
+    
+    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .6)
 if __name__ == "__main__":
     main()
