@@ -18,16 +18,18 @@ def main():
 
     #Kicking section
 
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), pMaxSpeedFraction2)
+    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .6)
     
-    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.6)
+    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.1)
     
     proxy.angleInterpolationWithSpeed(pNames, kick.step2(), 1.0)
     
     proxy.angleInterpolationWithSpeed(pNames, kick.step3(), 1.0)
     
-    proxy.angleInterpolationWithSpeed(pNames, kick.step4(), 1.0)
+    proxy.angleInterpolationWithSpeed(pNames, kick.step4(), 0.6)
+
+    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.1)
     
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .6)
+    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .1)
 if __name__ == "__main__":
     main()
