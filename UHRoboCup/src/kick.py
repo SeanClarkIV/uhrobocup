@@ -1,7 +1,7 @@
 import motion
 
 def stand():
-    Head     = [+00, +00]
+    Head     = [+00, +90]
 
     LeftArm  = [+90, +00, +00, +00, +00, +00]
     RightArm = [+90, -00, -00, -00, +00, +00]
@@ -51,12 +51,10 @@ def step3():
     return pTargetAngles
 
 def step4():
-
     Head     = [+00, +00]
 
     LeftArm  = [+90, +90, +00, +00, +00, +00]
     RightArm = [+90, -00, -00, -00, +00, +00]
-
 
     LeftLeg  = [+00, +10, -20, +00, +00, +10]
     RightLeg = [+00, -00, -45, +00, +30, +00]
