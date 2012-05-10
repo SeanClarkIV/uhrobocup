@@ -13,7 +13,6 @@ def main():
     pNames = "Body"
     # We set the fraction of max speed
     pMaxSpeedFraction = 0.1
-    pMaxSpeedFraction2 = 1.0
     # Ask motion to do this with a blocking call
 
     proxy.angleInterpolationWithSpeed(pNames, kick.stand(), pMaxSpeedFraction)
