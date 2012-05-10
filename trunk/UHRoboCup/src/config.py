@@ -1,7 +1,7 @@
 import motion
 from naoqi import ALProxy
 
-IP = "alexandrojv-PC.local" # set your Ip adress here
+IP = "Andres-HP.local" # set your Ip adress here
 
 PORT = 9559
 
