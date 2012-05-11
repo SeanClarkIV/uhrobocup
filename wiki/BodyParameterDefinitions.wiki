@@ -1,3 +1,4 @@
+{{{
     HeadYawAngle       = + 00.0     #head rotation sideways +left -right
     HeadPitchAngle     = + 00.0     #head up and down +down -up
 
@@ -23,3 +24,4 @@
 
     LeftLeg  = [HipYawPitchAngle, +HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, +AnkleRollAngle]
     RightLeg = [HipYawPitchAngle, -HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, +AnkleRollAngle]
+}}}
