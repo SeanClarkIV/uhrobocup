@@ -20,13 +20,14 @@ def main():
     motionProxy = config.loadProxy("ALMotion")
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
 
+    time.sleep(1)
     #TARGET VELOCITY
     X = 1.0
     Y = 0.0
     Theta = 0.0
     Frequency =1.0 # max speed
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-    time.sleep(4.0)
+    time.sleep(5.0)
 
     #####################
     ## End Walk
