@@ -1,132 +1,43 @@
 import config
-import time
-import kick
-import motion
+import walkfor
+import kickball
 from naoqi import ALProxy
 
 def main():
+
     proxy = config.loadProxy("ALMotion")
 
     # Turn Stiffness On in order to have the robot do moves.
     config.StiffnessOn(proxy)
+
+    #puts him in pose initial at half the max speed.
     config.PoseInit(proxy, .5)
-    #------------------------------ send the commands -----------------------------
-    # We use the "Body" name to signify the collection of all joints
-    pNames = "Body"
-    # We set the fraction of max speed
-    # Ask motion to do this with a blocking call
-    # walking section
-    motionProxy = config.loadProxy("ALMotion")
-    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
 
-    #TARGET VELOCITY
-    X = 1.0
-    Y = 0.0
-    Theta = 0.0
-    Frequency =1.0 # max speed
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-    time.sleep(5.5)
+    #walkfor is walkfor(y) y being the seconds you want it to sleep (walk)
+    walkfor.walkfor(5.5)
 
-    #####################
-    ## End Walk
-    #####################
-    #TARGET VELOCITY
-    X = 0.0
-    Y = 0.0
-    Theta = 0.0
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+    #kickball is defined as kickball(y) making the robot kick but y is an input
+    #that is a string he says right before kicking so if you want to do a battle
+    #cry of messi!!! you would put kickball.kickball("Messi!!!")
+    kickball.leftkick("one!")
 
-
-    #Kicking section
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), 0.5)
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.1)
-    
-    proxy.angleInterpolationWithSpeed(pNames, kick.step2(), 1.0)
-    
-    proxy.angleInterpolationWithSpeed(pNames, kick.step3(), 1.0)
-
-    tts = ALProxy("ALTextToSpeech", config.IP, 9559)
-    tts.say("one!")
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.step4(), 0.6)
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.1)
-    
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .1)
-
-    X = 1.0
-    Y = 0.0
-    Theta = 0.0
-    Frequency =1.0 # max speed
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-    time.sleep(5.5)
-
-    #####################
-    ## End Walk
-    #####################
-    #TARGET VELOCITY
-    X = 0.0
-    Y = 0.0
-    Theta = 0.0
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
+    walkfor.walkfor(5.5)
 
     #Kicking section
 
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), 0.5)
-    
-    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.1)
+    kickball.rightkick("two!")
 
-    proxy.angleInterpolationWithSpeed(pNames, kick.step2(), 1.0)
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.step3(), 1.0)
-
-    tts = ALProxy("ALTextToSpeech", config.IP, 9559)
-    tts.say("two!")
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.step4(), 0.6)
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.1)
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .1)
-
-    X = 1.0
-    Y = 0.0
-    Theta = 0.0
-    Frequency =1.0 # max speed
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-    time.sleep(5.5)
-
-    #####################
-    ## End Walk
-    #####################
-    #TARGET VELOCITY
-    X = 0.0
-    Y = 0.0
-    Theta = 0.0
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
+    walkfor.walkfor(5.5)
 
     #Kicking section
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), 0.5)
 
-    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.10)
+    kickball.leftkick("three!")
 
-    proxy.angleInterpolationWithSpeed(pNames, kick.step2(), 1.0)
+    config.PoseInit(proxy, .5)
 
-    proxy.angleInterpolationWithSpeed(pNames, kick.step3(), 1.0)
-
-    tts = ALProxy("ALTextToSpeech", config.IP, 9559)
-    tts.say("three!")
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.step4(), 0.55)
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.step1(), 0.1)
-
-    proxy.angleInterpolationWithSpeed(pNames, kick.stand(), .1)
-
+    #tts.say makes the robot convert the string to speech.
     tts = ALProxy("ALTextToSpeech", config.IP, 9559)
     tts.say("game over!")
+
 if __name__ == "__main__":
     main()
