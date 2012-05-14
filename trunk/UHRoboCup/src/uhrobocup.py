@@ -1,42 +1,39 @@
 import config
 import kick
 from naoqi import ALProxy
-import walkfor
+import walk
 
 def main():
 
+    # Common Variables
     proxy = config.loadProxy("ALMotion")
+    tts = ALProxy("ALTextToSpeech", config.IP, 9559)
 
-    # Turn Stiffness On in order to have the robot do moves.
+    # Turn Stiffness On in order to have the robot do moves and not fall.
     config.StiffnessOn(proxy)
 
-    #puts him in pose initial at half the max speed.
+    # Switch pose to initial at half the max speed.
     config.PoseInit(proxy, .5)
 
-    #walkfor is walkfor(y) y being the seconds you want it to sleep (walk)
-    walkfor.walkfor(5.5)
-
-    #kick is defined as kick(y) making the robot kick but y is an input
-    #that is a string he says right before kicking so if you want to do a battle
-    #cry of messi!!! you would put kick.kick("Messi!!!")
+    # Walk for specified time in seconds.
+    walk.walkTimed(5.5)
+    # Kicking Left Foot while saying specified text.
     kick.kickLeftFoot("one!")
 
-    walkfor.walkfor(5.5)
-
-    #Kicking section
-
+    # Walk for specified time in seconds.
+    walk.walkTimed(5.5)
+    # Kicking Right Foot while saying specified text.
     kick.kickRightFoot("two!")
 
-    walkfor.walkfor(5.5)
-
-    #Kicking section
-
+    # Walk for specified time in seconds.
+    walk.walkTimed(5.5)
+    # Kicking Left Foot while saying specified text.
     kick.kickLeftFoot("three!")
 
+    # Switch pose to initial at half the max speed.
     config.PoseInit(proxy, .5)
 
-    #tts.say makes the robot convert the string to speech.
-    tts = ALProxy("ALTextToSpeech", config.IP, 9559)
+    # Say specified text.
     tts.say("game over!")
 
 if __name__ == "__main__":
