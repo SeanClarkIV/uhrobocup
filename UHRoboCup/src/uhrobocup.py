@@ -1,7 +1,7 @@
 import config
-import walkfor
-import kickball
+import kick
 from naoqi import ALProxy
+import walkfor
 
 def main():
 
@@ -16,22 +16,22 @@ def main():
     #walkfor is walkfor(y) y being the seconds you want it to sleep (walk)
     walkfor.walkfor(5.5)
 
-    #kickball is defined as kickball(y) making the robot kick but y is an input
+    #kick is defined as kick(y) making the robot kick but y is an input
     #that is a string he says right before kicking so if you want to do a battle
-    #cry of messi!!! you would put kickball.kickball("Messi!!!")
-    kickball.leftkick("one!")
+    #cry of messi!!! you would put kick.kick("Messi!!!")
+    kick.kickLeftFoot("one!")
 
     walkfor.walkfor(5.5)
 
     #Kicking section
 
-    kickball.rightkick("two!")
+    kick.kickRightFoot("two!")
 
     walkfor.walkfor(5.5)
 
     #Kicking section
 
-    kickball.leftkick("three!")
+    kick.kickLeftFoot("three!")
 
     config.PoseInit(proxy, .5)
 
