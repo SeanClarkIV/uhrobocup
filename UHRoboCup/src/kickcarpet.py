@@ -59,8 +59,8 @@ def step3():
 def step4():
     Head     = [ + 00, + 00]
 
-    LeftArm  = [ + 90, + 00, + 00, + 00, + 00, + 00]
-    RightArm = [ + 180, -50, -00, -00, + 00, + 00]
+    LeftArm  = [ + 90, + 50, + 00, + 00, + 00, + 00]
+    RightArm = [ + 180, -00, -00, -00, + 00, + 00]
 
     LeftLeg  = [ + 00, + 04, -12, + 00, + 00, + 9]
     RightLeg = [ + 00, +00, -40, + 00, + 10, +0]
@@ -109,8 +109,8 @@ def step7():
 def step8():
     Head     = [ + 00, + 00]
 
-    LeftArm  = [ + 180, + 50, + 00, + 00, + 00, + 00]
-    RightArm = [ + 90, -00, -00, -00, + 00, + 00]
+    LeftArm  = [ + 180, + 00, + 00, + 00, + 00, + 00]
+    RightArm = [ + 90, -50, -00, -00, + 00, + 00]
 
     LeftLeg  = [ + 00, + 00, -40, + 00, + 10, + 0]
     RightLeg = [ + 00, -04, -12, + 00, + 00, -9]
@@ -129,7 +129,7 @@ def kickRightFoot(textToSpeech):
     proxy.angleInterpolationWithSpeed(pNames, step2(), 0.5)
     proxy.angleInterpolationWithSpeed(pNames, step3(), 0.4)
     tts.say(textToSpeech)
-    proxy.angleInterpolationWithSpeed(pNames, step4(), 0.6)
+    proxy.angleInterpolationWithSpeed(pNames, step4(), 1.0)
     proxy.angleInterpolationWithSpeed(pNames, step1(), 0.2)
 
 #leftkick kicks with left foot
@@ -140,5 +140,5 @@ def kickLeftFoot(textToSpeech):
     proxy.angleInterpolationWithSpeed(pNames, step6(), 0.5)
     proxy.angleInterpolationWithSpeed(pNames, step7(), 0.4)
     tts.say(textToSpeech)
-    proxy.angleInterpolationWithSpeed(pNames, step8(), 0.6)
+    proxy.angleInterpolationWithSpeed(pNames, step8(), 1.0)
     proxy.angleInterpolationWithSpeed(pNames, step5(), 0.2)
