@@ -2,6 +2,7 @@ import config
 import kickcarpet
 from naoqi import ALProxy
 import walk
+import throw
 
 def main():
 
@@ -44,5 +45,13 @@ def main():
     # Say specified text.
     tts.say("game over!")
 
+def main2():
+    proxy = config.loadProxy("ALMotion")
+    tts = ALProxy("ALTextToSpeech", config.IP, 9559)
+
+    # Turn Stiffness On in order to have the robot do moves and not fall.
+    config.StiffnessOn(proxy)
+    # throws ball
+    throw.throwright("haya!")
 if __name__ == "__main__":
-    main()
+    main2()
