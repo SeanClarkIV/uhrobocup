@@ -47,11 +47,10 @@ def main():
 
 def main2():
     proxy = config.loadProxy("ALMotion")
-    tts = ALProxy("ALTextToSpeech", config.IP, 9559)
 
     # Turn Stiffness On in order to have the robot do moves and not fall.
     config.StiffnessOn(proxy)
     # throws ball
-    throw.throwright("haya!")
+    throw.throwright()
 if __name__ == "__main__":
     main2()

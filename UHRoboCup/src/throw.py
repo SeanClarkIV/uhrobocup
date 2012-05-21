@@ -84,7 +84,7 @@ def step5():
 #kicks the ball.
 
 #rightkick kicks with right foot
-def throwstrait(textToSpeech):
+def throwstrait():
     #Turns the stiffness on.
     config.StiffnessOn(proxy)
     proxy.angleInterpolationWithSpeed(pNames, step1(), 0.5)
@@ -93,7 +93,7 @@ def throwstrait(textToSpeech):
 
 
 #leftkick kicks with left foot
-def throwright(textToSpeech):
+def throwright():
     #Turns the stiffness on.
     config.StiffnessOn(proxy)
     proxy.angleInterpolationWithSpeed(pNames, step1(), 0.5)
