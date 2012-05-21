@@ -1,8 +1,7 @@
 import motion
 from naoqi import ALProxy
 
-IP = "Andres-HP.local" # set your Ip adress here
-
+IP = "172.25.175.49" # set your Ip adress here
 PORT = 9559
 
 if (IP == ""):
@@ -28,7 +27,7 @@ def StiffnessOn(proxy):
   proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
 
 def StiffnessOff(proxy):
-  #We use the "Body" name to signify the collection of all joints
+ #We use the "Body" name to signify the collection of all joints
   pNames = "Body"
   pStiffnessLists = 0.0
   pTimeLists = 1.0
