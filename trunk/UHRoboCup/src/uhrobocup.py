@@ -1,5 +1,5 @@
 import config
-import kickcarpet
+import kick
 from naoqi import ALProxy
 import walk
 import throw
@@ -17,27 +17,21 @@ def main():
 
     # Walk for specified time in seconds.
     walk.walkTimed(5.5)
-    config.PoseInit(proxy, .5)
+
     # Kicking Left Foot while saying specified text.
-    kickcarpet.kickLeftFoot("one!")
-    config.StiffnessOn(proxy)
-    config.PoseInit(proxy, .5)
+    kick.kickLeftFoot("one!")
 
     # Walk for specified time in seconds.
     walk.walkTimed(5.5)
-    config.StiffnessOn(proxy)
-    config.PoseInit(proxy, .5)
+
     # Kicking Right Foot while saying specified text.
-    kickcarpet.kickRightFoot("two!")
-    config.StiffnessOn(proxy)
-    config.PoseInit(proxy, .5)
+    kick.kickRightFoot("two!")
+
     # Walk for specified time in seconds.
     walk.walkTimed(5.5)
-    config.StiffnessOn(proxy)
-    config.PoseInit(proxy, .5)
+
     # Kicking Left Foot while saying specified text.
-    kickcarpet.kickLeftFoot("three!")
-    config.StiffnessOn(proxy)
+    kick.kickLeftFoot("three!")
 
     # Switch pose to initial at half the max speed.
     config.PoseInit(proxy, .2)
@@ -53,4 +47,4 @@ def main2():
     # throws ball
     throw.throwright()
 if __name__ == "__main__":
-    main2()
+    main()
