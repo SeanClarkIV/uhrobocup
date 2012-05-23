@@ -22,7 +22,7 @@ def stand():
 def step1():
     Head     = [ + 00, + 00]
 
-    LeftArm  = [ +90, +00, - 90, - 00, -180, + 40]
+    LeftArm  = [ +90, +10, - 90, - 00, -90, + 05]
     RightArm = [ +120, +00, -00, +00, +90, + 00]
 
     LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
@@ -35,7 +35,7 @@ def step1():
 def step2():
     Head     = [ + 00, + 00]
 
-    LeftArm  = [ +90, +00, - 90, - 00, -180, + 10]
+    LeftArm  = [ +90, +10, - 90, - 00, -90, + 05]
     RightArm = [ +120, +00, -00, +00, +90, + 00]
 
     LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
@@ -47,7 +47,7 @@ def step2():
 def step3():
     Head     = [ + 00, + 00]
 
-    LeftArm  = [ +00, +00, - 90, - 00, -180, + 35]
+    LeftArm  = [ +00, +10, - 90, - 00, -90, + 35]
     RightArm = [ +120, +00, -00, +00, +90, + 00]
 
     LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
@@ -59,7 +59,7 @@ def step3():
 def step4():
     Head     = [ + 00, + 00]
 
-    LeftArm  = [ +90, +00, - 90, - 00, -180, + 10]
+    LeftArm  = [ +90, +10, - 90, - 00, -90, + 10]
     RightArm = [ +120, +00, -00, +00, +90, + 00]
 
     LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
@@ -71,7 +71,7 @@ def step4():
 def step5():
     Head     = [ + 00, + 00]
 
-    LeftArm  = [ +90, +90, - 90, - 00, -180, + 10]
+    LeftArm  = [ +90, +90, - 90, - 00, -90, + 10]
     RightArm = [ +120, +00, -00, +00, +90, + 00]
 
     LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
@@ -82,13 +82,26 @@ def step5():
     return pTargetAngles
 #This function kicks the ball, y being an input of what to say right before he
 #kicks the ball.
+def step6():
+    Head     = [ + 00, + 00]
+
+    LeftArm  = [ +00, +10, - 90, - 00, -90, + 05]
+    RightArm = [ +120, +00, -00, +00, +90, + 00]
+
+    LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
+    RightLeg = [ + 00, + 00, -90, + 120, - 40, - 00]
+
+    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
+    return pTargetAngles
 
 #rightkick kicks with right foot
 def throwstrait():
     #Turns the stiffness on.
     config.StiffnessOn(proxy)
+    proxy.angleInterpolationWithSpeed(pNames, step6(), 0.1)
     proxy.angleInterpolationWithSpeed(pNames, step1(), 0.5)
-    proxy.angleInterpolationWithSpeed(pNames, step2(), 0.01)
+    proxy.angleInterpolationWithSpeed(pNames, step2(), 0.05)
     proxy.angleInterpolationWithSpeed(pNames, step3(), 1.0)
 
 

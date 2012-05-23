@@ -4,7 +4,6 @@ from naoqi import ALProxy
 
 proxy = config.loadProxy("ALMotion")
 pNames = "Body"
-tts = ALProxy("ALTextToSpeech", config.IP, 9559)
 
 def stand():
     Head     = [ + 00, + 90]
@@ -122,23 +121,21 @@ def step8():
 #kicks the ball.
 
 #rightkick kicks with right foot
-def kickRightFoot(textToSpeech):
+def kickRightFoot():
     #Turns the stiffness on.
     config.StiffnessOn(proxy)
     proxy.angleInterpolationWithSpeed(pNames, step1(), 0.17)
     proxy.angleInterpolationWithSpeed(pNames, step2(), 0.5)
     proxy.angleInterpolationWithSpeed(pNames, step3(), 0.4)
-    tts.say(textToSpeech)
     proxy.angleInterpolationWithSpeed(pNames, step4(), 1.0)
     proxy.angleInterpolationWithSpeed(pNames, step1(), 0.2)
 
 #leftkick kicks with left foot
-def kickLeftFoot(textToSpeech):
+def kickLeftFoot():
     #Turns the stiffness on.
     config.StiffnessOn(proxy)
     proxy.angleInterpolationWithSpeed(pNames, step5(), 0.17)
     proxy.angleInterpolationWithSpeed(pNames, step6(), 0.5)
     proxy.angleInterpolationWithSpeed(pNames, step7(), 0.4)
-    tts.say(textToSpeech)
     proxy.angleInterpolationWithSpeed(pNames, step8(), 1.0)
     proxy.angleInterpolationWithSpeed(pNames, step5(), 0.2)
