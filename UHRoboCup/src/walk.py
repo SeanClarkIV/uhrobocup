@@ -36,7 +36,7 @@ def walkTimed(walkTime):
 
     motionProxy = config.loadProxy("ALMotion")
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
-    X = 1.0
+    X = 0.8
     Y = 0.0
     Theta = 0.0
     Frequency = 1.0 # max speed

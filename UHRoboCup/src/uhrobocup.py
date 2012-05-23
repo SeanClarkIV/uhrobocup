@@ -16,28 +16,15 @@ def main():
     config.PoseInit(proxy, .5)
 
     # Walk for specified time in seconds.
-    walk.walkTimed(5.5)
 
     # Kicking Left Foot while saying specified text.
-    kick.kickLeftFoot("one!")
-
+    kick.kickLeftFoot()
+    kick.kickRightFoot()
     # Walk for specified time in seconds.
-    walk.walkTimed(5.5)
-
-    # Kicking Right Foot while saying specified text.
-    kick.kickRightFoot("two!")
-
-    # Walk for specified time in seconds.
-    walk.walkTimed(5.5)
-
-    # Kicking Left Foot while saying specified text.
-    kick.kickLeftFoot("three!")
-
-    # Switch pose to initial at half the max speed.
     config.PoseInit(proxy, .2)
 
     # Say specified text.
-    tts.say("game over!")
+    tts.say("Team. maqena, erektous. University of Houston. Go cougars")
 
 def main2():
     proxy = config.loadProxy("ALMotion")
@@ -45,6 +32,6 @@ def main2():
     # Turn Stiffness On in order to have the robot do moves and not fall.
     config.StiffnessOn(proxy)
     # throws ball
-    throw.throwright()
+    throw.throwstrait()
 if __name__ == "__main__":
     main()
