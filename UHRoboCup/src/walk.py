@@ -22,6 +22,7 @@ def walkStep1():
 
 def walkTimed(walkTime):
 
+    #This walk walks for a walkTime amount of time and then stops. 
     motionProxy = config.loadProxy("ALMotion")
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0.8
@@ -32,7 +33,7 @@ def walkTimed(walkTime):
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
     time.sleep(walkTime)
 
-    #TARGET VELOCITY
+    #Set the velocity to zero to stop the walk
     X = 0.0
     Y = 0.0
     Theta = 0.0
