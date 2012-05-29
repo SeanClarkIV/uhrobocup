@@ -7,91 +7,95 @@ pNames = "Body"
 tts = ALProxy("ALTextToSpeech", config.IP, 9559)
 
 def stand():
-    Head     = [ + 00, + 90]
+    Head     = [+0, +90]
 
-    LeftArm  = [ + 90, + 00, + 00, + 00, + 00, + 00]
-    RightArm = [ + 90, -00, -00, -00, + 00, + 00]
+    LeftArm  = [+90, +0, +0, +0, +0, +0]
+    RightArm = [+90, +0, +0, +0, +0, +0]
 
-    LeftLeg  = [ + 00, + 00, -00, + 00, + 00, + 00]
-    RightLeg = [ + 00, -00, -00, + 00, -00, + 00]
+    LeftLeg  = [+0, +0, +0, +0, +0, +0]
+    RightLeg = [+0, +0, +0, +0, +0, +0]
 
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = (Head + LeftArm + LeftLeg +RightLeg +RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
 def step1():
-    Head     = [ + 00, + 00]
+    Head     = [+0, +0]
 
-    LeftArm  = [ +90, +10, - 90, - 00, -90, + 05]
-    RightArm = [ +120, +00, -00, +00, +90, + 00]
+    LeftArm  = [+90, +10, -90, +0, -90, +05]
+    RightArm = [+120, +0, +0, +0, +90, +0]
 
-    LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
-    RightLeg = [ + 00, + 00, -90, + 120, - 40, - 00]
+    LeftLeg  = [+0, +0, -90, +120, -40, +0]
+    RightLeg = [+0, +0, -90, +120, -40, +0]
 
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = (Head + LeftArm + LeftLeg +RightLeg +RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
 def step2():
-    Head     = [ + 00, + 00]
+    Head     = [+0, +0]
 
-    LeftArm  = [ +90, +10, - 90, - 00, -90, + 05]
-    RightArm = [ +120, +00, -00, +00, +90, + 00]
+    LeftArm  = [+90, +10, -90, +0, -90, +05]
+    RightArm = [+120, +0, +0, +0, +90, +0]
 
-    LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
-    RightLeg = [ + 00, + 00, -90, + 120, - 40, - 00]
+    LeftLeg  = [+0, +0, -90, +120, -40, +0]
+    RightLeg = [+0, +0, -90, +120, -40, +0]
 
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = (Head + LeftArm + LeftLeg +RightLeg +RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 def step3():
-    Head     = [ + 00, + 00]
+    Head     = [+0, +0]
 
-    LeftArm  = [ +00, +10, - 90, - 00, -90, + 35]
-    RightArm = [ +120, +00, -00, +00, +90, + 00]
+    LeftArm  = [+0, +10, -90, +0, -90, +35]
+    RightArm = [+120, +0, +0, +0, +90, +0]
 
-    LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
-    RightLeg = [ + 00, + 00, -90, + 120, - 40, - 00]
+    LeftLeg  = [+0, +0, -90, +120, -40, +0]
+    RightLeg = [+0, +0, -90, +120, -40, +0]
 
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = (Head + LeftArm + LeftLeg +RightLeg +RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 def step4():
-    Head     = [ + 00, + 00]
+    Head     = [+0, +0]
 
-    LeftArm  = [ +90, +10, - 90, - 00, -90, + 10]
-    RightArm = [ +120, +00, -00, +00, +90, + 00]
+    LeftArm  = [+90, +10, -90, +0, -90, +10]
+    RightArm = [+120, +0, +0, +0, +90, +0]
 
-    LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
-    RightLeg = [ + 00, + 00, -90, + 120, - 40, - 00]
+    LeftLeg  = [+0, +0, -90, +120, -40, +0]
+    RightLeg = [+0, +0, -90, +120, -40, +0]
 
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = (Head + LeftArm + LeftLeg +RightLeg +RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 def step5():
-    Head     = [ + 00, + 00]
+    Head     = [+0, +0]
 
-    LeftArm  = [ +90, +90, - 90, - 00, -90, + 10]
-    RightArm = [ +120, +00, -00, +00, +90, + 00]
+    LeftArm  = [+90, +90, -90, +0, -90, +10]
+    RightArm = [+120, +0, +0, +0, +90, +0]
 
-    LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
-    RightLeg = [ + 00, + 00, -90, + 120, - 40, - 00]
+    LeftLeg  = [+0, +0, -90, +120, -40, +0]
+    RightLeg = [+0, +0, -90, +120, -40, +0]
 
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = (Head + LeftArm + LeftLeg +RightLeg +RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 #This function kicks the ball, y being an input of what to say right before he
 #kicks the ball.
 def step6():
-    Head     = [ + 00, + 00]
+    Head     = [+0, +0]
 
-    LeftArm  = [ +00, +10, - 90, - 00, -90, + 05]
-    RightArm = [ +120, +00, -00, +00, +90, + 00]
+    LeftArm  = [+0, +10, -90, +0, -90, +05]
+    RightArm = [+120, +0, +0, +0, +90, +0]
 
-    LeftLeg  = [ + 00, + 00, -90, + 120, - 40, - 00]
-    RightLeg = [ + 00, + 00, -90, + 120, - 40, - 00]
+    LeftLeg  = [+0, +0, -90, +120, -40, +0]
+    RightLeg = [+0, +0, -90, +120, -40, +0]
 
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = (Head + LeftArm + LeftLeg +RightLeg +RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
