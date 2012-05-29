@@ -17,7 +17,11 @@ def main():
         print "3) Initial Pose"
         print "4) Left Kick"
         print "5) Right Kick"
-        print "6) Walk"
+        print "6) Walk Fowards"
+        print "7) Walk Backwards"
+        print "8) Turn Left 90 degrees"
+        print "9) Turn Right 90 degrees"
+        print "type what you want him to say in quotations"
         return input ("\nChoose your option(s) as list: ")
 
     # NOW THE PROGRAM REALLY STARTS, AS CODE IS RUN
@@ -39,7 +43,15 @@ def main():
             elif choice[0] == 5:
                 kick.kickRightFoot()
             elif choice[0] == 6:
-                walk.walkTimed(5)
+                walk.walkFowardTimed(5)
+            elif choice[0] == 7:
+                walk.walkBackTimed(5)
+            elif choice[0] == 8:
+                walk.turnleft()
+            elif choice[0] == 9:
+                walk.turnright()
+            else:
+                tts.say(choice[0])
         if len(choice) >1:
             k=0
             while k < len(choice):
@@ -57,7 +69,15 @@ def main():
                 elif choice[k] == 5:
                     kick.kickRightFoot()
                 elif choice[k] == 6:
-                    walk.walkTimed(5)
+                    walk.walkFowardTimed(5)
+                elif choice[k] == 7:
+                    walk.walkBackTimed(5)
+                elif choice[k] == 8:
+                    walk.turnLeft()
+                elif choice[k] == 9:
+                    walk.turnright()
+                else:
+                    tts.say(choice[k])
                 k = k+1
 if __name__ == "__main__":
     main()
