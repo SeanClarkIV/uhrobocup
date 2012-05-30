@@ -11,16 +11,11 @@ def main():
     def menu():
         #print what options you have
         print "\n*** OPTIONS ***"
-        print "0) Quit"
-        print "1) Turn stiffness ON"
-        print "2) Turn stiffness OFF"
-        print "3) Initial Pose"
-        print "4) Left Kick"
-        print "5) Right Kick"
-        print "6) Walk Fowards"
-        print "7) Walk Backwards"
-        print "8) Turn Left 90 degrees"
-        print "9) Turn Right 90 degrees"
+        print "0) Quit               5)Right Kick"
+        print "1) Turn stiffness ON  6)Walk Foward"
+        print "2) Turn stiffness OFF 7) Walk Backwards"
+        print "3) Initial Pose       8) Turn Left 90 degrees"
+        print "4) Left Kick          9) Turn Right 90 degrees"
         print "type what you want him to say in quotations"
         return input ("\nChoose your option(s) as list: ")
 
@@ -73,7 +68,7 @@ def main():
                 elif choice[k] == 7:
                     walk.walkBackTimed(5)
                 elif choice[k] == 8:
-                    walk.turnLeft()
+                    walk.turnleft()
                 elif choice[k] == 9:
                     walk.turnright()
                 else:
