@@ -14,8 +14,8 @@ def main():
         print "\n*** OPTIONS ***"
         print "0) Quit               4) Left Kick         8) Turn Left"
         print "1) Turn stiffness ON  5) Right Kick        9) Turn Right"
-        print "2) Turn stiffness OFF 6) Walk Foward       10) stand up"
-        print "3) Initial Pose       7) Walk Backwards"
+        print "2) Turn stiffness OFF 6) Walk Foward       10) stand up on back"
+        print "3) Initial Pose       7) Walk Backwards    11) stand up on front"
         print "type what you want him to say in quotations"
         return input ("\nChoose your option(s) as list: ")
 
@@ -48,7 +48,9 @@ def main():
             elif choice[k] == 9:
                 walk.turnright()
             elif choice[k] == 10:
-                stand.standup()
+                stand.standuponback()
+            elif choice[k] == 11:
+                stand.standuponfront()
             else:
                 tts.say(choice[k])
             k = k+1
