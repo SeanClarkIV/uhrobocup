@@ -1,7 +1,7 @@
 import motion
 from naoqi import ALProxy
 
-IP = "172.25.194.82" # set your Ip adress here
+IP = "shasta.local" # set your Ip adress here
 PORT = 9559
 if (IP == ""):
   print "IP address not defined, aborting"
@@ -24,6 +24,12 @@ def StiffnessOn(proxy):
   pStiffnessLists = 1.0
   pTimeLists = 1.0
   proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
+  proxy.setSmartStiffnessEnabled(True)
+  smartstiffness = proxy.getSmartStiffnessEnabled()
+  if smartstiffness == True:
+      print "Smart Stiffness Enabled"
+  else:
+      print "Smart Stiffness NOT Enabled"
 
 def StiffnessOff(proxy):
  #We use the "Body" name to signify the collection of all joints
