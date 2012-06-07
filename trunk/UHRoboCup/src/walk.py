@@ -1,28 +1,11 @@
 import time
 import config
 
-""" WALKING STEPS GO HERE
-
-# Walking steps for each indivicual move
-
-def walkStep1():
-    Head     = [+0, +0]
-
-    LeftArm  = [+0, +0, +0, +0, +0, +0]
-    RightArm = [+0, +0, +0, +0, +0, +0]
-
-    LeftLeg  = [+0, +0, +0, +0, +0, +0]
-    RightLeg = [+0, +0, +0, +0, +0, +0]
-
-    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
-    pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
-    return pTargetAngles
-"""
+motionProxy = config.loadProxy("ALMotion")
 
 def walkFowardTimed(walkTime):
 
     #This walk walks for a walkTime amount of time and then stops. 
-    motionProxy = config.loadProxy("ALMotion")
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0.8
     Y = 0.0
@@ -40,7 +23,6 @@ def walkFowardTimed(walkTime):
 def walkBackTimed(walkTime):
 
     #This walk walks for a walkTime amount of time and then stops.
-    motionProxy = config.loadProxy("ALMotion")
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = -0.8
     Y = 0.0
@@ -58,7 +40,6 @@ def walkBackTimed(walkTime):
 def turnleft():
 
     #This walk walks for a walkTime amount of time and then stops.
-    motionProxy = config.loadProxy("ALMotion")
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0.0
     Y = 0.0
@@ -75,7 +56,6 @@ def turnleft():
 def turnright():
 
     #This walk walks for a walkTime amount of time and then stops.
-    motionProxy = config.loadProxy("ALMotion")
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0.0
     Y = 0.0
