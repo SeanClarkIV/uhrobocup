@@ -15,7 +15,7 @@ def main():
         print "\n*** OPTIONS ***"
         print "0) Quit                  4) Left Kick         8) Turn Left           12) Track Red Ball"
         print "1) Turn stiffness ON     5) Right Kick        9) Turn Right          13) Find Red Ball"
-        print "2) Turn stiffness OFF    6) Walk Foward      10) stand up on back    "
+        print "2) Turn stiffness OFF    6) Walk Foward      10) stand up on back    14) Super Speed"
         print "3) Initial Pose          7) Walk Backwards   11) stand up on front   "
         print "type what you want him to say in quotations"
         return input ("\nChoose your option(s) as list: ")
@@ -56,6 +56,8 @@ def main():
                 track.trackRedBall()
             elif choice[k] == 13:
                 track.findRedBall()
+            elif choice[k] == 14:
+                walk.ultimatewalkto()
             else:
                 tts.say(choice[k])
             k = k+1
