@@ -47,17 +47,18 @@ def findRedBall():
 
     redBallTracker.startTracker()
     redballposition = redBallTracker.getPosition()
-    count = 0
 
+    count = 0
     while redballposition == [0,0,0]:
         # Move head to random position (Jerky Head).
         motion.setAngles("HeadYaw", random.uniform(-1.0, 1.0), 0.6)
         motion.setAngles("HeadPitch", random.uniform(-0.5, 0.5), 0.6)
         redballposition = redBallTracker.getPosition()
-        print redballposition
-        count = count + 1
-        if count == 10:
+        print count, redballposition
+        if count == 50:
             walk.turnleft()
             count = 0
+        else:
+            count = count + 1
 
     print "found it"
