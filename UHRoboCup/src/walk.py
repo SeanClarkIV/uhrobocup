@@ -70,9 +70,9 @@ def turnright():
     Theta = 0.0
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
 
-def ultimtewalkto():
+def ultimatewalkto():
     # Set NAO in stiffness On
-    configs.StiffnessOn(motionProxy)
+    config.StiffnessOn(motionProxy)
 
     x     = 1
     y     = 0.0
