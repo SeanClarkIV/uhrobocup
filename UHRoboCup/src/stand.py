@@ -203,19 +203,19 @@ def carpet5():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
-def carpet9():
+def carpet6():
     Head     = [+0, -0]
 
     LeftArm  = [+110.0, +30.3, -5.6, -2, +00, +0]
     RightArm = [+17.9, -18.3, +33.5, +2.4, +70, +0]
 
     LeftLeg  = [-65.6, +45.3, -92.4, +80.9, +35.4, -3.2]
-    RightLeg = [-65.6, -42.3, -12.6, +121, +41.1, +19.2]
+    RightLeg = [-65.6, -42.3, -12.6, +121, -39.2, +19.2]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
-def carpet10():
+def carpet7():
     Head     = [+0, -0]
 
     LeftArm  = [+100, +27, +24.7, -5.3, +0, +0]
@@ -227,10 +227,10 @@ def carpet10():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
-def carpet11():
+def carpet8():
     Head     = [+0, -0]
 
-    LeftArm  = [+59.9, +64.8, +5.9 -4.3, +1.7, +0]
+    LeftArm  = [+59.9, +64.8, +5.9, -4.3, +1.7, +0]
     RightArm = [+74.1, +1.0, +26.7, +72.3, -6.9, +0]
 
     LeftLeg  = [-14.1, +14.4, -13.5, -1.4, +30.6, -10.6]
@@ -297,10 +297,10 @@ def standupbackcarpet():# Kick ball with right foot.
     proxy.angleInterpolationWithSpeed(pNames, carpet3(), 1.0)
     proxy.angleInterpolationWithSpeed(pNames, carpet4(), 1.0)
     proxy.angleInterpolationWithSpeed(pNames, carpet5(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, carpet9(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, carpet10(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, carpet11(), 0.75)
-    proxy.angleInterpolationWithSpeed(pNames, stand(), 1.0)
+    proxy.angleInterpolationWithSpeed(pNames, carpet6(), 1.0)
+    proxy.angleInterpolationWithSpeed(pNames, carpet7(), 1.0)
+    #proxy.angleInterpolationWithSpeed(pNames, carpet8(), 0.5)
+    #proxy.angleInterpolationWithSpeed(pNames, stand(), 1.0)
 
 def standuponfront():# Kick ball with right foot.
     #Turns the stiffness on.
