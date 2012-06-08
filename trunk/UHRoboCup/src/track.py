@@ -58,8 +58,9 @@ def findRedBall():
     # Store red ball position into variable "redballposition".
     redballposition = redBallTracker.getPosition()
 
-    count = 0   # Initiate count.
-    while redballposition == [0,0,0]:   # Loop function if ball is not found.
+    count = 0
+
+    while redballposition == [0,0,0]:
         # Move head to random position (Jerky Head).
         motion.setAngles("HeadYaw", random.uniform(-1.0, 1.0), 0.6)
         motion.setAngles("HeadPitch", random.uniform(-0.5, 0.5), 0.6)

@@ -84,7 +84,7 @@ def ultimatewalkto():
         [ ["MaxStepX", 0.08],         # step of x cm in front
           ["MaxStepY", 0.101],         # default value
           ["MaxStepTheta", 0.4],      # default value
-          ["MaxStepFrequency", 1.667],  # low frequency
+          ["MaxStepFrequency", 3.0],  # low frequency
           ["StepHeight", 0.007],       # step height of x cm
           ["TorsoWx", 0],           # default value
           ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
