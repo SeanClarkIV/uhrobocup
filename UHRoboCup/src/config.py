@@ -1,7 +1,7 @@
 import motion
 from naoqi import ALProxy
 
-IP = "127.0.0.1" # set your Ip adress here
+IP = "169.254.20.238" # set your Ip adress here
 PORT = 9559
 if (IP == ""):
   print "IP address not defined, aborting"
