@@ -1,14 +1,13 @@
 import walk
 import random
 import time
-
+import motion
 import config
 from naoqi import ALProxy
 
 motion = ALProxy("ALMotion", config.IP, 9559)
 memory = ALProxy("ALMemory", config.IP, 9559)
 redBallTracker = ALProxy("ALRedBallTracker", config.IP, 9559)
-
 def trackRedBall():
     # Set Head Stiffness ON.
     motion.setStiffnesses("Head", 1.0)
@@ -40,7 +39,6 @@ def trackRedBall():
     # Set Head Stiffness OFF.
     motion.setStiffnesses("Head", 0.0)
     print "Head stiffness OFF."
-
 def findRedBall():
     # Set Head Stiffness ON.
     motion.setStiffnesses("Head", 1.0)
@@ -52,6 +50,11 @@ def findRedBall():
 
     # Start looking for red ball to track.
     redBallTracker.startTracker()
+    p= redBallTracker.isNewData()
+    print p
+    redballposition = redBallTracker.getPosition()
+    print redballposition
+
     if redBallTracker.isActive() == True:
         print "Looking for red ball to track."
 
@@ -79,6 +82,10 @@ def findRedBall():
         # If count has not reached 50 then we need to increment count.
         else:
             count = count + 1
-
+        
     # Once ball has been found it will return statement saying that it found the ball.
     print "found it"
+    redBallTracker.stopTracker()
+    print redballposition
+    # walkFowardto is to walk to a position but it does not seem to work.
+    walk.walkFowardto(redballposition[0], redballposition[1], redballposition[2])
