@@ -35,6 +35,7 @@ def main():
             elif choice[k] == 2:
                 config.StiffnessOff(proxy)
             elif choice[k] == 3:
+                config.StiffnessOn(proxy)
                 config.PoseInit(proxy, 0.5)
             elif choice[k] == 4:
                 kick.kickLeftFoot()
@@ -43,11 +44,11 @@ def main():
             elif choice[k] == 6:
                 walk.walkFowardTimed(5)
             elif choice[k] == 7:
-                walk.walkBackTimed(5)
+                walk.ultimatewalkto(-1,.25,.2)
             elif choice[k] == 8:
-                walk.turnleft()
+                walk.ultimatewalkto(0,0,2)
             elif choice[k] == 9:
-                walk.turnright()
+                walk.ultimatewalkto(0,0,-2)
             elif choice[k] == 10:
                 stand.standup()
             elif choice[k] == 11:
@@ -57,7 +58,7 @@ def main():
             elif choice[k] == 13:
                 track.findRedBall()
             elif choice[k] == 14:
-                walk.ultimatewalkto()
+                walk.ultimatewalkto(1,0,0)
             elif choice[k] == 15:
                 stand.sitdown()
             elif choice[k] == 16:
