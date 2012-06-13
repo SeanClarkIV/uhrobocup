@@ -154,26 +154,87 @@ def turnright():
     Theta = 0.0
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
 
-def ultimatewalkto():
+def ultimatewalkto(x,y,z):
     # Set NAO in stiffness On
     config.StiffnessOn(motionProxy)
 
-    x     = 1
-    y     = 0.0
-    theta = 0.0
+    theta = z
 
     # This example show customization for the both foot
     # with all the possible gait parameters
     motionProxy.walkTo(x, y, theta,
         [ ["MaxStepX", 0.08],         # step of x cm in front
-          ["MaxStepY", 0.101],         # default value
+          ["MaxStepY", 0.4],         # default value
           ["MaxStepTheta", 0.4],      # default value
           ["MaxStepFrequency", 1.667],  # low frequency
-          ["StepHeight", 0.01],       # step height of x cm
+          ["StepHeight", 0.015],       # step height of x cm
           ["TorsoWx", 0],           # default value
           ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
 
     # This example show customization for the both foot
     # with just one gait parameter, in this case, the other
     # parameters are set to the default value
-    motionProxy.walkTo(x, y, theta, [ ["StepHeight", 0.007] ]) # step height of 4 cm
+def ultimatewalktoball(x,y,z):
+    # Set NAO in stiffness On
+    config.StiffnessOn(motionProxy)
+    x = x/2
+    y = y/2
+    theta = z/2
+
+    # This example show customization for the both foot
+    # with all the possible gait parameters
+    motionProxy.walkTo(0, 0, theta,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 1],  # low frequency
+          ["StepHeight", 0.02],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+    
+    motionProxy.walkTo(0, 0, theta,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 1],  # low frequency
+          ["StepHeight", 0.02],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+    motionProxy.walkTo(0, y, 0,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 1],  # low frequency
+          ["StepHeight", 0.02],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+
+    motionProxy.walkTo(0, y, 0,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 1],  # low frequency
+          ["StepHeight", 0.02],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+    motionProxy.walkTo(x, 0, 0,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 1],  # low frequency
+          ["StepHeight", 0.02],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+
+    motionProxy.walkTo(x, 0, 0,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 1],  # low frequency
+          ["StepHeight", 0.02],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+
+    # This example show customization for the both foot
+    # with just one gait parameter, in this case, the other
+    # parameters are set to the default value

@@ -29,6 +29,18 @@ def step1():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+def step5():
+    Head     = [+0, +0]
+
+    LeftArm  = [+135, +0, +0, +0, +0, +0]
+    RightArm = [+135, -90, +0, +0, +0, +0]
+
+    LeftLeg  = [+0, +0, -10, +0, +0, -8]
+    RightLeg = [+0, +0, -10, +0, +0, -8]
+
+    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
+    return pTargetAngles
 
 def step2():
     Head     = [+0, +0]
@@ -125,7 +137,7 @@ def step8():
 def kickRightFoot():# Kick ball with right foot.
     #Turns the stiffness on.
     config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, step1(), 0.17)
+    proxy.angleInterpolationWithSpeed(pNames, step1(), 0.1)
     proxy.angleInterpolationWithSpeed(pNames, step2(), 0.5)
     proxy.angleInterpolationWithSpeed(pNames, step3(), 0.4)
     proxy.angleInterpolationWithSpeed(pNames, step4(), 1.0)
@@ -135,7 +147,7 @@ def kickRightFoot():# Kick ball with right foot.
 def kickLeftFoot():# Kick ball with left foot.
     #Turns the stiffness on.
     config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, step5(), 0.17)
+    proxy.angleInterpolationWithSpeed(pNames, step5(), 0.1)
     proxy.angleInterpolationWithSpeed(pNames, step6(), 0.5)
     proxy.angleInterpolationWithSpeed(pNames, step7(), 0.4)
     proxy.angleInterpolationWithSpeed(pNames, step8(), 1.0)

@@ -88,4 +88,4 @@ def findRedBall():
     redBallTracker.stopTracker()
     print redballposition
     # walkFowardto is to walk to a position but it does not seem to work.
-    walk.walkFowardto(redballposition[0], redballposition[1], redballposition[2])
+    walk.ultimatewalktoball(redballposition[0], redballposition[1], redballposition[2])
