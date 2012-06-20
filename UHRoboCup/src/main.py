@@ -13,10 +13,10 @@ def main():
     def menu():
         #print what options you have
         print "\n*** OPTIONS ***"
-        print "0) Quit                  4) Left Kick         8) Turn Left                12) Track Red Ball      16)Stand Up from Sit"
-        print "1) Turn stiffness ON     5) Right Kick        9) Turn Right               13) Find Red Ball"
-        print "2) Turn stiffness OFF    6) Walk Foward      10) stand up on back         14) Super Speed"
-        print "3) Initial Pose          7) Walk Backwards   11) stand up on front        15) Sit Down"
+        print "0) Quit                  4) Left Kick         8) Turn Left                12) Find Red Ball"
+        print "1) Turn stiffness ON     5) Right Kick        9) Turn Right               13) Super Speed"
+        print "2) Turn stiffness OFF    6) Walk Foward      10) stand up on back         14) Sit Down"
+        print "3) Initial Pose          7) Walk Backwards   11) stand up on front        15)Stand Up from Sit"
         print "type what you want him to say in quotations"
         return input ("\nChoose your option(s) as list: ")
 
@@ -53,15 +53,13 @@ def main():
                 stand.standup()
             elif choice[k] == 11:
                 stand.standuponfront()
-            elif  choice[k] == 12:
-                track.trackRedBall()
-            elif choice[k] == 13:
+            elif choice[k] == 12:
                 track.findRedBall()
-            elif choice[k] == 14:
+            elif choice[k] == 13:
                 walk.ultimatewalkto(1,0,0)
-            elif choice[k] == 15:
+            elif choice[k] == 14:
                 stand.sitdown()
-            elif choice[k] == 16:
+            elif choice[k] == 15:
                 stand.standfromsit()
             else:
                 tts.say(choice[k])
