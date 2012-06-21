@@ -83,19 +83,3 @@ def PoseInit(proxy, pMaxSpeedFraction = 0.2):
   pNames = "Body"
   # Ask motion to do this with a blocking call
   proxy.angleInterpolationWithSpeed(pNames, pTargetAngles, pMaxSpeedFraction)
-
-def poseZero(proxy):
-  # We use the "Body" name to signify the collection of all joints and actuators
-  pNames = "Body"
-
-  # Get the Number of Joints
-  numBodies = len(proxy.getJointNames(pNames))
-
-  # We prepare a collection of floats
-  pTargetAngles = [0.0] * numBodies
-
-  # We set the fraction of max speed
-  pMaxSpeedFraction = 0.3
-
-  # Ask motion to do this with a blocking call
-  proxy.angleInterpolationWithSpeed(pNames, pTargetAngles, pMaxSpeedFraction)

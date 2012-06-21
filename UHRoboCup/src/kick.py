@@ -1,7 +1,7 @@
 import config
 import motion
 
-proxy = config.loadProxy("ALMotion")
+motionProxy = config.loadProxy("ALMotion")
 pNames = "Body"
 
 def stand():
@@ -136,18 +136,18 @@ def step8():
 
 def kickRightFoot():    # Kick ball with right foot.
     #Turns the stiffness on.
-    config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, step1(), 0.1)
-    proxy.angleInterpolationWithSpeed(pNames, step2(), 0.5)
-    proxy.angleInterpolationWithSpeed(pNames, step3(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, step4(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, step1(), 0.2)
+    config.StiffnessOn(motionProxy)
+    motionProxy.angleInterpolationWithSpeed(pNames, step1(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, step2(), 0.5)
+    motionProxy.angleInterpolationWithSpeed(pNames, step3(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, step4(), 1.0)
+    motionProxy.angleInterpolationWithSpeed(pNames, step1(), 0.2)
 
 def kickLeftFoot():     # Kick ball with left foot.
     #Turns the stiffness on.
-    config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, step5(), 0.1)
-    proxy.angleInterpolationWithSpeed(pNames, step6(), 0.5)
-    proxy.angleInterpolationWithSpeed(pNames, step7(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, step8(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, step5(), 0.2)
+    config.StiffnessOn(motionProxy)
+    motionProxy.angleInterpolationWithSpeed(pNames, step5(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, step6(), 0.5)
+    motionProxy.angleInterpolationWithSpeed(pNames, step7(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, step8(), 1.0)
+    motionProxy.angleInterpolationWithSpeed(pNames, step5(), 0.2)

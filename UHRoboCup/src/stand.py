@@ -1,10 +1,8 @@
 import config
 import motion
-from naoqi import ALProxy
 import stand
 
-proxy = config.loadProxy("ALMotion")
-texttospeech = ALProxy("ALTextToSpeech", config.IP, 9559)
+motionProxy = config.loadProxy("ALMotion")
 
 def poseint():
     Head     = [+0, +0]
@@ -293,48 +291,48 @@ def stepupfront5():
     return pTargetAngles
 
 def standup():  # Stand up from its back.
-    config.StiffnessOn(proxy)   # Turns the stiffness on.
+    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
 
-    proxy.angleInterpolationWithSpeed("Body", stand(), 1.0)
-    proxy.angleInterpolationWithSpeed("Body", stand1(), 1.0)
-    proxy.angleInterpolationWithSpeed("Body", stand2(), 1.0)
-    proxy.angleInterpolationWithSpeed("Body", stand3(), 0.8)
-    proxy.angleInterpolationWithSpeed("Body", stand4(), 0.8)
-    proxy.angleInterpolationWithSpeed("Body", stand5(), 0.8)
-    proxy.angleInterpolationWithSpeed("Body", stand6(), 0.8)
-    proxy.angleInterpolationWithSpeed("Body", stand7(), 0.8)
-    proxy.angleInterpolationWithSpeed("Body", stand8(), 0.8)
-    proxy.angleInterpolationWithSpeed("Body", stand9(), 0.8)
-    proxy.angleInterpolationWithSpeed("Body", poseint(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stand1(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stand2(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stand3(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand4(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand5(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand6(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand7(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand8(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand9(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", poseint(), 0.8)
 
 def standuponfront(): # Stands up from its belly.
-    config.StiffnessOn(proxy)   # Turns the stiffness on.
+    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
 
-    proxy.angleInterpolationWithSpeed("Body", stepupfront(), 0.5)
-    proxy.angleInterpolationWithSpeed("Body", stepupfront1(), 0.5)
-    proxy.angleInterpolationWithSpeed("Body", stepupfront2(), 1.0)
-    proxy.angleInterpolationWithSpeed("Body", stepupfront3(), 1.0)
-    proxy.angleInterpolationWithSpeed("Body", stepupfront4(), 1.0)
-    proxy.angleInterpolationWithSpeed("Body", stepupfront5(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront(), 0.5)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront1(), 0.5)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront2(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront3(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront4(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront5(), 1.0)
     standfromsit()
 
 def sitdown():  # Sits down from standup position.
-    config.StiffnessOn(proxy)   # Turns the stiffness on.
+    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
 
-    proxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
-    proxy.angleInterpolationWithSpeed("Body", sit2(), 1.0)
-    proxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
-    proxy.angleInterpolationWithSpeed("Body", stand6(), 0.7)
-    proxy.angleInterpolationWithSpeed("Body", sit4(), 0.4)
-    proxy.angleInterpolationWithSpeed("Body", sit5(), 0.4)
-    proxy.angleInterpolationWithSpeed("Body", sit3(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", sit2(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", stand6(), 0.7)
+    motionProxy.angleInterpolationWithSpeed("Body", sit4(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", sit5(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", sit3(), 1.0)
 
 def standfromsit(): # Stands from sit down position.
-    config.StiffnessOn(proxy)   # Turns the stiffness on.
+    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
 
-    proxy.angleInterpolationWithSpeed("Body", sit3(), 0.3)
-    proxy.angleInterpolationWithSpeed("Body", sit4(), 0.3)
-    proxy.angleInterpolationWithSpeed("Body", stand6(), 0.65)
-    proxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
-    proxy.angleInterpolationWithSpeed("Body", sit2(), 0.4)
-    proxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", sit3(), 0.3)
+    motionProxy.angleInterpolationWithSpeed("Body", sit4(), 0.3)
+    motionProxy.angleInterpolationWithSpeed("Body", stand6(), 0.65)
+    motionProxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", sit2(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
