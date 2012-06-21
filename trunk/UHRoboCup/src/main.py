@@ -2,12 +2,10 @@ import config
 import kick
 import stand
 import track
-from naoqi import ALProxy
 import walk
 
-# Common Variables
-proxy = config.loadProxy("ALMotion")
-tts = ALProxy("ALTextToSpeech", config.IP, 9559)
+motionProxy = config.loadProxy("ALMotion")
+texttospeechProxy = config.loadProxy("ALTextToSpeech")
 
 def main():
     def menu():
@@ -31,12 +29,12 @@ def main():
                 loop = 0
                 break
             elif choice[k] == 1:
-                config.StiffnessOn(proxy)
+                config.StiffnessOn(motionProxy)
             elif choice[k] == 2:
-                config.StiffnessOff(proxy)
+                config.StiffnessOff(motionProxy)
             elif choice[k] == 3:
-                config.StiffnessOn(proxy)
-                config.PoseInit(proxy, 0.5)
+                config.StiffnessOn(motionProxy)
+                config.PoseInit(motionProxy, 0.5)
             elif choice[k] == 4:
                 kick.kickLeftFoot()
             elif choice[k] == 5:
@@ -62,7 +60,7 @@ def main():
             elif choice[k] == 15:
                 stand.standfromsit()
             else:
-                tts.say(choice[k])
+                texttospeechProxy.say(choice[k])
             k = k+1
 if __name__ == "__main__":
     main()

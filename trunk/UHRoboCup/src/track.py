@@ -2,50 +2,45 @@ import time
 
 import camera
 import config
-import motion
-from naoqi import ALProxy
 
-proxy = config.loadProxy("ALMotion")
-
-motion = ALProxy("ALMotion", config.IP, 9559)
-memory = ALProxy("ALMemory", config.IP, 9559)
-redballtracker = ALProxy("ALRedBallTracker", config.IP, 9559)
+motionProxy = config.loadProxy("ALMotion")
+redballtrackerProxy = config.loadProxy("ALRedBallTracker")
 
 def findRedBall():
     # Set stiffnes ON.
-    config.StiffnessOn(proxy)
+    config.StiffnessOn(motionProxy)
 
     # Make sure top camera is active.
     camera.topCamera()
 
     # Start looking for red ball to track.
-    redballtracker.startTracker()
-    redballtracker.setWholeBodyOn(True)
+    redballtrackerProxy.startTracker()
+    redballtrackerProxy.setWholeBodyOn(True)
     print "Tracking red ball"
 
     #Store initial red ball positon to variable.
-    initialredballposition = redballtracker.getPosition()
+    initialredballposition = redballtrackerProxy.getPosition()
     print "Initial Position: ", initialredballposition
 
     count = 0
-    while redballtracker.isActive():
-        while redballtracker.getPosition() == initialredballposition:  # Ball lost.
-            if redballtracker.isNewData() == False and count == 0: # Ball still lost.
+    while redballtrackerProxy.isActive():
+        while redballtrackerProxy.getPosition() == initialredballposition:  # Ball lost.
+            if redballtrackerProxy.isNewData() == False and count == 0: # Ball still lost.
                 # Pan head side to side to search for ball.
                 print "Looking for red ball"
                 camera.topCamera()
-                motion.setAngles(['HeadYaw', 'HeadPitch'], [1.0, 1.4318], 0.2)
+                motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [1.0, 1.4318], 0.2)
                 time.sleep(2)
-                motion.setAngles(['HeadYaw', 'HeadPitch'], [-1.0, 1.4318], 0.2)
+                motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [-1.0, 1.4318], 0.2)
                 count = 1
-            elif redballtracker.isNewData() == False and count == 1:
+            elif redballtrackerProxy.isNewData() == False and count == 1:
                 camera.bottomCamera()
-                motion.setAngles(['HeadYaw', 'HeadPitch'], [1.0, 1.4318], 0.2)
+                motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [1.0, 1.4318], 0.2)
                 time.sleep(2)
                 count = 0
             else: # Ball found.
                 # Store found red ball positon to variable.
-                foundredballposition = redballtracker.getPosition()
+                foundredballposition = redballtrackerProxy.getPosition()
                 if foundredballposition != initialredballposition:
                     print "Found red ball position: ", foundredballposition
                     return foundredballposition
