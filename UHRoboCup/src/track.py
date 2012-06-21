@@ -12,10 +12,10 @@ memory = ALProxy("ALMemory", config.IP, 9559)
 redballtracker = ALProxy("ALRedBallTracker", config.IP, 9559)
 
 def findRedBall():
-    # Set stiffnes ON
+    # Set stiffnes ON.
     config.StiffnessOn(proxy)
 
-    #Make sure top camera is active
+    # Make sure top camera is active.
     camera.topCamera()
 
     # Start looking for red ball to track.
@@ -23,7 +23,7 @@ def findRedBall():
     redballtracker.setWholeBodyOn(True)
     print "Tracking red ball"
 
-    #Store initial red ball positon to variable
+    #Store initial red ball positon to variable.
     initialredballposition = redballtracker.getPosition()
     print "Initial Position: ", initialredballposition
 
