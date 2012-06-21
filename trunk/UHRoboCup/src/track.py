@@ -4,7 +4,6 @@ import camera
 import config
 import motion
 from naoqi import ALProxy
-import walk
 
 proxy = config.loadProxy("ALMotion")
 
@@ -32,6 +31,7 @@ def findRedBall():
     while redballtracker.isActive():
         while redballtracker.getPosition() == initialredballposition:  # Ball lost.
             if redballtracker.isNewData() == False and count == 0: # Ball still lost.
+                # Pan head side to side to search for ball.
                 print "Looking for red ball"
                 camera.topCamera()
                 motion.setAngles(['HeadYaw', 'HeadPitch'], [1.0, 1.4318], 0.2)
