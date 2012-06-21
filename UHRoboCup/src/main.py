@@ -33,7 +33,6 @@ def main():
             elif choice[k] == 2:
                 config.StiffnessOff(motionProxy)
             elif choice[k] == 3:
-                config.StiffnessOn(motionProxy)
                 config.PoseInit(motionProxy, 0.5)
             elif choice[k] == 4:
                 kick.kickLeftFoot()

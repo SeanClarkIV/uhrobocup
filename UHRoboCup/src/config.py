@@ -40,41 +40,16 @@ def StiffnessOff(proxy):
       print "Smart Stiffness NOT Disabled"
 
 def PoseInit(proxy, pMaxSpeedFraction = 0.2):
-  # Define The Initial Position
-  HeadYawAngle       = 0
-  HeadPitchAngle     = 0
+    StiffnessOff(proxy)
+    Head     = [+0, +0]
 
-  ShoulderPitchAngle = 80
-  ShoulderRollAngle  = 20
-  ElbowYawAngle      = -80
-  ElbowRollAngle     = -60
-  WristYawAngle      = 0
-  HandAngle          = 0
+    LeftArm  = [+80, +20, -80, -60, +0, +0]
+    RightArm = [+80, -20, +80, +60, +0, +0]
 
-  HipYawPitchAngle   = 0
-  HipRollAngle       = 0
-  HipPitchAngle      = -20
-  KneePitchAngle     = 40
-  AnklePitchAngle    = -20
-  AnkleRollAngle     = 0
+    LeftLeg  = [+0, +0, -20, +40, -20, +0]
+    RightLeg = [+0, +0, -20, +40, -20, +0]
 
-  # Get the Robot Configuration
-  robotConfig = proxy.getRobotConfig()
-  robotName = ""
-  Head     = [HeadYawAngle, HeadPitchAngle]
-  LeftArm  = [ShoulderPitchAngle, +ShoulderRollAngle, +ElbowYawAngle, +ElbowRollAngle, WristYawAngle, HandAngle]
-  RightArm = [ShoulderPitchAngle, -ShoulderRollAngle, -ElbowYawAngle, -ElbowRollAngle, WristYawAngle, HandAngle]
+    pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
+    pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
 
-  LeftLeg  = [HipYawPitchAngle, +HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, +AnkleRollAngle]
-  RightLeg = [HipYawPitchAngle, -HipRollAngle, HipPitchAngle, KneePitchAngle, AnklePitchAngle, -AnkleRollAngle]
-  # Gather the joints together
-  pTargetAngles = Head + LeftArm + LeftLeg + RightLeg + RightArm
-
-  # Convert to radians
-  pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
-
-  #------------------------------ send the commands -----------------------------
-  # We use the "Body" name to signify the collection of all joints
-  pNames = "Body"
-  # Ask motion to do this with a blocking call
-  proxy.angleInterpolationWithSpeed(pNames, pTargetAngles, pMaxSpeedFraction)
+    proxy.angleInterpolationWithSpeed("Body", pTargetAngles, pMaxSpeedFraction)
