@@ -1,18 +1,19 @@
-import stand
 import config
 import motion
 from naoqi import ALProxy
+import stand
+
 proxy = config.loadProxy("ALMotion")
-tts = ALProxy("ALTextToSpeech", config.IP, 9559)
-pNames = "Body"
+texttospeech = ALProxy("ALTextToSpeech", config.IP, 9559)
+
 def poseint():
     Head     = [+0, +0]
 
     LeftArm  = [+40, +0, +40, +0, +0, +0]
     RightArm = [+40, +0, -40, +0, +0, +0]
 
-    LeftLeg  = [+0, +00, +0, +0, +0, +0]
-    RightLeg = [+0, -00, +0, +0, +0, +0]
+    LeftLeg  = [+0, +0, +0, +0, +0, +0]
+    RightLeg = [+0, +0, +0, +0, +0, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -22,7 +23,7 @@ def sit1():
     Head     = [+0, +0]
 
     LeftArm  = [+91, +31.6, +24.7, -05.3, +11.9, +0]
-    RightArm = [+31.9, +15.2, -74.6, -68, -00, +0]
+    RightArm = [+31.9, +15.2, -74.6, -68, +0, +0]
 
     LeftLeg  = [-65.6, +30.1, -18.6, +25.5, +44.3, -6]
     RightLeg = [-65.6, -19, -18.5, +121, -67.9, -4.3]
@@ -34,11 +35,11 @@ def sit1():
 def sit2():
     Head     = [+0, +0]
 
-    LeftArm  = [+0, +00, +00, -0, +00, +0]
-    RightArm = [+0, -00, +00, +00, +00, +0]
+    LeftArm  = [+0, +0, +0, +0, +0, +0]
+    RightArm = [+0, +0, +0, +0, +0, +0]
 
     LeftLeg  = [-04, +1.1, -49, +115, -58.7, -10]
-    RightLeg = [-04, -0.4, -45.1, +115, -64, -1.2]
+    RightLeg = [-04, +0.4, -45.1, +115, -64, -1.2]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -51,7 +52,7 @@ def sit3():
     RightArm = [+58.7, -16.3, +38, +87.4, +0, +0]
 
     LeftLeg  = [-50, +0, -90, +70, +80, +0]
-    RightLeg = [-50, -0, -90, +70, +80, +0]
+    RightLeg = [-50, +0, -90, +70, +80, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -60,7 +61,7 @@ def sit3():
 def sit4():
     Head     = [+0, +0]
 
-    LeftArm  = [+119.5, +30.3, -5.6, -02, +11.8, +0]
+    LeftArm  = [+119.5, +30.3, -5.6, -2, +11.8, +0]
     RightArm = [+59.8, -16.3, +38, +87.4, +0, +0]
 
     LeftLeg  = [-65.6, +45.3, -91.8, +93.4, +41.1, -3.9]
@@ -73,11 +74,11 @@ def sit4():
 def sit5():
     Head     = [+0, +0]
 
-    LeftArm  = [+119.5, +30.3, -5.6, -02, +11.8, +0]
+    LeftArm  = [+119.5, +30.3, -5.6, -2, +11.8, +0]
     RightArm = [+59.8, -16.3, +38, +87.4, +0, +0]
 
-    LeftLeg  = [-20, +45.3, -91.8, +0, -30, -00]
-    RightLeg = [-20, -45.3, -91.8, +0, -30, +00]
+    LeftLeg  = [-20, +45.3, -91.8, +0, -30, +0]
+    RightLeg = [-20, -45.3, -91.8, +0, -30, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -89,36 +90,39 @@ def stand():
     LeftArm  = [+110, +40, +20, -90, +0, +0]
     RightArm = [+110, -40, -20, +90, +0, +0]
 
-    LeftLeg  = [+0, +0, -90, +00, +0, +0]
-    RightLeg = [+0, -0, -90, +00, +0, +0]
+    LeftLeg  = [+0, +0, -90, +0, +0, +0]
+    RightLeg = [+0, +0, -90, +0, +0, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 def stand1():
     Head     = [+0, +0]
 
     LeftArm  = [+120, +30, +20, -90, +0, +0]
     RightArm = [+120, -30, -20, +90, +0, +0]
 
-    LeftLeg  = [+0, +0, -90, +00, +0, +0]
-    RightLeg = [+0, -0, -90, +00, +0, +0]
+    LeftLeg  = [+0, +0, -90, +0, +0, +0]
+    RightLeg = [+0, +0, -90, +0, +0, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 def stand2():
     Head     = [+0, +0]
 
     LeftArm  = [+120, +30, +20, -90, +0, +0]
     RightArm = [+120, -30, -20, +90, +0, +0]
 
-    LeftLeg  = [+0, +0, -40, +00, +0, +0]
-    RightLeg = [+0, -0, -40, +00, +0, +0]
+    LeftLeg  = [+0, +0, -40, +0, +0, +0]
+    RightLeg = [+0, +0, -40, +0, +0, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 def stand3():
     Head     = [+0, +0]
 
@@ -126,7 +130,7 @@ def stand3():
     RightArm = [+110, -20, -10, +70, +0, +0]
 
     LeftLeg  = [-50, +0, -90, +70, +80, +0]
-    RightLeg = [-50, -0, -90, +70, +80, +0]
+    RightLeg = [-50, +0, -90, +70, +80, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -135,8 +139,8 @@ def stand3():
 def stand4():
     Head     = [+0, +0]
 
-    LeftArm  = [+110, -60, +20, -00, +0, +0]
-    RightArm = [+110, -20, -10, +00, +0, +0]
+    LeftArm  = [+110, -60, +20, +0, +0, +0]
+    RightArm = [+110, -20, -10, +0, +0, +0]
 
     LeftLeg  = [-90, +20, -90, +70, +50, +0]
     RightLeg = [-90, -20, -90, +70, +80, +0]
@@ -144,10 +148,11 @@ def stand4():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 def stand5():
     Head     = [+0, +0]
 
-    LeftArm  = [+119, -3.7, -14.2, -04.5, -11.3, +0]
+    LeftArm  = [+119, -3.7, -14.2, -4.5, -11.3, +0]
     RightArm = [+63.5, -69.8, -33, +2.2, +104.5, +0]
 
     LeftLeg  = [-65.6, +45.3, -91.8, +93.4, +41.1, -3.9]
@@ -160,8 +165,8 @@ def stand5():
 def stand6():
     Head     = [+0, +0]
 
-    LeftArm  = [+119.5, +30.3, -5.6, -02, +11.8, +0]
-    RightArm = [+17.9, -18.3, -33.5, +02.4, +00, +0]
+    LeftArm  = [+119.5, +30.3, -5.6, -2, +11.8, +0]
+    RightArm = [+17.9, -18.3, -33.5, +2.4, +0, +0]
 
     LeftLeg  = [-60.8, +45.3, -92.4, +80.9, +35.4, -3.2]
     RightLeg = [-60.8, -42.3, -12.6, +121, -41.1, +19.2]
@@ -171,7 +176,7 @@ def stand6():
     return pTargetAngles
 
 def stand7():
-    Head     = [+0, -0]
+    Head     = [+0, +0]
 
     LeftArm  = [+91, +27, +24.7, -5.3, +0, +0]
     RightArm = [+31.9, +15.2, -74.6, -68, -89.7, +0]
@@ -182,8 +187,9 @@ def stand7():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
+
 def stand8():
-    Head     = [+0, -0]
+    Head     = [+0, +0]
 
     LeftArm  = [+91, +27, +24.7, -5.3, +0, +0]
     RightArm = [+115, +15.2, -74.6, -68, -89.7, +0]
@@ -194,11 +200,12 @@ def stand8():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
-def stand9():
-    Head     = [+0, -0]
 
-    LeftArm  = [+0, +00, +00, -00, +00, +0]
-    RightArm = [+00, +00, +00, +00, -00, +0]
+def stand9():
+    Head     = [+0, +0]
+
+    LeftArm  = [+0, +0, +0, +0, +0, +0]
+    RightArm = [+0, +0, +0, +0, +0, +0]
 
     LeftLeg  = [-4, +1.1, -38.1, +115, -64.5, -12]
     RightLeg = [-4, -1.1, -38.1, +115, -64.5, +12]
@@ -210,11 +217,11 @@ def stand9():
 def stepupfront():
     Head     = [+2.2, +25]
 
-    LeftArm  = [-00,+90,-00,-00,-00,+0.0 ]
-    RightArm = [-00,-90,+00,+00,+00,+0.0]
+    LeftArm  = [+0, +90, +0, +0, +0, +0]
+    RightArm = [+0, -90, +0, +0, +0, +0]
 
-    LeftLeg  = [-00,+0.0,+10, +10,-80,+00]
-    RightLeg = [-00,-0.0,+10, +10,-80,-00]
+    LeftLeg  = [+0, +0, +10, +10, -80, +0]
+    RightLeg = [+0, +0, +10, +10, -80, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -223,11 +230,11 @@ def stepupfront():
 def stepupfront1():
     Head     = [+2.2, +25]
 
-    LeftArm  = [-90,+00,-00,-00,-00,+0.0 ]
-    RightArm = [-90,-00,+00,+00,+00,+0.0]
+    LeftArm  = [-90, +0, +0, +0, +0, +0]
+    RightArm = [-90, +0, +0, +0, +0, +0]
 
-    LeftLeg  = [-00,+0.0,+10,+10,-17.2,+00]
-    RightLeg = [-00,-0.0,+10,+10,-17.0,-00]
+    LeftLeg  = [+0, +0, +10, +10, -17.2, +0]
+    RightLeg = [+0, +0, +10, +10, -17.0, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -236,11 +243,11 @@ def stepupfront1():
 def stepupfront2():
     Head     = [+2.2, +25]
 
-    LeftArm  = [-90,+00,-00,-00,-00,+0.0 ]
-    RightArm = [-90,-00,+00,+00,+00,+0.0]
+    LeftArm  = [-90, +0, +0, +0, +0, +0]
+    RightArm = [-90, +0, +0, +0, +0, +0]
 
-    LeftLeg  = [-65.6,+42.3,+5.1,+8.9,-6.0,+11.8]
-    RightLeg = [-65.6,-42.3,+5.1,+8.9,-6.0,-11.8]
+    LeftLeg  = [-65.6, +42.3, +5.1, +8.9, -6.0, +11.8]
+    RightLeg = [-65.6, -42.3, +5.1, +8.9, -6.0, -11.8]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -249,13 +256,11 @@ def stepupfront2():
 def stepupfront3():
     Head     = [+2.2, +25]
 
-    LeftArm  = [-90,+00,-00,-00,-00,+0.0 ]
-    RightArm = [-90,-00,+00,+00,+00,+0.0]
+    LeftArm  = [-90, +0, +0, +0, +0, +0]
+    RightArm = [-90, +0, +0, +0, +0, +0]
 
-    LeftLeg  = [-65.6,+42.3,-91,+8.9,-6.0,+11.8]
-    RightLeg = [-65.6,-42.3,-91,+8.9,-6.0,-11.8]
-
-    
+    LeftLeg  = [-65.6, +42.3, -91, +8.9, -6.0, +11.8]
+    RightLeg = [-65.6, -42.3, -91, +8.9, -6.0, -11.8]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -264,11 +269,11 @@ def stepupfront3():
 def stepupfront4():
     Head     = [+2.2, +25]
 
-    LeftArm  = [-19.9,+00,-00,-00,+104.5,+0.0 ]
-    RightArm = [-19.9,-00,+00,+00,-104.5,+0.0]
+    LeftArm  = [-19.9, +0, +0, +0, +104.5, +0]
+    RightArm = [-19.9, +0, +0, +0, -104.5, +0]
 
-    LeftLeg  = [-65.6,-19.3,-91,+8.9,-6.0,+11.8]
-    RightLeg = [-65.6,+19.3,-91,+8.9,-6.0,-11.8]
+    LeftLeg  = [-65.6, -19.3, -91, +8.9, -6.0, +11.8]
+    RightLeg = [-65.6, +19.3, -91, +8.9, -6.0, -11.8]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
@@ -277,60 +282,59 @@ def stepupfront4():
 def stepupfront5():
     Head     = [+2.2, +25]
 
-    LeftArm  = [-0.0,+00,-00,-00,+104.5,+0.0 ]
-    RightArm = [-0.0,-00,+00,+00,-104.5,+0.0]
+    LeftArm  = [+0, +0, +0, +0, +104.5, +0]
+    RightArm = [+0, +0, +0, +0, -104.5, +0]
 
-    LeftLeg  = [-65.6,-19.3,-59.9,+8.9,-6.0,+11.8]
-    RightLeg = [-65.6,+19.3,-59.9,+8.9,-6.0,-11.8]
+    LeftLeg  = [-65.6, -19.3, -59.9, +8.9, -6.0, +11.8]
+    RightLeg = [-65.6, +19.3, -59.9, +8.9, -6.0, -11.8]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def standup():# Kick ball with right foot.
-    #Turns the stiffness on.
-    config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, stand(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, stand1(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, stand2(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, stand3(), 0.8)
-    proxy.angleInterpolationWithSpeed(pNames, stand4(), 0.8)
-    proxy.angleInterpolationWithSpeed(pNames, stand5(), 0.8)
-    proxy.angleInterpolationWithSpeed(pNames, stand6(), 0.8)
-    proxy.angleInterpolationWithSpeed(pNames, stand7(), 0.8)
-    proxy.angleInterpolationWithSpeed(pNames, stand8(), 0.8)
-    proxy.angleInterpolationWithSpeed(pNames, stand9(), 0.8)
-    proxy.angleInterpolationWithSpeed(pNames, poseint(), 0.8)
+def standup():  # Stand up from its back.
+    config.StiffnessOn(proxy)   # Turns the stiffness on.
 
-def standuponfront(): # Stands up from its belly
-    #Turns the stiffness on.
-    config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, stepupfront(), 0.5)
-    proxy.angleInterpolationWithSpeed(pNames, stepupfront1(), 0.5)
-    proxy.angleInterpolationWithSpeed(pNames, stepupfront2(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, stepupfront3(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, stepupfront4(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, stepupfront5(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", stand(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", stand1(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", stand2(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", stand3(), 0.8)
+    proxy.angleInterpolationWithSpeed("Body", stand4(), 0.8)
+    proxy.angleInterpolationWithSpeed("Body", stand5(), 0.8)
+    proxy.angleInterpolationWithSpeed("Body", stand6(), 0.8)
+    proxy.angleInterpolationWithSpeed("Body", stand7(), 0.8)
+    proxy.angleInterpolationWithSpeed("Body", stand8(), 0.8)
+    proxy.angleInterpolationWithSpeed("Body", stand9(), 0.8)
+    proxy.angleInterpolationWithSpeed("Body", poseint(), 0.8)
+
+def standuponfront(): # Stands up from its belly.
+    config.StiffnessOn(proxy)   # Turns the stiffness on.
+
+    proxy.angleInterpolationWithSpeed("Body", stepupfront(), 0.5)
+    proxy.angleInterpolationWithSpeed("Body", stepupfront1(), 0.5)
+    proxy.angleInterpolationWithSpeed("Body", stepupfront2(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", stepupfront3(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", stepupfront4(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", stepupfront5(), 1.0)
     standfromsit()
 
+def sitdown():  # Sits down from standup position.
+    config.StiffnessOn(proxy)   # Turns the stiffness on.
 
-def sitdown():# sits down.
-    #Turns the stiffness on.
-    config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, poseint(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, sit2(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, sit1(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, stand6(), 0.7)
-    proxy.angleInterpolationWithSpeed(pNames, sit4(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, sit5(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, sit3(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", sit2(), 1.0)
+    proxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
+    proxy.angleInterpolationWithSpeed("Body", stand6(), 0.7)
+    proxy.angleInterpolationWithSpeed("Body", sit4(), 0.4)
+    proxy.angleInterpolationWithSpeed("Body", sit5(), 0.4)
+    proxy.angleInterpolationWithSpeed("Body", sit3(), 1.0)
 
-def standfromsit():# stands from sitting down position.
-    #Turns the stiffness on.
-    config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, sit3(), 0.3)
-    proxy.angleInterpolationWithSpeed(pNames, sit4(), 0.3)
-    proxy.angleInterpolationWithSpeed(pNames, stand6(), 0.65)
-    proxy.angleInterpolationWithSpeed(pNames, sit1(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, sit2(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, poseint(), 1.0)
+def standfromsit(): # Stands from sit down position.
+    config.StiffnessOn(proxy)   # Turns the stiffness on.
+
+    proxy.angleInterpolationWithSpeed("Body", sit3(), 0.3)
+    proxy.angleInterpolationWithSpeed("Body", sit4(), 0.3)
+    proxy.angleInterpolationWithSpeed("Body", stand6(), 0.65)
+    proxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
+    proxy.angleInterpolationWithSpeed("Body", sit2(), 0.4)
+    proxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
