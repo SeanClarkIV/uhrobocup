@@ -8,14 +8,9 @@ if (IP == ""):
   print "Please define it in " + __file__
   exit(1)
 
-def loadProxy(pName):
-  print "---------------------"
-  print "Loading proxy"
-  print "---------------------"
-  proxy = ALProxy(pName, IP, PORT)
-  print "---------------------"
-  print "Starting " + pName + " Tests"
-  print "---------------------"
+def loadProxy(proxyName):
+  print "----- Loading " + proxyName + " -----"
+  proxy = ALProxy(proxyName, IP, PORT)
   return proxy
 
 def StiffnessOn(proxy):
