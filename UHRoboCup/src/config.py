@@ -1,12 +1,12 @@
-import motion
+from naoqi import motion
 from naoqi import ALProxy
 
-IP = "169.254.229.195" # set your Ip adress here
+IP = "127.0.0.1" # Robot IP Adress to establish connection.
 PORT = 9559
+
 if (IP == ""):
-  print "IP address not defined, aborting"
-  print "Please define it in " + __file__
-  exit(1)
+    print "IP Address is blank, or not defined in", __file__
+    exit("FUNCTION ABORTED - No IP address defined.")
 
 def loadProxy(proxyName):
   print "----- Loading " + proxyName + " -----"
@@ -14,33 +14,36 @@ def loadProxy(proxyName):
   return proxy
 
 def StiffnessOn(proxy):
-  #We use the "Body" name to signify the collection of all joints
-  pNames = "Body"
-  pStiffnessLists = 1.0
-  pTimeLists = 1.0
-  proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
-  proxy.setSmartStiffnessEnabled(True)
-  smartstiffness = proxy.getSmartStiffnessEnabled()
-  if smartstiffness == True:
-      print "Smart Stiffness Enabled"
-  else:
-      print "Smart Stiffness NOT Enabled"
+    pNames = "Body"       # Body is used for collection of all joints.
+    pStiffnessLists = 1.0 # Maximum stiffness.
+    pTimeLists = 1.0
+    proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
+
+    # Smart stiffness Enabled in order to conserve motor's power.
+    proxy.setSmartStiffnessEnabled(True)
+    smartstiffness = proxy.getSmartStiffnessEnabled()
+    if smartstiffness == True:
+        print "Smart Stiffness Enabled"
+    else:
+        print "Smart Stiffness NOT Enabled"
 
 def StiffnessOff(proxy):
- #We use the "Body" name to signify the collection of all joints
-  pNames = "Body"
-  pStiffnessLists = 0.0
-  pTimeLists = 1.0
-  proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
-  proxy.setSmartStiffnessEnabled(False)
-  smartstiffness = proxy.getSmartStiffnessEnabled()
-  if smartstiffness == False:
-      print "Smart Stiffness Disabled"
-  else:
-      print "Smart Stiffness NOT Disabled"
+    pNames = "Body"         # Body is used for collection of all joints.
+    pStiffnessLists = 0.0   # No stiffness.
+    pTimeLists = 1.0
+    proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
+
+    # Smart stiffness Disabled in order to turn off motor's power.
+    proxy.setSmartStiffnessEnabled(False)
+    smartstiffness = proxy.getSmartStiffnessEnabled()
+    if smartstiffness == False:
+        print "Smart Stiffness Disabled"
+    else:
+        print "Smart Stiffness NOT Disabled"
 
 def PoseInit(proxy, pMaxSpeedFraction = 0.2):
-    StiffnessOff(proxy)
+    StiffnessOn(proxy)
+
     Head     = [+0, +0]
 
     LeftArm  = [+80, +20, -80, -60, +0, +0]
