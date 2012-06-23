@@ -135,13 +135,13 @@ def step8():
     return pTargetAngles
 
 def kickRightFoot():    # Kick ball with right foot.
-    config.StiffnessOn(motionmotionProxy)   # Turns the stiffness on.
+    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
 
-    motionmotionProxy.angleInterpolationWithSpeed(pNames, step1(), 0.1)
-    motionmotionProxy.angleInterpolationWithSpeed(pNames, step2(), 0.5)
-    motionmotionProxy.angleInterpolationWithSpeed(pNames, step3(), 0.4)
-    motionmotionProxy.angleInterpolationWithSpeed(pNames, step4(), 1.0)
-    motionmotionProxy.angleInterpolationWithSpeed(pNames, step1(), 0.2)
+    motionProxy.angleInterpolationWithSpeed(pNames, step1(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, step2(), 0.5)
+    motionProxy.angleInterpolationWithSpeed(pNames, step3(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, step4(), 1.0)
+    motionProxy.angleInterpolationWithSpeed(pNames, step1(), 0.2)
     config.PoseInit(motionProxy, 0.5)
 
 def kickLeftFoot():     # Kick ball with left foot.
