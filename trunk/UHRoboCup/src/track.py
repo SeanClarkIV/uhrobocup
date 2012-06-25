@@ -66,28 +66,26 @@ def findRedBall(option):
                     pass
         # Ball found.
         # Store found red ball positon to variable.
-        foundredballposition2 = redballtracker.getPosition()
         #foundredballposition and foundredballposition 2 are to make sure there are no
         #random jumps so the robot doesn't randomly pick a different thing to go to.
         if counter == 0:
-            foundredballposition = redballtracker.getPosition()
-        print "Found red ball position: ", foundredballposition
+            foundredballposition2 = redballtracker.getPosition()
         walk.ewalk()
         foundredballposition = foundredballposition2
         foundredballposition2 = redballtracker.getPosition()
+        print "Found red ball position: ", foundredballposition2
         counter = 1
-        if redballtracker.isNewData() == False and count > 1000 or foundredballposition[0]/foundredballposition2[0] >= 2:
+        if redballtracker.isNewData() == False and count > 1000 or foundredballposition[0]/foundredballposition2[0] > 2:
             walk.stop()
             initialredballposition = redballtracker.getPosition()
             count = 0
             counter = 0
-        elif cameras == 0 and foundredballposition2[0] < .57 and foundredballposition[0]/foundredballposition2[0] < 2:
+        elif cameras == 0 and foundredballposition2[0] < .57 and foundredballposition[0]/foundredballposition2[0] <= 2:
             walk.stop()
             print "I made it"
             walk.ultimatewalkto(0.28, foundredballposition2[1]/1.5, foundredballposition2[2]/2.1)
             redballtracker.stopTracker()
             print "I made it"
-            counter = 1
             if option == 1:
                 walk.ultimatewalkto(0, -.01, 0)
                 kick.kickLeftFoot()
@@ -107,15 +105,14 @@ def findRedBall(option):
                 walk.ultimatewalkto(0, .14, 0)
                 kick.kickRightFoot()
             config.PoseInit(proxy)
-        elif cameras == 1 and foundredballposition2[0] < .4 and foundredballposition[0]/foundredballposition2[0] < 2:
+        elif cameras == 1 and foundredballposition2[0] < .4 and foundredballposition[0]/foundredballposition2[0] <= 2:
             walk.stop()
-            counter = 1
-            print "I made it"
+            print "I made it, bottom camera"
             kick.kickRightFoot()
             redballtracker.stopTracker()
             config.PoseInit(proxy)
         elif redballtracker.isNewData() == True and foundredballposition2[0] >= .4:
-            count = 3
+            count = 2
 
         elif redballtracker.isNewData() == False and count <= 1000:
             count += 1
