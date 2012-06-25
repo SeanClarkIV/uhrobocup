@@ -17,7 +17,6 @@ def ewalk():
 def stop():
 
     #This walk walks for a walkTime amount of time and then stops.
-    useSensors = True
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0
     Y = 0.0
