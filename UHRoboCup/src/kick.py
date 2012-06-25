@@ -124,9 +124,6 @@ def left4():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def kickRightFoot():    # Kick ball with right foot.
-    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
-
 def kickRightFoot():# Kick ball with right foot.
     #Turns the stiffness on.
     config.StiffnessOn(proxy)
@@ -135,9 +132,6 @@ def kickRightFoot():# Kick ball with right foot.
     proxy.angleInterpolationWithSpeed(pNames, right3(), 0.4)
     proxy.angleInterpolationWithSpeed(pNames, right4(), 1.0)
     proxy.angleInterpolationWithSpeed(pNames, right1(), 0.2)
-
-def kickLeftFoot():     # Kick ball with left foot.
-    config.StiffnessOn(motionProxy) #Turns the stiffness on.
 
 def kickLeftFoot():# Kick ball with left foot.
     #Turns the stiffness on.
