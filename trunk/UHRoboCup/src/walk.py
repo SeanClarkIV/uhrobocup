@@ -1,257 +1,220 @@
 import time
-
 import config
 
 motionProxy = config.loadProxy("ALMotion")
 
-# Walk forward for specified time given.
 def walkFowardTimed(walkTime):
-    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
 
+    #This walk walks for a walkTime amount of time and then stops. 
+    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0.8
     Y = 0.0
     Theta = 0.0
-    Frequency = 1.0 # Max speed..
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+    Frequency = 1.0 # max speed
 
+    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
     time.sleep(walkTime)
 
-    # Set the velocity to zero to stop the walk.
+    #Set the velocity to zero to stop the walk
     X = 0.0
     Y = 0.0
     Theta = 0.0
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+def walk():
 
-def walkFowardto(x, y, z):
-    t = 0
-    x2 = 100
-    while x2 > 0:
-        x1 = 0 + 1
-        x2 = x - x1
-        t = t + 1
-    x1 = x1 - 1
-    x2 = x - x1
-
+    #This walk walks for a walkTime amount of time and then stops.
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
-
-    X = x1
-    Y = 0
-    Theta = 0
-    Frequency = 1.0 # Max speed..
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
-    time.sleep(t)
-
-    # Set the velocity to zero to stop the walk.
-    X = x2
+    X = 0.8
     Y = 0.0
     Theta = 0.0
+    Frequency = 1.0 # max speed
+
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+    time.sleep(walkTime)
+def ewalk():
 
-    time.sleep(1)
-
-    X = 0.0
-    Y = 0.0
-    Theta = 0.0
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
-    t = 0
-    y2 = 100
-    while y2 > 0:
-        y1 = 0 + 1
-        y2 = y - y1
-        t = t + 1
-    y1 = y1 - 1
-    y2 = y - y1
+    #This walk walks for a walkTime amount of time and then stops.
+    useSensors = True
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
+    angles = motionProxy.getAngles("Head", useSensors)
+    X = 1.0
+    Y = 0.0
+    Theta = angles[0]/2.1
+    Frequency = 0.5 # max speed
 
+    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+def stop():
+
+    #This walk walks for a walkTime amount of time and then stops.
+    useSensors = True
+    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
+    angles = motionProxy.getAngles("Head", useSensors)
     X = 0
-    Y = y1
+    Y = 0.0
     Theta = 0
-    Frequency = 1.0 # Max speed..
+    Frequency = 0 # max speed
+
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
-    time.sleep(t)
-
-    # Set the velocity to zero to stop the walk.
-    X = 0.0
-    Y = y2
-    Theta = 0.0
+def walkFowardto(x,y,z):
+    #Set the velocity to zero to stop the walk
+    Theta = z
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
-    time.sleep(1)
-
     X = 0.0
     Y = 0.0
     Theta = 0.0
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
-    t = 0
-    z2 = 100
-    while z2 > 0:
-        z1 = 0 + 1
-        z2 = z - z1
-        t = t + 1
-    z1 = z1-1
-    z2 = z - z1
-    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
-
-    X = 0
-    Y = 0
-    Theta = z1
-    Frequency = 1.0 # Max speed..
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-    time.sleep(t)
-
-    # Set the velocity to zero to stop the walk.
-    X = 0.0
-    Y = 0.0
-    Theta = z2
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-    time.sleep(1)
-
-    X = 0.0
-    Y = 0.0
-    Theta = 0.0
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
-# Walk backwards for specified time given.
 def walkBackTimed(walkTime):
-    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
 
+    #This walk walks for a walkTime amount of time and then stops.
+    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = -0.8
     Y = 0.0
     Theta = 0.0
-    Frequency = 1.0 # Max speed.
-    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+    Frequency = 1.0 # max speed
 
+    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
     time.sleep(walkTime)
 
-    # Set the velocity to zero to stop the walk.
+    #Set the velocity to zero to stop the walk
     X = 0.0
     Y = 0.0
     Theta = 0.0
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+def walkleft():
 
-# Rotate in same position turning left.
-def turnleft():
+    #This walk walks for a walkTime amount of time and then stops.
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
-
     X = 0.0
-    Y = 0.0
-    Theta = 1.0
-    Frequency = 1.0 # Max speed.
+    Y = 1.0
+    Theta = 0.0
+    Frequency = 1.0 # max speed
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-
     time.sleep(2)
 
-    # Set the velocity to zero to stop the walk.
+    #Set the velocity to zero to stop the walk
     X = 0.0
     Y = 0.0
     Theta = 0.0
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+def walkright():
 
-# Rotate in same position turning left.
-def turnright():
+    #This walk walks for a walkTime amount of time and then stops.
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
+    X = 0.0
+    Y = -1.0
+    Theta = 0.0
+    Frequency = 1.0 # max speed
+    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+    time.sleep(2)
 
+    #Set the velocity to zero to stop the walk
+    X = 0.0
+    Y = 0.0
+    Theta = 0.0
+    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+def turnright():
+
+    #This walk walks for a walkTime amount of time and then stops.
+    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0.0
     Y = 0.0
     Theta = -1.0
-    Frequency = 1.0 # Max speed.
+    Frequency = 1.0 # max speed
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+    time.sleep(2.15)
 
-    time.sleep(2)
+    #Set the velocity to zero to stop the walk
+    X = 0.0
+    Y = 0.0
+    Theta = 0.0
+    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+def turnleft():
 
-    # Set the velocity to zero to stop the walk.
+    #This walk walks for a walkTime amount of time and then stops.
+    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
+    X = 0.0
+    Y = 0.0
+    Theta = 1.0
+    Frequency = 1.0 # max speed
+    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+    time.sleep(2.15)
+
+    #Set the velocity to zero to stop the walk
     X = 0.0
     Y = 0.0
     Theta = 0.0
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
 
-
-def ultimatewalkto(x, y, Theta):
+def ultimatewalkto(x, y, z):
+    # Set NAO in stiffness On
     config.StiffnessOn(motionProxy)
+    theta = z
 
     # This example show customization for the both foot
     # with all the possible gait parameters
-    motionProxy.walkTo(x, y, Theta,
-                       [["MaxStepX", 0.08],         # step of x cm in front
-                       ["MaxStepY", 0.4],           # default value
-                       ["MaxStepTheta", 0.4],       # default value
-                       ["MaxStepFrequency", 1.667], # low frequency
-                       ["StepHeight", 0.015],       # step height of x cm
-                       ["TorsoWx", 0],              # default value
-                       ["TorsoWy", -0.1]]           # torso bend 0.1 rad in front
-    )
+    motionProxy.walkTo(x, y, theta,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 3.0],  # low frequency
+          ["StepHeight", 0.015],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
 
-    # This example show customization for the both foot
-    # with just one gait parameter, in this case, the other
-    # parameters are set to the default value
-
-def ultimatewalktoball(x, y, Theta):
+def ultimatewalktoball(x, y, z):
+    # Set NAO in stiffness On
     config.StiffnessOn(motionProxy)
-
-    x = x / 2
-    y = y / 2
-    Theta = Theta / 2
+    x1 = x/5
+    y1 = y/2
+    theta = z/2
 
     # This example show customization for the both foot
     # with all the possible gait parameters
-    motionProxy.walkTo(0, 0, Theta,
-                       [["MaxStepX", 0.08],     # step of x cm in front
-                       ["MaxStepY", 0.2],       # default value
-                       ["MaxStepTheta", 0.4],   # default value
-                       ["MaxStepFrequency", 1], # low frequency
-                       ["StepHeight", 0.02],    # step height of x cm
-                       ["TorsoWx", 0],          # default value
-                       ["TorsoWy", -0.1]])      # torso bend 0.1 rad in front
-    
-    motionProxy.walkTo(0, 0, Theta,
-                       [["MaxStepX", 0.08],     # step of x cm in front
-                       ["MaxStepY", 0.2],       # default value
-                       ["MaxStepTheta", 0.4],   # default value
-                       ["MaxStepFrequency", 1], # low frequency
-                       ["StepHeight", 0.02],    # step height of x cm
-                       ["TorsoWx", 0],          # default value
-                       ["TorsoWy", -0.1]])      # torso bend 0.1 rad in front
-
-    motionProxy.walkTo(0, y, 0,
-                       [["MaxStepX", 0.08],     # step of x cm in front
-                       ["MaxStepY", 0.2],       # default value
-                       ["MaxStepTheta", 0.4],   # default value
-                       ["MaxStepFrequency", 1], # low frequency
-                       ["StepHeight", 0.02],    # step height of x cm
-                       ["TorsoWx", 0],          # default value
-                       ["TorsoWy", -0.1]])      # torso bend 0.1 rad in front
-
-    motionProxy.walkTo(0, y, 0,
-                       [["MaxStepX", 0.08],     # step of x cm in front
-                       ["MaxStepY", 0.2],       # default value
-                       ["MaxStepTheta", 0.4],   # default value
-                       ["MaxStepFrequency", 1], # low frequency
-                       ["StepHeight", 0.02],    # step height of x cm
-                       ["TorsoWx", 0],          # default value
-                       ["TorsoWy", -0.1]])      # torso bend 0.1 rad in front
-
-    motionProxy.walkTo(x, 0, 0,
-                       [["MaxStepX", 0.08],     # step of x cm in front
-                       ["MaxStepY", 0.2],       # default value
-                       ["MaxStepTheta", 0.4],   # default value
-                       ["MaxStepFrequency", 1], # low frequency
-                       ["StepHeight", 0.02],    # step height of x cm
-                       ["TorsoWx", 0],          # default value
-                       ["TorsoWy", -0.1]])      # torso bend 0.1 rad in front
-
-    motionProxy.walkTo(x, 0, 0,
-                       [["MaxStepX", 0.08],     # step of x cm in front
-                       ["MaxStepY", 0.2],       # default value
-                       ["MaxStepTheta", 0.4],   # default value
-                       ["MaxStepFrequency", 1], # low frequency
-                       ["StepHeight", 0.02],    # step height of x cm
-                       ["TorsoWx", 0],          # default value
-                       ["TorsoWy", -0.1]])      # torso bend 0.1 rad in front
-
-    # This example show customization for the both foot
-    # with just one gait parameter, in this case, the other
-    # parameters are set to the default value
+    motionProxy.walkTo(0, 0, theta,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 3.0],  # low frequency
+          ["StepHeight", 0.01],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+    motionProxy.walkTo(0, 0, theta,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 3.0],  # low frequency
+          ["StepHeight", 0.01],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+    motionProxy.walkTo(0, y1, 0,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 3.0],  # low frequency
+          ["StepHeight", 0.01],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+    motionProxy.walkTo(0, y1, 0,
+        [ ["MaxStepX", 0.08],         # step of x cm in front
+          ["MaxStepY", 0.2],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 3.0],  # low frequency
+          ["StepHeight", 0.01],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
+    motionProxy.walkTo(x1, 0, 0,
+        [ ["MaxStepX", 0.06],         # step of x cm in front
+          ["MaxStepY", 0.101],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 3.0],  # low frequency
+          ["StepHeight", 0.012],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front  
+    motionProxy.walkTo(x1, 0, 0,
+        [ ["MaxStepX", 0.06],         # step of x cm in front
+          ["MaxStepY", 0.101],         # default value
+          ["MaxStepTheta", 0.4],      # default value
+          ["MaxStepFrequency", 3.0],  # low frequency
+          ["StepHeight", 0.012],       # step height of x cm
+          ["TorsoWx", 0],           # default value
+          ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
