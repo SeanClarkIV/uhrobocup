@@ -126,18 +126,18 @@ def left4():
 
 def kickRightFoot():# Kick ball with right foot.
     #Turns the stiffness on.
-    config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, right1(), 0.1)
-    proxy.angleInterpolationWithSpeed(pNames, right2(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, right3(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, right4(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, right1(), 0.2)
+    config.StiffnessOn(motionProxy)
+    motionProxy.angleInterpolationWithSpeed(pNames, right1(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, right2(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, right3(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, right4(), 1.0)
+    motionProxy.angleInterpolationWithSpeed(pNames, right1(), 0.2)
 
 def kickLeftFoot():# Kick ball with left foot.
     #Turns the stiffness on.
-    config.StiffnessOn(proxy)
-    proxy.angleInterpolationWithSpeed(pNames, left1(), 0.1)
-    proxy.angleInterpolationWithSpeed(pNames, left2(), 0.3)
-    proxy.angleInterpolationWithSpeed(pNames, left3(), 0.4)
-    proxy.angleInterpolationWithSpeed(pNames, left4(), 1.0)
-    proxy.angleInterpolationWithSpeed(pNames, left1(), 0.2)
+    config.StiffnessOn(motionProxy)
+    motionProxy.angleInterpolationWithSpeed(pNames, left1(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, left2(), 0.3)
+    motionProxy.angleInterpolationWithSpeed(pNames, left3(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, left4(), 1.0)
+    motionProxy.angleInterpolationWithSpeed(pNames, left1(), 0.2)
