@@ -31,20 +31,20 @@ def findRedBall(option):
     count = 0
     counter = 0
     times = 0
-    y = 1.433
+    headpitchangle = 1.433
     while redballtracker.isActive():
         while redballtracker.getPosition() == initialredballposition:  # Ball lost.
             if redballtracker.isNewData() == False and count == 0: # Ball still lost.
                 print "Looking for red ball"
                 camera.topCamera()
-                motion.setAngles(['HeadYaw', 'HeadPitch'], [-0.5, y], 0.07)
+                motion.setAngles(['HeadYaw', 'HeadPitch'], [-0.5, headpitchangle], 0.07)
                 time.sleep(3)
                 count = 1
                 cameras = 0
                 times += 1
             elif redballtracker.isNewData() == False and count == 1:
                 camera.bottomCamera()
-                motion.setAngles(['HeadYaw', 'HeadPitch'], [0.5, y], 0.07)
+                motion.setAngles(['HeadYaw', 'HeadPitch'], [0.5, headpitchangle], 0.07)
                 time.sleep(3)
                 count = 0
                 cameras = 1
@@ -54,15 +54,14 @@ def findRedBall(option):
             if times > 1:
                 number = float(times)
                 if number % 2 == 1:
-                    if y < 0:
-                        y = 1.433
+                    if headpitchangle < 0:
+                        headpitchangle = 1.433
                         walk.turnleft()
-                    elif y > .5:
-                        y = .2
+                    elif headpitchangle > .5:
+                        headpitchangle = .2
                     else:
-                        y = y - 0.2
-                    print y
-                    print z
+                        headpitchangle = headpitchangle - 0.2
+                    print headpitchangle
                 else:
                     pass
         # Ball found.
