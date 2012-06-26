@@ -5,6 +5,7 @@ import track
 import walk
 import kickinair
 import dive
+import goalie
 motionProxy = config.loadProxy("ALMotion")
 texttospeechProxy = config.loadProxy("ALTextToSpeech")
 
@@ -12,11 +13,11 @@ def main():
     def menu():
         #print what options you have
         print "\n*** OPTIONS ***"
-        print "0) Quit                  5) Right Kick         10) Walk Left         15) Stand Up from Sit                  20) R to S"
-        print "1) Turn stiffness ON     6) Walk Foward        11) Walk Right        16) Find Red Ball and Kick L to R      21) R to L"
-        print "2) Turn stiffness OFF    7) Walk Backwards     12) stand up on front 17) Find Red Ball and Kick w/ L to S   22) Stop Tracker"
-        print "3) Initial Pose          8) Turn Left          13) stand up on back  18) Find Red Ball and Kick w/ L to L   23) Kick in air"
-        print "4) Left Kick             9) Turn Right         14) Sit Down          19) Find Red Ball and Kick w/ R to L   24) Goalie"
+        print "0) Quit                  5) Right Kick         10) Walk Left         15) Stand Up from Sit      20) R to S       25)Goalie"
+        print "1) Turn stiffness ON     6) Walk Foward        11) Walk Right        16) Find Red Ball L to R   21) R to L"
+        print "2) Turn stiffness OFF    7) Walk Backwards     12) stand up on front 17) Find Red Ball L to S   22) Stop Tracker"
+        print "3) Initial Pose          8) Turn Left          13) stand up on back  18) Find Red Ball L to L   23) Kick in air"
+        print "4) Left Kick             9) Turn Right         14) Sit Down          19) Find Red Ball R to L   24) Goalie"
         print "type what you want him to say in quotations"
         return input ("\nChoose your option(s) as list: ")
 
@@ -78,6 +79,8 @@ def main():
                 kickinair.kickinair1()
             elif choice[k] == 24:
                 dive.dive()
+            elif choice[k] == 25:
+                goalie.goalie()
             else:
                 texttospeechProxy.say(choice[k])
             k = k+1

@@ -2,19 +2,15 @@ import time
 import kick
 import camera
 import config
-import motion
-from naoqi import ALProxy
 import walk
 
-proxy = config.loadProxy("ALMotion")
+motionProxy = config.loadProxy("ALMotion")
 
-motion = ALProxy("ALMotion", config.IP, 9559)
-memory = ALProxy("ALMemory", config.IP, 9559)
-redballtracker = ALProxy("ALRedBallTracker", config.IP, 9559)
+redballtracker = config.loadProxy("ALRedBallTracker")
 
 def findRedBall(option):
     # Set stiffnes ON
-    config.StiffnessOn(proxy)
+    config.StiffnessOn(motionProxy)
 
     #Make sure top camera is active
     camera.topCamera()
@@ -37,14 +33,14 @@ def findRedBall(option):
             if redballtracker.isNewData() == False and count == 0: # Ball still lost.
                 print "Looking for red ball"
                 camera.topCamera()
-                motion.setAngles(['HeadYaw', 'HeadPitch'], [-0.5, headpitchangle], 0.07)
+                motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [-0.5, headpitchangle], 0.07)
                 time.sleep(3)
                 count = 1
                 cameras = 0
                 times += 1
             elif redballtracker.isNewData() == False and count == 1:
                 camera.bottomCamera()
-                motion.setAngles(['HeadYaw', 'HeadPitch'], [0.5, headpitchangle], 0.07)
+                motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [0.5, headpitchangle], 0.07)
                 time.sleep(3)
                 count = 0
                 cameras = 1
@@ -56,7 +52,7 @@ def findRedBall(option):
                 if number % 2 == 1:
                     if headpitchangle < 0:
                         headpitchangle = 1.433
-                        walk.turnleft()
+                        walk.ultimatewalkto(0, 0, 2)
                     elif headpitchangle > .5:
                         headpitchangle = .2
                     else:
@@ -104,13 +100,13 @@ def findRedBall(option):
             elif option == 6:
                 walk.ultimatewalkto(0, .14, 0)
                 kick.kickRightFoot()
-            config.PoseInit(proxy)
+            config.PoseInit(motionProxy)
         elif cameras == 1 and foundredballposition2[0] < .4 and foundredballposition[0]/foundredballposition2[0] <= 2:
             walk.stop()
             print "I made it, bottom camera"
             kick.kickRightFoot()
             redballtracker.stopTracker()
-            config.PoseInit(proxy)
+            config.PoseInit(motionProxy)
         elif redballtracker.isNewData() == True and foundredballposition2[0] >= .4:
             count = 2
 
