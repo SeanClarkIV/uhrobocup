@@ -57,4 +57,4 @@ def kickinair1():
     motionProxy.angleInterpolationWithSpeed(pNames, floor3(), .2)
     motionProxy.angleInterpolationWithSpeed(pNames, floor4(), 1)
     motionProxy.angleInterpolationWithSpeed(pNames, floor3(), .2)
-    config.PoseInit(motionProxy, .3)
+    config.PoseInit()

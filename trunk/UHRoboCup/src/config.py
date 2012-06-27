@@ -43,7 +43,7 @@ def StiffnessOff():
     else:
         print "Smart Stiffness NOT Disabled"
 
-def PoseInit(proxy, pMaxSpeedFraction = 0.2):
+def PoseInit():
     StiffnessOn()
 
     Head     = [+0, +0]
@@ -57,4 +57,4 @@ def PoseInit(proxy, pMaxSpeedFraction = 0.2):
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
 
-    proxy.angleInterpolationWithSpeed("Body", pTargetAngles, pMaxSpeedFraction)
+    motionProxy.angleInterpolationWithSpeed("Body", pTargetAngles, 0.3)
