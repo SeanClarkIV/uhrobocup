@@ -1,6 +1,8 @@
 import config
 import motion
 import stand
+import time
+from naoqi import ALProxy
 
 motionProxy = config.loadProxy("ALMotion")
 
@@ -304,6 +306,8 @@ def standup():  # Stand up from its back.
     motionProxy.angleInterpolationWithSpeed("Body", stand8(), 0.8)
     motionProxy.angleInterpolationWithSpeed("Body", stand9(), 0.8)
     motionProxy.angleInterpolationWithSpeed("Body", poseint(), 0.8)
+    checkfall()
+    print "standing back"
 
 def standuponfront(): # Stands up from its belly.
     config.StiffnessOn(motionProxy)   # Turns the stiffness on.
@@ -314,7 +318,9 @@ def standuponfront(): # Stands up from its belly.
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront3(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront4(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront5(), 1.0)
+    checkfall()
     standfromsit()
+    print "standing front"
 
 def sitdown():  # Sits down from standup position.
     config.StiffnessOn(motionProxy)   # Turns the stiffness on.
@@ -336,3 +342,29 @@ def standfromsit(): # Stands from sit down position.
     motionProxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
     motionProxy.angleInterpolationWithSpeed("Body", sit2(), 0.4)
     motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
+    checkfall()
+
+def checkfall():
+    memoryProxy = ALProxy("ALMemory", config.IP, config.PORT)
+    onfeet = True
+    onfeet = memoryProxy.getData("footContact")
+    if not onfeet:
+        print "fall detected"
+        handlefall()
+
+def handlefall():
+#    config.StiffnessOff(motionProxy)
+#    time.sleep(5)
+#    config.StiffnessOn(motionProxy)
+    proxy = config.loadProxy("ALRobotPose")
+    temp = proxy.getActualPoseAndTime()
+    pose = temp[0]
+    print "\n" + pose
+    if pose == "Belly":
+        standuponfront()
+    elif pose == "Back":
+        standup()
+    else:
+        standup()
+    motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
+    print "Fall handled"
