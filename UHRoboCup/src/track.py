@@ -100,13 +100,13 @@ def findRedBall(option):
             elif option == 6:
                 walk.ultimatewalkto(0, .14, 0)
                 kick.kickRightFoot()
-            config.PoseInit(motionProxy)
+            config.PoseInit()
         elif cameras == 1 and foundredballposition2[0] < .4 and foundredballposition[0]/foundredballposition2[0] <= 2:
             walk.stop()
             print "I made it, bottom camera"
             kick.kickRightFoot()
             redballtracker.stopTracker()
-            config.PoseInit(motionProxy)
+            config.PoseInit()
         elif redballtracker.isNewData() == True and foundredballposition2[0] >= .4:
             count = 2
 

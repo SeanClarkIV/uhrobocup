@@ -36,7 +36,7 @@ def main():
             elif choice[k] == 2:
                 config.StiffnessOff()
             elif choice[k] == 3:
-                config.PoseInit(motionProxy, 0.5)
+                config.PoseInit()
             elif choice[k] == 4:
                 kick.kickLeftFoot()
             elif choice[k] == 5:
