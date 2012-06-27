@@ -65,7 +65,7 @@ def right4():
     LeftArm  = [+90, +50, +0, +0, +0, +0]
     RightArm = [+180, +0, +0, +0, +0, +0]
 
-    LeftLeg  = [+0, +4, -12, +0, +0, +1]
+    LeftLeg  = [+0, +4, -12, +0, +0, +10]
     RightLeg = [+0, +0, -40, +0, +10, +0]
 
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)

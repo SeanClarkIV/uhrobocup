@@ -1,8 +1,7 @@
 import config
 import motion
 import stand
-import time
-from naoqi import ALProxy
+import fallcheck
 
 motionProxy = config.loadProxy("ALMotion")
 
@@ -294,7 +293,6 @@ def stepupfront5():
 
 def standup():  # Stand up from its back.
     config.StiffnessOn()   # Turns the stiffness on.
-
     motionProxy.angleInterpolationWithSpeed("Body", stand(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", stand1(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", stand2(), 1.0)
@@ -306,25 +304,23 @@ def standup():  # Stand up from its back.
     motionProxy.angleInterpolationWithSpeed("Body", stand8(), 0.8)
     motionProxy.angleInterpolationWithSpeed("Body", stand9(), 0.8)
     motionProxy.angleInterpolationWithSpeed("Body", poseint(), 0.8)
-    checkfall()
+    fallcheck.checkfall()
     print "standing back"
 
 def standuponfront(): # Stands up from its belly.
     config.StiffnessOn()   # Turns the stiffness on.
-
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront(), 0.5)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront1(), 0.5)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront2(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront3(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront4(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront5(), 1.0)
-    checkfall()
+    fallcheck.checkfall()
     standfromsit()
     print "standing front"
 
 def sitdown():  # Sits down from standup position.
     config.StiffnessOn()   # Turns the stiffness on.
-
     motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", sit2(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
@@ -332,40 +328,14 @@ def sitdown():  # Sits down from standup position.
     motionProxy.angleInterpolationWithSpeed("Body", sit4(), 0.4)
     motionProxy.angleInterpolationWithSpeed("Body", sit5(), 0.4)
     motionProxy.angleInterpolationWithSpeed("Body", sit3(), 1.0)
+    fallcheck.checkfall()
 
 def standfromsit(): # Stands from sit down position.
     config.StiffnessOn()   # Turns the stiffness on.
-
     motionProxy.angleInterpolationWithSpeed("Body", sit3(), 0.3)
     motionProxy.angleInterpolationWithSpeed("Body", sit4(), 0.3)
     motionProxy.angleInterpolationWithSpeed("Body", stand6(), 0.65)
     motionProxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
     motionProxy.angleInterpolationWithSpeed("Body", sit2(), 0.2)
     motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
-    checkfall()
-
-#Checks to see if the force sensors on the NAO's feet register contact with the ground
-#To be implemented within all movement behaviors
-def checkfall():
-    memoryProxy = config.loadProxy("ALMemory")
-    onfeet = True
-    onfeet = memoryProxy.getData("footContact")
-    if not onfeet:
-        print "fall detected"
-        handlefall()
-
-# Reacts to a fall by detecting the position of the robot (front/back/side) and
-# standing up again in the appropriate
-def handlefall():
-    proxy = config.loadProxy("ALRobotPose")
-    temp = proxy.getActualPoseAndTime()
-    pose = temp[0]
-    print "\n" + pose
-    if pose == "Belly":
-        standuponfront()
-    elif pose == "Back":
-        standup()
-    else:
-        standup()
-    motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
-    print "Fall handled"
+    fallcheck.checkfall()
