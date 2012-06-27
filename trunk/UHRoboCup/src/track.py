@@ -23,27 +23,27 @@ def findRedBall(option):
     #Store initial red ball positon to variable
     initialredballposition = redballtracker.getPosition()
     print "Initial Position: ", initialredballposition
-    cameras = 0
+    cameras = 0 #Top camera
     count = 0
-    counter = 0
+    counter = 0 #Used for Redballposition
     times = 0
     headpitchangle = 1.433
-    while redballtracker.isActive():
+    while redballtracker.isActive(): # runs while loop as long as redballtracker is active
         while redballtracker.getPosition() == initialredballposition:  # Ball lost.
-            if redballtracker.isNewData() == False and count == 0: # Ball still lost.
+            if redballtracker.isNewData() == False and count == 0: # Ball still lost.true if a new Red Ball was detected since the last getPosition().
                 print "Looking for red ball"
                 camera.topCamera()
                 motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [-0.5, headpitchangle], 0.07)
                 time.sleep(3)
                 count = 1
-                cameras = 0
+                cameras = 0 # top camera
                 times += 1
             elif redballtracker.isNewData() == False and count == 1:
                 camera.bottomCamera()
                 motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [0.5, headpitchangle], 0.07)
                 time.sleep(3)
                 count = 0
-                cameras = 1
+                cameras = 1 # bottom camera
                 times += 1
             # the next if condition is to look up slightly if he can't find the ball and then when it looks up 3 times
             # it decides turns left and starts all over again.
@@ -71,8 +71,8 @@ def findRedBall(option):
         foundredballposition2 = redballtracker.getPosition()
         print "Found red ball position: ", foundredballposition2
         counter = 1
-        if redballtracker.isNewData() == False and count > 1000 or foundredballposition[0]/foundredballposition2[0] > 2:
-            walk.stop()
+        if redballtracker.isNewData() == False and count > 1000 or foundredballposition[0]/foundredballposition2[0] > 2: #means it lost the ball
+            walk.stop()                                                                                                  #start fresh
             initialredballposition = redballtracker.getPosition()
             count = 0
             counter = 0
