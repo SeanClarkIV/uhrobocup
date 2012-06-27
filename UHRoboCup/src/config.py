@@ -29,15 +29,15 @@ def StiffnessOn():
     else:
         print "Smart Stiffness NOT Enabled"
 
-def StiffnessOff(proxy):
+def StiffnessOff():
     pNames = "Body"         # Body is used for collection of all joints.
     pStiffnessLists = 0.0   # No stiffness.
     pTimeLists = 1.0
-    proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
+    motionProxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
 
     # Smart stiffness Disabled in order to turn off motor's power.
-    proxy.setSmartStiffnessEnabled(False)
-    smartstiffness = proxy.getSmartStiffnessEnabled()
+    motionProxy.setSmartStiffnessEnabled(False)
+    smartstiffness = motionProxy.getSmartStiffnessEnabled()
     if smartstiffness == False:
         print "Smart Stiffness Disabled"
     else:

@@ -34,7 +34,7 @@ def main():
             elif choice[k] == 1:
                 config.StiffnessOn()
             elif choice[k] == 2:
-                config.StiffnessOff(motionProxy)
+                config.StiffnessOff()
             elif choice[k] == 3:
                 config.PoseInit(motionProxy, 0.5)
             elif choice[k] == 4:
