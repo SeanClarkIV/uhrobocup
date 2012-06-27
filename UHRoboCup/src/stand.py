@@ -340,7 +340,7 @@ def standfromsit(): # Stands from sit down position.
     motionProxy.angleInterpolationWithSpeed("Body", sit4(), 0.3)
     motionProxy.angleInterpolationWithSpeed("Body", stand6(), 0.65)
     motionProxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
-    motionProxy.angleInterpolationWithSpeed("Body", sit2(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", sit2(), 0.2)
     motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
     checkfall()
 

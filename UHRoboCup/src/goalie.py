@@ -30,7 +30,7 @@ def goalie():
                     motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [-0.5, 1.433], 0.07)
                     time.sleep(2)
                     count = 1
-                elif redballtracker.isNewData() == False and count == 1:
+                elif redballtracker.isNewData() == False and count == 1: #Ball still lost.
                     camera.bottomCamera()
                     motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [0.5, 1.433], 0.07)
                     time.sleep(2)
