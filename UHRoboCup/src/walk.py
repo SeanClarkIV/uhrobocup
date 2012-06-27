@@ -4,10 +4,9 @@ motionProxy = config.loadProxy("ALMotion")
 
 def ewalk():
 
-    #This walk walks for a walkTime amount of time and then stops.
-    useSensors = True
+    #This walk is used to track the ball using the head angle to determine the direction of walking.
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
-    angles = motionProxy.getAngles("Head", useSensors)
+    angles = motionProxy.getAngles("Head", True)
     X = 1.0
     Y = 0.0
     Theta = angles[0]/2.1
@@ -16,7 +15,7 @@ def ewalk():
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
 def stop():
 
-    #This walk walks for a walkTime amount of time and then stops.
+    #This is used to stop the ewalk.
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0
     Y = 0.0
