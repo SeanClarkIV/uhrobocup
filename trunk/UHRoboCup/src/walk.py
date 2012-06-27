@@ -4,9 +4,10 @@ motionProxy = config.loadProxy("ALMotion")
 
 def ewalk():
 
-    #This walk is used to track the ball using the head angle to determine the direction of walking.
+    #This walk walks for a walkTime amount of time and then stops.
+    useSensors = True
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
-    angles = motionProxy.getAngles("Head", True)
+    angles = motionProxy.getAngles("Head", useSensors)
     X = 1.0
     Y = 0.0
     Theta = angles[0]/2.1
@@ -15,7 +16,7 @@ def ewalk():
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
 def stop():
 
-    #This is used to stop the ewalk.
+    #This walk walks for a walkTime amount of time and then stops.
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     X = 0
     Y = 0.0
@@ -26,7 +27,7 @@ def stop():
 
 def ultimatewalkto(x, y, z):
     # Set NAO in stiffness On
-    config.StiffnessOn(motionProxy)
+    config.StiffnessOn()
 
     # This example show customization for the both foot
     # with all the possible gait parameters

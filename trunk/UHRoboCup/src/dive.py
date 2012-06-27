@@ -77,7 +77,7 @@ def dive6():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 def dive():
-    config.StiffnessOn(motionProxy)
+    config.StiffnessOn()
     motionProxy.setFallManagerEnabled(False)
     motionProxy.angleInterpolationWithSpeed(pNames, dive1(), 0.1)
     motionProxy.angleInterpolationWithSpeed(pNames, dive2(), 1)

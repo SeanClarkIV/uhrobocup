@@ -32,7 +32,7 @@ def main():
                 loop = 0
                 break
             elif choice[k] == 1:
-                config.StiffnessOn(motionProxy)
+                config.StiffnessOn()
             elif choice[k] == 2:
                 config.StiffnessOff(motionProxy)
             elif choice[k] == 3:

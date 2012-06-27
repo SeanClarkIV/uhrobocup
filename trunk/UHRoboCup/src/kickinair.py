@@ -51,7 +51,7 @@ def floor4():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 def kickinair1():
-    config.StiffnessOn(motionProxy)
+    config.StiffnessOn()
     motionProxy.angleInterpolationWithSpeed(pNames, floor1(), 0.1)
     motionProxy.angleInterpolationWithSpeed(pNames, floor2(), .2)
     motionProxy.angleInterpolationWithSpeed(pNames, floor3(), .2)

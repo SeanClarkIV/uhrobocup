@@ -293,7 +293,7 @@ def stepupfront5():
     return pTargetAngles
 
 def standup():  # Stand up from its back.
-    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
+    config.StiffnessOn()   # Turns the stiffness on.
 
     motionProxy.angleInterpolationWithSpeed("Body", stand(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", stand1(), 1.0)
@@ -310,7 +310,7 @@ def standup():  # Stand up from its back.
     print "standing back"
 
 def standuponfront(): # Stands up from its belly.
-    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
+    config.StiffnessOn()   # Turns the stiffness on.
 
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront(), 0.5)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront1(), 0.5)
@@ -323,7 +323,7 @@ def standuponfront(): # Stands up from its belly.
     print "standing front"
 
 def sitdown():  # Sits down from standup position.
-    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
+    config.StiffnessOn()   # Turns the stiffness on.
 
     motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
     motionProxy.angleInterpolationWithSpeed("Body", sit2(), 1.0)
@@ -334,7 +334,7 @@ def sitdown():  # Sits down from standup position.
     motionProxy.angleInterpolationWithSpeed("Body", sit3(), 1.0)
 
 def standfromsit(): # Stands from sit down position.
-    config.StiffnessOn(motionProxy)   # Turns the stiffness on.
+    config.StiffnessOn()   # Turns the stiffness on.
 
     motionProxy.angleInterpolationWithSpeed("Body", sit3(), 0.3)
     motionProxy.angleInterpolationWithSpeed("Body", sit4(), 0.3)
@@ -353,9 +353,9 @@ def checkfall():
         handlefall()
 
 def handlefall():
-#    config.StiffnessOff(motionProxy)
+#    config.StiffnessOff()
 #    time.sleep(5)
-#    config.StiffnessOn(motionProxy)
+#    config.StiffnessOn()
     proxy = config.loadProxy("ALRobotPose")
     temp = proxy.getActualPoseAndTime()
     pose = temp[0]
