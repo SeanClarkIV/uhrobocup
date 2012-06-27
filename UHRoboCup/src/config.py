@@ -1,6 +1,8 @@
 from naoqi import motion
 from naoqi import ALProxy
 
+motionProxy = loadProxy("ALMotion")
+
 IP = "172.25.179.189" # Robot IP Adress to establish connection.
 PORT = 9559
 
@@ -13,15 +15,15 @@ def loadProxy(proxyName):
   proxy = ALProxy(proxyName, IP, PORT)
   return proxy
 
-def StiffnessOn(proxy):
+def StiffnessOn():
     pNames = "Body"       # Body is used for collection of all joints.
     pStiffnessLists = 1.0 # Maximum stiffness.
     pTimeLists = 1.0
-    proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
+    motionProxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
 
     # Smart stiffness Enabled in order to conserve motor's power.
-    proxy.setSmartStiffnessEnabled(True)
-    smartstiffness = proxy.getSmartStiffnessEnabled()
+    motionProxy.setSmartStiffnessEnabled(True)
+    smartstiffness = motionProxy.getSmartStiffnessEnabled()
     if smartstiffness == True:
         print "Smart Stiffness Enabled"
     else:
@@ -42,7 +44,7 @@ def StiffnessOff(proxy):
         print "Smart Stiffness NOT Disabled"
 
 def PoseInit(proxy, pMaxSpeedFraction = 0.2):
-    StiffnessOn(proxy)
+    StiffnessOn()
 
     Head     = [+0, +0]
 

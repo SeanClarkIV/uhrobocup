@@ -9,7 +9,7 @@ pNames = "Body"
 timeProxy = config.loadProxy("DCM")
 redballtracker = config.loadProxy("ALRedBallTracker")
 def goaliepose():
-    config.StiffnessOn(motionProxy)
+    config.StiffnessOn()
     motionProxy.angleInterpolationWithSpeed(pNames, dive.dive1(), .5)
 def goalie():
     goaliepose()

@@ -126,7 +126,7 @@ def left4():
 
 def kickRightFoot():# Kick ball with right foot.
     #Turns the stiffness on.
-    config.StiffnessOn(motionProxy)
+    config.StiffnessOn()
     motionProxy.angleInterpolationWithSpeed(pNames, right1(), 0.1)
     motionProxy.angleInterpolationWithSpeed(pNames, right2(), 0.4)
     motionProxy.angleInterpolationWithSpeed(pNames, right3(), 0.4)
@@ -135,7 +135,7 @@ def kickRightFoot():# Kick ball with right foot.
 
 def kickLeftFoot():# Kick ball with left foot.
     #Turns the stiffness on.
-    config.StiffnessOn(motionProxy)
+    config.StiffnessOn()
     motionProxy.angleInterpolationWithSpeed(pNames, left1(), 0.1)
     motionProxy.angleInterpolationWithSpeed(pNames, left2(), 0.3)
     motionProxy.angleInterpolationWithSpeed(pNames, left3(), 0.4)

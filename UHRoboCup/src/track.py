@@ -10,7 +10,7 @@ redballtracker = config.loadProxy("ALRedBallTracker")
 
 def findRedBall(option):
     # Set stiffnes ON
-    config.StiffnessOn(motionProxy)
+    config.StiffnessOn()
 
     #Make sure top camera is active
     camera.topCamera()
