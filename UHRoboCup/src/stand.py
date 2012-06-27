@@ -344,18 +344,19 @@ def standfromsit(): # Stands from sit down position.
     motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
     checkfall()
 
+#Checks to see if the force sensors on the NAO's feet register contact with the ground
+#To be implemented within all movement behaviors
 def checkfall():
-    memoryProxy = ALProxy("ALMemory", config.IP, config.PORT)
+    memoryProxy = config.loadProxy("ALMemory")
     onfeet = True
     onfeet = memoryProxy.getData("footContact")
     if not onfeet:
         print "fall detected"
         handlefall()
 
+# Reacts to a fall by detecting the position of the robot (front/back/side) and
+# standing up again in the appropriate
 def handlefall():
-#    config.StiffnessOff()
-#    time.sleep(5)
-#    config.StiffnessOn()
     proxy = config.loadProxy("ALRobotPose")
     temp = proxy.getActualPoseAndTime()
     pose = temp[0]
