@@ -9,7 +9,7 @@ timeProxy = config.loadProxy("DCM")
 redballtracker = config.loadProxy("ALRedBallTracker")
 def goaliepose():   #This is the pose the goalie will be using.
     config.StiffnessOn()
-    motionProxy.angleInterpolationWithSpeed(pNames, dive.dive1(), .5)
+    motionProxy.angleInterpolationWithSpeed(pNames, dive.goaliepose(), .5)
 def goalie():
     goaliepose()
     timer = timeProxy.getTime(0) #Timer tells us the time so we can later find out velocity.
@@ -28,12 +28,12 @@ def goalie():
                     print "Looking for red ball"
                     camera.topCamera()
                     motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [-0.5, 1.433], 0.07)
-                    time.sleep(2)
+                    time.sleep(3)
                     count = 1
                 elif redballtracker.isNewData() == False and count == 1: #Switches cameras.
                     camera.bottomCamera()
                     motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [0.5, 1.433], 0.07)
-                    time.sleep(2)
+                    time.sleep(3)
                     count = 0
         if counter == 0:     #This is for the first time to define redballposition since it will be updated after redballposition2
             redballposition = redballtracker.getPosition()
@@ -57,25 +57,25 @@ def goalie():
             print "velocity:" , velocity, "count" , count
             if velocity == 0:   #If the ball has not moved the count goes up by one and if reaches 100 looks for ball again.
                 count += 1
-            elif velocity >= .04 and redballposition[1] > .1 and redballposition[0] < 1.5:    #If the ball is moving quickly it will dive left if parameters are met
+            elif velocity >= .06 and redballposition[1] > .1 and redballposition[0] < 1.5:    #If the ball is moving quickly it will dive left if parameters are met
                 redballtracker.stopTracker()
                 dive.diveleft()
                 goaliepose()
                 redballtracker.startTracker()
                 count = 100
-            elif velocity >= .01 and redballposition[1] > .1 and redballposition[1] < .6:
+            elif velocity >= .03 and redballposition[1] > .1 and redballposition[1] < .6:
                 redballtracker.stopTracker()
                 dive.diveleft()
                 goaliepose()
                 redballtracker.startTracker()
                 count = 100
-            elif velocity >= .04 and redballposition[1] < -.1 and redballposition[0] < 1.5:
+            elif velocity >= .06 and redballposition[1] < -.1 and redballposition[0] < 1.5:
                 redballtracker.stopTracker()
                 dive.diveright()
                 goaliepose()
                 redballtracker.startTracker()
                 count = 100
-            elif velocity >= .01 and redballposition[1] < -.1 and redballposition[0] < .6:
+            elif velocity >= .03 and redballposition[1] < -.1 and redballposition[0] < .6:
                 redballtracker.stopTracker()
                 dive.diveright()
                 goaliepose()

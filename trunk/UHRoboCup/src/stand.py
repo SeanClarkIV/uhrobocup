@@ -312,9 +312,9 @@ def standuponfront(): # Stands up from its belly.
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront(), 0.5)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront1(), 0.5)
     motionProxy.angleInterpolationWithSpeed("Body", stepupfront2(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront3(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront4(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront5(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront3(), 0.1)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront4(), 0.1)
+    motionProxy.angleInterpolationWithSpeed("Body", stepupfront5(), 0.1)
     fallcheck.checkfall()
     standfromsit()
     print "standing front"
