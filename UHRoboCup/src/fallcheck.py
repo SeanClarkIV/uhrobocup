@@ -13,7 +13,7 @@ def handlefall():
         stand.standup()
     else:
         stand.standup()
-        config.poseInit()
+        config.PoseInit()
     print "Fall handled"
 
 def checkfall():
