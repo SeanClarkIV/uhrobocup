@@ -8,10 +8,10 @@ def ewalk():
     useSensors = True
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
     angles = motionProxy.getAngles("Head", useSensors)
-    X = 2.0
+    X = 1.0
     Y = 0.0
     Theta = angles[0]/2.1
-    Frequency = 1
+    Frequency = .5
 
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
 def stop():
@@ -25,14 +25,14 @@ def stop():
 
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
 
-def ultimatewalkto(x, y, z):
+def slowwalkto(x, y, z):
     # Set NAO in stiffness On
     config.StiffnessOn()
 
     # This example show customization for the both foot
     # with all the possible gait parameters
     motionProxy.walkTo(x, y, z,
-        [ ["MaxStepX", 0.08],         # step of x cm in front
+        [ ["MaxStepX", 0.007],         # step of x cm in front
           ["MaxStepY", 0.2],         # default value
           ["MaxStepTheta", 0.4],      # default value
           ["MaxStepFrequency", 1.667],  # low frequency
