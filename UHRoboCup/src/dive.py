@@ -63,7 +63,7 @@ def diveleft():
     motionProxy.angleInterpolationWithSpeed(pNames, diveleft1(), .1)
     motionProxy.setFallManagerEnabled(True)
     stand.standfromsit()
-    dive.goaliepose()
+    goaliepose()
 def diveright():
     config.StiffnessOn()
     motionProxy.setFallManagerEnabled(False)
@@ -72,4 +72,18 @@ def diveright():
     motionProxy.angleInterpolationWithSpeed(pNames, diveright1(), .1)
     motionProxy.setFallManagerEnabled(True)
     stand.standfromsit()
-    dive.goaliepose()
+    goaliepose()
+def diveleftgoal():
+    motionProxy.setFallManagerEnabled(False)
+    motionProxy.angleInterpolationWithSpeed(pNames, goaliesit(), .8)
+    motionProxy.angleInterpolationWithSpeed(pNames, diveleft1(), .7)
+    motionProxy.setFallManagerEnabled(True)
+    stand.standfromsit()
+    goaliepose()
+def diverightgoal():
+    motionProxy.setFallManagerEnabled(False)
+    motionProxy.angleInterpolationWithSpeed(pNames, goaliesit(), .8)
+    motionProxy.angleInterpolationWithSpeed(pNames, diveright1(), .7)
+    motionProxy.setFallManagerEnabled(True)
+    stand.standfromsit()
+    goaliepose()
