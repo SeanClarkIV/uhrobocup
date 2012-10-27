@@ -113,5 +113,6 @@ def findRedBall(option):
         elif redballtracker.isNewData() == False and count <= 1000:
             count += 1
             print count
+
 def stoptracker():
     redballtracker.stopTracker()
