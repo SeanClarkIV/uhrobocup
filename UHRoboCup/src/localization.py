@@ -6,11 +6,9 @@ motionProxy = config.loadProxy("ALMotion")
 redballtracker = config.loadProxy("ALRedBallTracker")
 
 def getnaolocation():
-    naoX = 100
-    naoY = 270
-    robotid = "goallie"
-
-    return naoX, naoY, robotid
+    naoID = "goallie"
+    (naoX, naoY, naoZ) = motionProxy.getRobotPosition(False)
+    return (naoX, naoY, naoZ, naoID)
 
 def getlocation():
     # Set stiffnes ON
