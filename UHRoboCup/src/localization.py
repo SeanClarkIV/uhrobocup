@@ -97,7 +97,7 @@ def getvelocity():
     headpitchangle = 1.433
     redballposition=initialredballposition
     redballposition2=redballposition
-    time = 0
+    time1 = 0
     while redballposition==redballposition2: # runs while loop as long as redballtracker is active
         while redballtracker.getPosition() == initialredballposition:  # Ball lost.
             if redballtracker.isNewData() == False and count == 0: # Ball still lost.true if a new Red Ball was detected since the last getPosition().
@@ -130,27 +130,27 @@ def getvelocity():
                     print headpitchangle
                 else:
                     pass
-            if time == 0:
-                redballposition = redballtracker.getposition()
-                redballposition2 = redballposition
-                time = time.time()
-            elif redballtracker.getposition == redballposition:
-                redballposition2 = redballtracker.getposition()
-                time2 = time.time()
+        if time1 == 0:
+            redballposition = redballtracker.getPosition()
+            redballposition2 = redballposition
+            time1 = time.time()
+        elif redballtracker.getPosition != redballposition:
+            redballposition2 = redballtracker.getPosition()
+            time2 = time.time()
 
         # Ball found.
         # Store found red ball positon to variable.
         #foundredballposition and foundredballposition 2 are to make sure there are no
         #random jumps so the robot doesn't randomly pick a different thing to go to.
-        xi = redballposition[0]
-        yi = redballposition[1]
-        xf = redballposition2[0]
-        yf = redballposition2[1]
-        deltax = xf-xi
-        deltay = yf-yi
-        deltat = time2-time
-        vx = deltax/deltat
-        vy = deltay/deltat
-        print "velocity x is: ", vx, "velocity y is: ", vy
-        redballtracker.stopTracker()
-        return (vx, vy)
+    xi = redballposition[0]
+    yi = redballposition[1]
+    xf = redballposition2[0]
+    yf = redballposition2[1]
+    deltax = xf-xi
+    deltay = yf-yi
+    deltat = time2-time1
+    vx = deltax/deltat
+    vy = deltay/deltat
+    print "velocity x is: ", vx, "velocity y is: ", vy
+    redballtracker.stopTracker()
+    return (vx, vy)
