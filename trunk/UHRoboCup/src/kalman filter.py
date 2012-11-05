@@ -2,48 +2,31 @@ import math
 import localization
 import config
 import time
-def determinevelocity():
-    config.StiffnessOn()
-    config.PoseInit()
-    firstposition = localization.getlocation()
+import numpy
+def kalmanfilter(x,P,z,u,A,B,Q,R,H):
+    # This is the code which implements the discrete Kalman filter:
 
-def maplocation((naoX, naoY, naoZ, naoID), (ballX, ballY)):
-    currentFolder = (os.getcwd() + "\\")
-    field = Image.open(currentFolder + "robocupfield.jpg")  # Open field image
-    draw = ImageDraw.Draw(field)    # Select field image to draw to
+    # Prediction for state vector and covariance:
+    x = A*x + B*u;
+    P = A * P * zip(A) + Q;
 
-    offset = 76.45489365
+    # Compute Kalman gain factor:
+    K = P*zip(H)*numpy.linalg.inv(H*P*zip(H)+R);
 
-    naoX = ((naoX * offset) + 70)
-    naoY = ((naoY * -offset) + 70)
-
-    draw.point([naoX, naoY])   # Draw point based on location received
-    print (naoX, naoY, naoZ, naoID)
-
-    print (naoX, naoY, naoZ, naoID)
-    radius = 8  # Radius of NAO based on foot length
-    box = ((naoX - radius), (naoY - radius), (naoX + radius), (naoY + radius)) # Formulates the size of the box to crop in pixels (left, upper, right, bottom)
-    draw.ellipse(box)    # Daw circle around point received
-
-    ballX = naoX + (ballX * offset)
-    ballY = naoY + (ballY * -offset)
-    draw.point([ballX, ballY])   # Draw point based on location received
-    print ("ball", ballX, ballY)
-
-    radius = 3.25  # Radius of ball based on 65mm diameter
-    box = ((ballX - radius), (ballY - radius), (ballX + radius), (ballY + radius)) # Foradiusmulates the size of the box to crop in pixels (left, upper, right, bottom)
-    draw.ellipse(box, fill=128)    # Daw circle around point received
-
-    pixelDistance = math.sqrt(((ballX - naoX) * (ballX - naoX)) + ((ballY - naoY) * (ballY - naoY)))
-
-    realDistance = (pixelDistance * 10)
-
-    print realDistance
-    print (1-((1500-realDistance)/1500)), "percent error"
-
-
-    # TODO: Draw direction robot is moving to
-    # TODO: Draw visual angle of robot
-    del draw    # Stop draw process.
-    field.save("mappedobjects.jpg", "JPEG")
-    field.show()
+    # Correction based on observation:
+    x = x + K*(z-H*x);
+    P = P - K*H*P;
+def kalmanfilterimplemented():
+    [vx,vy,unitvectorx,unitvectory]= localization.getvelocity()
+    t=0
+    ax=-.202746*unitvectorx
+    ay=-.202746*unitvectory
+    Bx = numpy.matrix([[ax,0],[0,ax]])
+    By = numpy.matrix([[ay,0],[0,ay]])
+    P = numpy.matrix([[0,0],[0,0]])
+    Q = .25
+    R = 100
+    H= numpy.matrix([1,0])
+    while(vx >0 & vy > 0):
+        u=numpy.matrix([(t^2),t])
+        A = numpy.matrix([[1,t],[0,1]])

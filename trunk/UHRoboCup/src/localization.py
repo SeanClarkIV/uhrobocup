@@ -1,3 +1,4 @@
+import math
 import time
 import camera
 import config
@@ -135,8 +136,13 @@ def getvelocity():
             redballposition2 = redballposition
             time1 = time.time()
         elif redballtracker.getPosition != redballposition:
-            redballposition2 = redballtracker.getPosition()
-            time2 = time.time()
+            if redballtracker.getPosition()<= redballposition*1.05 & redballtracker.getPosition >= redballposition*.95:
+                redballposition2 = redballtracker.getPosition()
+                time1 = time.time()
+                redballposition=redballposition2
+            else:
+                redballposition2 = redballtracker.getPosition()
+                time2 = time.time()
 
         # Ball found.
         # Store found red ball positon to variable.
@@ -151,6 +157,11 @@ def getvelocity():
     deltat = time2-time1
     vx = deltax/deltat
     vy = deltay/deltat
-    print "velocity x is: ", vx, "velocity y is: ", vy
+    print "velocity x is: ", vx, "velocity y is: ", vy, "positioninitial is: ", redballposition, "positionfinal is: ", redballposition2
     redballtracker.stopTracker()
-    return (vx, vy)
+    magnitudeofdistance = (math.sqrt(math.pow(redballposition2[0]-redballposition2[0],2)+math.pow(redballposition2[1]-redballposition[1],2)))
+    unitvectorx = (redballposition2[0]-redballposition[0])/magnitudeofdistance
+    unitvectory = (redballposition2[1]-redballposition[1])/magnitudeofdistance
+    xposition=redballposition2[0]
+    yposition=redballposition2[1]
+    return (vx, vy, unitvectorx, unitvectory, xposition,yposition)
