@@ -1,7 +1,7 @@
 from naoqi import motion
 from naoqi import ALProxy
 
-IP = "172.25.152.173" # Robot IP Adress to establish connection.
+IP = "172.25.159.3" # Robot IP Adress to establish connection.
 
 PORT = 9559
 
