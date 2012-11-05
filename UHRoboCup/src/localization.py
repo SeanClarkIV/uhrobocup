@@ -131,12 +131,16 @@ def getvelocity():
                     print headpitchangle
                 else:
                     pass
+        print "found ball   " , redballtracker.getPosition()
         if time1 == 0:
             redballposition = redballtracker.getPosition()
             redballposition2 = redballposition
             time1 = time.time()
         elif redballtracker.getPosition != redballposition:
-            if redballtracker.getPosition()<= redballposition*1.05 & redballtracker.getPosition >= redballposition*.95:
+            redball=redballtracker.getPosition()
+            redballx=redball[0]
+            redbally=redball[1]
+            if redballx <= redballposition[0]*1.1 and redballx >= redballposition[0]*.9:
                 redballposition2 = redballtracker.getPosition()
                 time1 = time.time()
                 redballposition=redballposition2
