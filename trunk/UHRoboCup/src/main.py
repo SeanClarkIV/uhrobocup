@@ -8,6 +8,7 @@ import kickinair
 import dive
 import goalie
 import mapping
+import kalmanfilter
 motionProxy = config.loadProxy("ALMotion")
 texttospeechProxy = config.loadProxy("ALTextToSpeech")
 def main():
@@ -87,16 +88,9 @@ def main():
             elif choice[k] == 27:
                 mapping.map()
             elif choice[k] == 28:
-                localization.getvelocity()
+                kalmanfilter.kalman_filter()
             else:
                 texttospeechProxy.say(choice[k])
             k = k+1
 if __name__ == "__main__":
-    '''fx = open('naoX.txt','w+')
-    fy = open('naoY.txt','w+')
-    if fx.read() == '':   #This is to start working on storing location of nao in a txt file
-        naoX = 100
-        naoY = 270
-        fx.write('100')
-        fy.write('270')'''
     main()
