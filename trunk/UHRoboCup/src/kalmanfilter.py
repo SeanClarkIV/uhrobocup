@@ -62,7 +62,7 @@ def kalman_filter():
     print "found red ball"
 
     t=0.01;
-    a = -0.20*0;
+    a = -0.20;
 
     G  = numpy.matrix([[math.pow(t,2)/2],[math.pow(t,2)/2],[t],[t]])
     A  = numpy.matrix([[1,0,t,0],[0,1,0,t],[0,0,1,0],[0,0,0,1]])
@@ -100,24 +100,32 @@ def kalman_filter():
 
     ##redballposition=redballtracker.getPosition()
     k=1
+    Vx=0
+    Vy=0
+    xi=0
+    yi=0
     #while math.fabs(xb)>0.00005 and math.fabs(yb)>0.00005:
-    while k<5000:
+    ni=100
+    #while k<ni:
+    while k<500:
         ##print "in kalman"
         ##print math.fabs(xb)
         ##print yb ##math.fabs(yb)
         redballposition=redballtracker.getPosition()
         zk= H*numpy.matrix([[redballposition[0]],[redballposition[1]],[xb],[yb]]) ;
-        xhbk =  A*xhk_1 + G*a;
+        xhbk =  A*xhk_1
         Pbk = A * Pk_1 * numpy.transpose(A) + Q;
         
         Kk = Pbk*numpy.transpose(H)*numpy.linalg.inv((H * Pbk * numpy.transpose(H)) + R)
         xhk = xhbk + Kk*(zk-H*xhbk);
-        print xhk[1][0]
+        print xhk[0][0]
         Pk = (numpy.matrix([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]) - Kk*H)*Pbk;
         Pk_1=Pk
         xhk_1=xhk
         xb=xhk[2][0]
         yb=xhk[3][0]
+
+
         
         xb1.append(xb)
         yb1.append(yb)
@@ -131,27 +139,42 @@ def kalman_filter():
         T.append(aj)
 
         k=k+1
+        xi=xhk[0][0]
+        yi=xhk[1][0]
+    pyplot.plot(T,z2,'r',T,ypre,'g',T,yb1,'b--')
+    pyplot.legend(('Sensed Position', 'Kalman Estimate', 'Velocity'))
+    pyplot.xlabel('Itterations')
+    pyplot.ylabel('value')
+    pyplot.show()
+
         #if k>5000:
         #    break
 
-    print "finished kalman"
-    redballtracker.stopTracker()
-    print "stopped tracker", yb1
-    pyplot.plot(T,yb1,'b--',T,ypre,'r',T,z2,'g')
-    pyplot.show()
-    print "plotted"
-    
-    '''
-    pyplot.plot(T,z1,'r',T,xpre,'b--')
-    pyplot.show()
+    '''xf=[xi]
+    yf=[yi]
+    dt=0
+    Ti  = [0]
+    aji=0
+    xj=0
+    yj=0
+    while 1:
+        dt=dt+t
+        aji=aji+t
+        Ti.append(aji)
+        xj=xi+xb*dt
+        yj=yi+yb*dt
+        xf.append(xj)
+        yf.append(yj)
+        #print xj
 
-    pyplot.plot(T,xb1,'r',T,yb1,'b')
-    pyplot.show()'''
-    '''while b<101:
-        x=x+[b/10.0]
-        T=T+[b/10.0]
-        y=y+[2*b/10.0]
-        ##xb= xb +[10.0]
-        ##yb=yb+ [20.0]
-        b=b+1
-    print x'''
+        if xj<0:
+            print "stopping iteration"
+            break
+
+    print yj*0.76
+    return xj
+
+
+    #pyplot.plot(Ti,yf,'r',Ti,xf,'b--')
+    #pyplot.show()'''
+

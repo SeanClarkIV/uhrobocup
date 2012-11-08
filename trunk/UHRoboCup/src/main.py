@@ -89,6 +89,8 @@ def main():
                 mapping.map()
             elif choice[k] == 28:
                 kalmanfilter.kalman_filter()
+            elif choice[k] == 29:
+                goalie.goalieimproved()
             else:
                 texttospeechProxy.say(choice[k])
             k = k+1

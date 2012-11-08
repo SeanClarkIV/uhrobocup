@@ -1,3 +1,4 @@
+import walk
 import config
 import dive
 import math
@@ -11,6 +12,7 @@ def goaliepose():   #This is the pose the goalie will be using.
     config.StiffnessOn()
     motionProxy.angleInterpolationWithSpeed(pNames, dive.goalieposition(), .5)
 def goalie():
+    walk.aligngoalie()
     goaliepose()
     initialredballposition = redballtracker.getPosition() #Set the inital position as the first position the head is in,
     #assume the ball isnt the inital position
@@ -99,3 +101,74 @@ def goalie():
         initialredballposition= redballtracker.getPosition() #Resets the initial position so it looks for the ball again.
         count = 0
         counter = 0
+def goalieimproved():
+    # Set stiffnes ON
+    config.StiffnessOn()
+    config.PoseInit()
+    #Make sure top camera is active
+    camera.topCamera()
+
+    # Start looking for red ball to track.
+    redballtracker.stopTracker()
+    redballtracker.startTracker()
+    redballtracker.setWholeBodyOn(True)
+    print "Tracking red ball"
+
+    #Store initial red ball positon to variable
+    initialredballposition = redballtracker.getPosition()
+    print "Initial Position: ", initialredballposition
+    cameras = 0 #Top camera
+    count = 0
+    counter = 0 #Used for Redballposition
+    times = 0
+    headpitchangle = 1.433
+    blank = 0
+    while blank==0: # runs while loop as long as redballtracker is active
+        while redballtracker.getPosition() == initialredballposition:  # Ball lost.
+            if redballtracker.isNewData() == False and count == 0: # Ball still lost.true if a new Red Ball was detected since the last getPosition().
+                print "Looking for red ball"
+                camera.topCamera()
+                motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [-0.5, headpitchangle], 0.07)
+                time.sleep(3)
+                count = 1
+                cameras = 0 # top camera
+                times += 1
+            elif redballtracker.isNewData() == False and count == 1:
+                camera.bottomCamera()
+                motionProxy.setAngles(['HeadYaw', 'HeadPitch'], [0.5, headpitchangle], 0.07)
+                time.sleep(3)
+                count = 0
+                cameras = 1 # bottom camera
+                times += 1
+            # the next if condition is to look up slightly if he can't find the ball and then when it looks up 3 times
+            # it decides turns left and starts all over again.
+            if times > 1:
+                number = float(times)
+                if number % 2 == 1:
+                    if headpitchangle < 0:
+                        headpitchangle = 1.433
+                        walk.ultimatewalkto(0, 0, 2)
+                    elif headpitchangle > .5:
+                        headpitchangle = .2
+                    else:
+                        headpitchangle = headpitchangle - 0.2
+                    print headpitchangle
+                else:
+                    pass
+        # Ball found.
+        # Store found red ball positon to variable.
+        #foundredballposition and foundredballposition 2 are to make sure there are no
+        #random jumps so the robot doesn't randomly pick a different thing to go to.
+        if counter == 0:
+            foundredballposition2 = redballtracker.getPosition()
+        foundredballposition = foundredballposition2
+        foundredballposition2 = redballtracker.getPosition()
+        print "Found red ball position: ", foundredballposition2
+        blank = 1
+    walk.walkclockwise()
+    while foundredballposition2[1]<-.25:
+        foundredballposition2= redballtracker.getPosition()
+        print "Walking!", foundredballposition2[1]
+    redballtracker.stopTracker()
+    walk.stop()
+    goaliepose()
