@@ -1,14 +1,15 @@
 ##from PIL import Image, ImageDraw
 import os
 import math
-
+import track
 import localization
 import config
 
 def map():
     config.stiffness_on()
     config.pose_init()
-    maplocation(localization.get_nao_location(),localization.get_location())
+    redballposition = track.find_red_ball()
+    maplocation(localization.get_nao_location(),(redballposition[0],redballposition[1]))
 
 
 def map_location((naoX, naoY, naoZ, naoID), (ballX, ballY)):
