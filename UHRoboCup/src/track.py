@@ -7,6 +7,8 @@ import walk
 motionProxy = config.loadProxy("ALMotion")
 
 redballtracker = config.loadProxy("ALRedBallTracker")
+def findRedBall():
+    #This code finds the red ball.
 
 def findRedBallandkick(option):
     # Set stiffnes ON

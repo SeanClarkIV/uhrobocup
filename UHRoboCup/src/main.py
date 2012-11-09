@@ -15,11 +15,11 @@ def main():
     def menu():
         #print what options you have
         print "\n*** OPTIONS ***"
-        print "0) Quit                  5) Right Kick         10) Walk Left         15) Stand Up from Sit      20) R to S       25)Dive Right"
-        print "1) Turn stiffness ON     6) Walk Foward        11) Walk Right        16) Find Red Ball L to R   21) R to L       26) Goalie"
-        print "2) Turn stiffness OFF    7) Walk Backwards     12) stand up on back  17) Find Red Ball L to S   22) Stop Tracker 27) Map"
-        print "3) goalie Pose          8) Turn Left          13) stand up on front 18) Find Red Ball L to L   23) Kick in air"
-        print "4) Left Kick             9) Turn Right         14) Sit Down          19) Find Red Ball R to L   24) Dive Left"
+        print "0) Quit                  5) Right Kick         10) Walk Left         15) Stand Up from Sit      20) R to S       25)Goalie"
+        print "1) Turn stiffness ON     6) Walk Foward        11) Walk Right        16) Find Red Ball L to R   21) R to L       26) Map"
+        print "2) Turn stiffness OFF    7) Walk Backwards     12) stand up on back  17) Find Red Ball L to S   22) Stop Tracker 27) Kalman Filter"
+        print "3) goalie Pose          8) Turn Left          13) stand up on front 18) Find Red Ball L to L   23) Dive Left     28) Goalie intercepts clockwise"
+        print "4) Left Kick             9) Turn Right         14) Sit Down          19) Find Red Ball R to L   24) Dive Right   29) Goalie intercepts counterclockwise"
         print "type what you want him to say in quotations"
         return input ("\nChoose your option(s) as list: ")
 
@@ -78,20 +78,18 @@ def main():
             elif choice[k] == 22:
                 track.stoptracker()
             elif choice[k] == 23:
-                kickinair.kickinair1()
-            elif choice[k] == 24:
                 dive.diveleft()
-            elif choice[k] == 25:
+            elif choice[k] == 24:
                 dive.diveright()
-            elif choice[k] == 26:
+            elif choice[k] == 25:
                 goalie.goalie()
-            elif choice[k] == 27:
+            elif choice[k] == 26:
                 mapping.map()
-            elif choice[k] == 28:
+            elif choice[k] == 27:
                 kalmanfilter.kalman_filter()
-            elif choice[k] == 29:
+            elif choice[k] == 28:
                 goalie.goalieimproved(1)
-            elif choice[k] == 30:
+            elif choice[k] == 29:
                 goalie.goalieimproved(0)
             else:
                 texttospeechProxy.say(choice[k])
