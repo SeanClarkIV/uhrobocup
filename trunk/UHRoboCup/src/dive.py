@@ -1,11 +1,9 @@
-import goalie
 import stand
 import config
 import motion
-import time
-motionProxy = config.loadProxy("ALMotion")
+motionProxy = config.load_proxy("ALMotion")
 pNames = "Body"
-def goalieposition():
+def goalie_position():
     Head     = [+0, +0]
 
     LeftArm  = [+115.5, +18.5, +2, -18, +5.5, +0]
@@ -17,7 +15,7 @@ def goalieposition():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
-def goaliesit():
+def goalie_sit():
     Head     = [+0, +0]
 
     LeftArm  = [+115.5, +18.5, +2, -18, +5.5, +0]
@@ -29,7 +27,7 @@ def goaliesit():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
-def diveleft1():
+def dive_left_1():
     Head     = [+0, +0]
 
     LeftArm  = [+115.5, +18.5, +2, -18, +5.5, +0]
@@ -41,7 +39,7 @@ def diveleft1():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
-def diveright1():
+def dive_right_1():
     Head     = [+0, +0]
 
     LeftArm  = [+115.5, +18.5, +2, -18, +5.5, +0]
@@ -53,37 +51,37 @@ def diveright1():
     pTargetAngles = (Head + LeftArm + LeftLeg + RightLeg + RightArm)
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
-def goaliepose():
-    config.StiffnessOn()
-    motionProxy.angleInterpolationWithSpeed(pNames, goalieposition(), 0.3)
-def diveleft():
+def goalie_pose():
+    config.stiffness_on()
+    motionProxy.angleInterpolationWithSpeed(pNames, goalie_position(), 0.3)
+def dive_left():
     motionProxy.setFallManagerEnabled(False)
-    motionProxy.angleInterpolationWithSpeed(pNames, goalieposition(), 0.1)
-    motionProxy.angleInterpolationWithSpeed(pNames, goaliesit(), .5)
-    motionProxy.angleInterpolationWithSpeed(pNames, diveleft1(), .1)
+    motionProxy.angleInterpolationWithSpeed(pNames, goalie_position(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, goalie_sit(), .5)
+    motionProxy.angleInterpolationWithSpeed(pNames, dive_left_1(), .1)
     motionProxy.setFallManagerEnabled(True)
-    stand.standfromsit()
-    goaliepose()
-def diveright():
-    config.StiffnessOn()
+    stand.stand_from_sit()
+    goalie_pose()
+def dive_right():
+    config.stiffness_on()
     motionProxy.setFallManagerEnabled(False)
-    motionProxy.angleInterpolationWithSpeed(pNames, goalieposition(), 0.1)
-    motionProxy.angleInterpolationWithSpeed(pNames, goaliesit(), .5)
-    motionProxy.angleInterpolationWithSpeed(pNames, diveright1(), .1)
+    motionProxy.angleInterpolationWithSpeed(pNames, goalie_position(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, goalie_sit(), .5)
+    motionProxy.angleInterpolationWithSpeed(pNames, dive_right_1(), .1)
     motionProxy.setFallManagerEnabled(True)
-    stand.standfromsit()
-    goaliepose()
-def diveleftgoal():
+    stand.stand_from_sit()
+    goalie_pose()
+def dive_left_goal():
     motionProxy.setFallManagerEnabled(False)
-    motionProxy.angleInterpolationWithSpeed(pNames, goaliesit(), .8)
-    motionProxy.angleInterpolationWithSpeed(pNames, diveleft1(), .7)
+    motionProxy.angleInterpolationWithSpeed(pNames, goalie_sit(), .8)
+    motionProxy.angleInterpolationWithSpeed(pNames, dive_left_1(), .7)
     motionProxy.setFallManagerEnabled(True)
-    stand.standfromsit()
-    goaliepose()
-def diverightgoal():
+    stand.stand_from_sit()
+    goalie_pose()
+def dive_right_goal():
     motionProxy.setFallManagerEnabled(False)
-    motionProxy.angleInterpolationWithSpeed(pNames, goaliesit(), .8)
-    motionProxy.angleInterpolationWithSpeed(pNames, diveright1(), .7)
+    motionProxy.angleInterpolationWithSpeed(pNames, goalie_sit(), .8)
+    motionProxy.angleInterpolationWithSpeed(pNames, dive_right_1(), .7)
     motionProxy.setFallManagerEnabled(True)
-    stand.standfromsit()
-    goaliepose()
+    stand.stand_from_sit()
+    goalie_pose()

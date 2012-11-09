@@ -1,16 +1,14 @@
-import localization
 import config
 import kick
 import stand
 import track
 import walk
-import kickinair
 import dive
 import goalie
 import mapping
 import kalmanfilter
-motionProxy = config.loadProxy("ALMotion")
-texttospeechProxy = config.loadProxy("ALTextToSpeech")
+motionProxy = config.load_proxy("ALMotion")
+texttospeechProxy = config.load_proxy("ALTextToSpeech")
 def main():
     def menu():
         #print what options you have
@@ -34,53 +32,53 @@ def main():
                 loop = 0
                 break
             elif choice[k] == 1:
-                config.StiffnessOn()
+                config.stiffness_on()
             elif choice[k] == 2:
-                config.StiffnessOff()
+                config.stiffness_off()
             elif choice[k] == 3:
-                goalie.goaliepose()
+                goalie.goalie_pose()
             elif choice[k] == 4:
-                kick.kickLeftFoot()
+                kick.kick_left_foot()
             elif choice[k] == 5:
-                kick.kickRightFoot()
+                kick.kick_right_foot()
             elif choice[k] == 6:
-                walk.ultimatewalkto(1, 00, 00)
+                walk.ultimate_walk_to(1, 00, 00)
             elif choice[k] == 7:
-                walk.ultimatewalkto(-1, 00, 00)
+                walk.ultimate_walk_to(-1, 00, 00)
             elif choice[k] == 8:
-                walk.ultimatewalkto(0,0,2)
+                walk.ultimate_walk_to(0,0,2)
             elif choice[k] == 9:
-                walk.ultimatewalkto(0,0,-2)
+                walk.ultimate_walk_to(0,0,-2)
             elif choice[k] == 10:
-                walk.ultimatewalkto(0, -1, 0)
+                walk.ultimate_walk_to(0, -1, 0)
             elif choice[k] == 11:
-                walk.ultimatewalkto(0, 1, 0)
+                walk.ultimate_walk_to(0, 1, 0)
             elif choice[k] == 12:
-                stand.standup()
+                stand.stand_up()
             elif choice[k] == 13:
-                stand.standuponfront()
+                stand.stand_up_on_front()
             elif choice[k] == 14:
-                stand.sitdown()
+                stand.sit_down()
             elif choice[k] == 15:
-                stand.standfromsit()
+                stand.stand_from_sit()
             elif choice[k] == 16:
-                track.findRedBallandkick(1)
+                track.find_red_ball_and_kick(1)
             elif choice[k] == 17:
-                track.findRedBallandkick(2)
+                track.find_red_ball_and_kick(2)
             elif choice[k] == 18:
-                track.findRedBallandkick(3)
+                track.find_red_ball_and_kick(3)
             elif choice[k] == 19:
-                track.findRedBallandkick(4)
+                track.find_red_ball_and_kick(4)
             elif choice[k] == 20:
-                track.findRedBallandkick(5)
+                track.find_red_ball_and_kick(5)
             elif choice[k] == 21:
-                track.findRedBallandkick(6)
+                track.find_red_ball_and_kick(6)
             elif choice[k] == 22:
-                track.stoptracker()
+                track.stop_tracker()
             elif choice[k] == 23:
-                dive.diveleft()
+                dive.dive_left()
             elif choice[k] == 24:
-                dive.diveright()
+                dive.dive_right()
             elif choice[k] == 25:
                 goalie.goalie()
             elif choice[k] == 26:
@@ -88,9 +86,9 @@ def main():
             elif choice[k] == 27:
                 kalmanfilter.kalman_filter()
             elif choice[k] == 28:
-                goalie.goalieimproved(1)
+                goalie.goalie_improved(1)
             elif choice[k] == 29:
-                goalie.goalieimproved(0)
+                goalie.goalie_improved(0)
             else:
                 texttospeechProxy.say(choice[k])
             k = k+1

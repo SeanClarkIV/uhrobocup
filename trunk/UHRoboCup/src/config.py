@@ -1,7 +1,7 @@
 from naoqi import motion
 from naoqi import ALProxy
 
-IP = "192.168.1.5" # Robot IP Adress to establish connection.
+IP = "169.254.87.118" # Robot IP Adress to establish connection.
 
 PORT = 9559
 
@@ -9,14 +9,14 @@ if (IP == ""):
     print "IP Address is blank, or not defined in", __file__
     exit("FUNCTION ABORTED - No IP address defined.")
 
-def loadProxy(proxyName):
+def load_proxy(proxyName):
   print "----- Loading " + proxyName + " -----"
   proxy = ALProxy(proxyName, IP, PORT)
   return proxy
 
-motionProxy = loadProxy("ALMotion")
+motionProxy = load_proxy("ALMotion")
 
-def StiffnessOn():
+def stiffness_on():
     pNames = "Body"       # Body is used for collection of all joints.
     pStiffnessLists = 1.0 # Maximum stiffness.
     pTimeLists = 1.0
@@ -30,7 +30,7 @@ def StiffnessOn():
     else:
         print "Smart Stiffness NOT Enabled"
 
-def StiffnessOff():
+def stiffness_off():
     pNames = "Body"         # Body is used for collection of all joints.
     pStiffnessLists = 0.0   # No stiffness.
     pTimeLists = 1.0
@@ -44,8 +44,8 @@ def StiffnessOff():
     else:
         print "Smart Stiffness NOT Disabled"
 
-def PoseInit():
-    StiffnessOn()
+def pose_init():
+    stiffness_on()
 
     Head     = [+0, +0]
 
