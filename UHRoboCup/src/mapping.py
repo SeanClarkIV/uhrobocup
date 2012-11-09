@@ -6,12 +6,12 @@ import localization
 import config
 
 def map():
-    config.StiffnessOn()
-    config.PoseInit()
-    maplocation(localization.getnaolocation(),localization.getlocation())
+    config.stiffness_on()
+    config.pose_init()
+    maplocation(localization.get_nao_location(),localization.get_location())
 
 
-def maplocation((naoX, naoY, naoZ, naoID), (ballX, ballY)):
+def map_location((naoX, naoY, naoZ, naoID), (ballX, ballY)):
     currentFolder = (os.getcwd() + "\\")
     field = Image.open(currentFolder + "robocupfield.jpg")  # Open field image
     draw = ImageDraw.Draw(field)    # Select field image to draw to

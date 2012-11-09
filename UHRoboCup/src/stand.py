@@ -3,9 +3,9 @@ import motion
 import stand
 import fallcheck
 
-motionProxy = config.loadProxy("ALMotion")
+motionProxy = config.load_proxy("ALMotion")
 
-def poseint():
+def pose_int():
     Head     = [+0, +0]
 
     LeftArm  = [+40, +0, +40, +0, +0, +0]
@@ -18,7 +18,7 @@ def poseint():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def sit1():
+def sit_1():
     Head     = [+0, +0]
 
     LeftArm  = [+91, +31.6, +24.7, -05.3, +11.9, +0]
@@ -31,7 +31,7 @@ def sit1():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def sit2():
+def sit_2():
     Head     = [+0, +0]
 
     LeftArm  = [+0, +0, +0, +0, +0, +0]
@@ -44,7 +44,7 @@ def sit2():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def sit3():
+def sit_3():
     Head     = [+0, +0]
 
     LeftArm  = [+58.7, +16.3, -38, -87.4, +0, +0]
@@ -57,7 +57,7 @@ def sit3():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def sit4():
+def sit_4():
     Head     = [+0, +0]
 
     LeftArm  = [+119.5, +30.3, -5.6, -2, +11.8, +0]
@@ -70,7 +70,7 @@ def sit4():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def sit5():
+def sit_5():
     Head     = [+0, +0]
 
     LeftArm  = [+119.5, +30.3, -5.6, -2, +11.8, +0]
@@ -96,7 +96,7 @@ def stand():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand1():
+def stand_1():
     Head     = [+0, +0]
 
     LeftArm  = [+120, +30, +20, -90, +0, +0]
@@ -109,7 +109,7 @@ def stand1():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand2():
+def stand_2():
     Head     = [+0, +0]
 
     LeftArm  = [+120, +30, +20, -90, +0, +0]
@@ -122,7 +122,7 @@ def stand2():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand3():
+def stand_3():
     Head     = [+0, +0]
 
     LeftArm  = [+110, +20, +20, -70, +0, +0]
@@ -135,7 +135,7 @@ def stand3():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand4():
+def stand_4():
     Head     = [+0, +0]
 
     LeftArm  = [+110, -60, +20, +0, +0, +0]
@@ -148,7 +148,7 @@ def stand4():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand5():
+def stand_5():
     Head     = [+0, +0]
 
     LeftArm  = [+119, -3.7, -14.2, -4.5, -11.3, +0]
@@ -161,7 +161,7 @@ def stand5():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand6():
+def stand_6():
     Head     = [+0, +0]
 
     LeftArm  = [+119.5, +30.3, -5.6, -2, +11.8, +0]
@@ -174,7 +174,7 @@ def stand6():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand7():
+def stand_7():
     Head     = [+0, +0]
 
     LeftArm  = [+91, +27, +24.7, -5.3, +0, +0]
@@ -187,7 +187,7 @@ def stand7():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand8():
+def stand_8():
     Head     = [+0, +0]
 
     LeftArm  = [+91, +27, +24.7, -5.3, +0, +0]
@@ -200,7 +200,7 @@ def stand8():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stand9():
+def stand_9():
     Head     = [+0, +0]
 
     LeftArm  = [+0, +0, +0, +0, +0, +0]
@@ -213,7 +213,7 @@ def stand9():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stepupfront():
+def step_up_front():
     Head     = [+2.2, +25]
 
     LeftArm  = [+0, +90, +0, +0, +0, +0]
@@ -226,7 +226,7 @@ def stepupfront():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stepupfront1():
+def step_up_front_1():
     Head     = [+2.2, +25]
 
     LeftArm  = [-90, +0, +0, +0, +0, +0]
@@ -239,7 +239,7 @@ def stepupfront1():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stepupfront2():
+def step_up_front_2():
     Head     = [+2.2, +25]
 
     LeftArm  = [-90, +0, +0, +0, +0, +0]
@@ -252,7 +252,7 @@ def stepupfront2():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stepupfront3():
+def step_up_front_3():
     Head     = [+2.2, +25]
 
     LeftArm  = [-90, +0, +0, +0, +0, +0]
@@ -265,7 +265,7 @@ def stepupfront3():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stepupfront4():
+def step_up_front_4():
     Head     = [+2.2, +25]
 
     LeftArm  = [-19.9, +0, +0, +0, +104.5, +0]
@@ -278,7 +278,7 @@ def stepupfront4():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def stepupfront5():
+def step_up_front_5():
     Head     = [+2.2, +25]
 
     LeftArm  = [+0, +0, +0, +0, +104.5, +0]
@@ -291,51 +291,51 @@ def stepupfront5():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def standup():  # Stand up from its back.
-    config.StiffnessOn()   # Turns the stiffness on.
+def stand_up():  # Stand up from its back.
+    config.stiffness_on()   # Turns the stiffness on.
     motionProxy.angleInterpolationWithSpeed("Body", stand(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", stand1(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", stand2(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", stand3(), 0.8)
-    motionProxy.angleInterpolationWithSpeed("Body", stand4(), 0.8)
-    motionProxy.angleInterpolationWithSpeed("Body", stand5(), 0.8)
-    motionProxy.angleInterpolationWithSpeed("Body", stand6(), 0.8)
-    motionProxy.angleInterpolationWithSpeed("Body", stand7(), 0.8)
-    motionProxy.angleInterpolationWithSpeed("Body", stand8(), 0.8)
-    motionProxy.angleInterpolationWithSpeed("Body", stand9(), 0.8)
-    motionProxy.angleInterpolationWithSpeed("Body", poseint(), 0.8)
-    fallcheck.checkfall()
+    motionProxy.angleInterpolationWithSpeed("Body", stand_1(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_2(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_3(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_4(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_5(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_6(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_7(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_8(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_9(), 0.8)
+    motionProxy.angleInterpolationWithSpeed("Body", pose_int(), 0.8)
+    fallcheck.check_fall()
     print "standing back"
 
-def standuponfront(): # Stands up from its belly.
-    config.StiffnessOn()   # Turns the stiffness on.
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront(), 0.5)
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront1(), 0.5)
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront2(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront3(), 0.1)
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront4(), 0.1)
-    motionProxy.angleInterpolationWithSpeed("Body", stepupfront5(), 0.1)
-    fallcheck.checkfall()
-    standfromsit()
+def stand_up_on_front(): # Stands up from its belly.
+    config.stiffness_on()   # Turns the stiffness on.
+    motionProxy.angleInterpolationWithSpeed("Body", step_up_front(), 0.5)
+    motionProxy.angleInterpolationWithSpeed("Body", step_up_front_1(), 0.5)
+    motionProxy.angleInterpolationWithSpeed("Body", step_up_front_2(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", step_up_front_3(), 0.1)
+    motionProxy.angleInterpolationWithSpeed("Body", step_up_front_4(), 0.1)
+    motionProxy.angleInterpolationWithSpeed("Body", step_up_front_5(), 0.1)
+    fallcheck.check_fall()
+    stand_from_sit()
     print "standing front"
 
-def sitdown():  # Sits down from standup position.
-    config.StiffnessOn()   # Turns the stiffness on.
-    motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", sit2(), 1.0)
-    motionProxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
-    motionProxy.angleInterpolationWithSpeed("Body", stand6(), 0.7)
-    motionProxy.angleInterpolationWithSpeed("Body", sit4(), 0.4)
-    motionProxy.angleInterpolationWithSpeed("Body", sit5(), 0.4)
-    motionProxy.angleInterpolationWithSpeed("Body", sit3(), 1.0)
-    fallcheck.checkfall()
+def sit_down():  # Sits down from standup position.
+    config.stiffness_on()   # Turns the stiffness on.
+    motionProxy.angleInterpolationWithSpeed("Body", pose_int(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", sit_2(), 1.0)
+    motionProxy.angleInterpolationWithSpeed("Body", sit_1(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_6(), 0.7)
+    motionProxy.angleInterpolationWithSpeed("Body", sit_4(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", sit_5(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", sit_3(), 1.0)
+    fallcheck.check_fall()
 
-def standfromsit(): # Stands from sit down position.
-    config.StiffnessOn()   # Turns the stiffness on.
-    motionProxy.angleInterpolationWithSpeed("Body", sit3(), 0.3)
-    motionProxy.angleInterpolationWithSpeed("Body", sit4(), 0.3)
-    motionProxy.angleInterpolationWithSpeed("Body", stand6(), 0.65)
-    motionProxy.angleInterpolationWithSpeed("Body", sit1(), 0.4)
-    motionProxy.angleInterpolationWithSpeed("Body", sit2(), 0.2)
-    motionProxy.angleInterpolationWithSpeed("Body", poseint(), 1.0)
-    fallcheck.checkfall()
+def stand_from_sit(): # Stands from sit down position.
+    config.stiffness_on()   # Turns the stiffness on.
+    motionProxy.angleInterpolationWithSpeed("Body", sit_3(), 0.3)
+    motionProxy.angleInterpolationWithSpeed("Body", sit_4(), 0.3)
+    motionProxy.angleInterpolationWithSpeed("Body", stand_6(), 0.65)
+    motionProxy.angleInterpolationWithSpeed("Body", sit_1(), 0.4)
+    motionProxy.angleInterpolationWithSpeed("Body", sit_2(), 0.2)
+    motionProxy.angleInterpolationWithSpeed("Body", pose_int(), 1.0)
+    fallcheck.check_fall()

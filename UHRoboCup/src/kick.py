@@ -1,7 +1,7 @@
 import config
 import motion
 
-motionProxy = config.loadProxy("ALMotion")
+motionProxy = config.load_proxy("ALMotion")
 pNames = "Body"
 
 def stand():
@@ -17,7 +17,7 @@ def stand():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def right1():
+def right_1():
     Head     = [+0, +0]
 
     LeftArm  = [+135, +90, +0, +0, +0, +0]
@@ -33,7 +33,7 @@ def right1():
 
 
 
-def right2():
+def right_2():
     Head     = [+0, +0]
 
     LeftArm  = [+90, +80, +0, +0, +0, +0]
@@ -46,7 +46,7 @@ def right2():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def right3():
+def right_3():
     Head     = [+0, +0]
 
     LeftArm  = [+90, +80, +0, +0, +0, +0]
@@ -59,7 +59,7 @@ def right3():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def right4():
+def right_4():
     Head     = [+0, +0]
 
     LeftArm  = [+90, +50, +0, +0, +0, +0]
@@ -72,7 +72,7 @@ def right4():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def left1():
+def left_1():
     Head     = [+0, +0]
 
     LeftArm  = [+135, +0, +0, +0, +0, +0]
@@ -85,7 +85,7 @@ def left1():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def left2():
+def left_2():
     Head     = [+0, +0]
 
     LeftArm  = [+90, +0, +0, +0, +0, +0]
@@ -98,7 +98,7 @@ def left2():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def left3():
+def left_3():
     Head     = [+0, +0]
 
     LeftArm  = [+180, +0, +0, +0, +0, +0]
@@ -111,7 +111,7 @@ def left3():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def left4():
+def left_4():
     Head     = [+0, +0]
 
     LeftArm  = [+180, +0, +0, +0, +0, +0]
@@ -124,20 +124,20 @@ def left4():
     pTargetAngles = [x * motion.TO_RAD for x in pTargetAngles]
     return pTargetAngles
 
-def kickRightFoot():# Kick ball with right foot.
+def kick_right_foot():# Kick ball with right foot.
     #Turns the stiffness on.
-    config.StiffnessOn()
-    motionProxy.angleInterpolationWithSpeed(pNames, right1(), 0.1)
-    motionProxy.angleInterpolationWithSpeed(pNames, right2(), 0.4)
-    motionProxy.angleInterpolationWithSpeed(pNames, right3(), 0.4)
-    motionProxy.angleInterpolationWithSpeed(pNames, right4(), 1.0)
-    motionProxy.angleInterpolationWithSpeed(pNames, right1(), 0.2)
+    config.stiffness_on()
+    motionProxy.angleInterpolationWithSpeed(pNames, right_1(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, right_2(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, right_3(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, right_4(), 1.0)
+    motionProxy.angleInterpolationWithSpeed(pNames, right_1(), 0.2)
 
-def kickLeftFoot():# Kick ball with left foot.
+def kick_left_foot():# Kick ball with left foot.
     #Turns the stiffness on.
-    config.StiffnessOn()
-    motionProxy.angleInterpolationWithSpeed(pNames, left1(), 0.1)
-    motionProxy.angleInterpolationWithSpeed(pNames, left2(), 0.3)
-    motionProxy.angleInterpolationWithSpeed(pNames, left3(), 0.4)
-    motionProxy.angleInterpolationWithSpeed(pNames, left4(), 1.0)
-    motionProxy.angleInterpolationWithSpeed(pNames, left1(), 0.2)
+    config.stiffness_on()
+    motionProxy.angleInterpolationWithSpeed(pNames, left_1(), 0.1)
+    motionProxy.angleInterpolationWithSpeed(pNames, left_2(), 0.3)
+    motionProxy.angleInterpolationWithSpeed(pNames, left_3(), 0.4)
+    motionProxy.angleInterpolationWithSpeed(pNames, left_4(), 1.0)
+    motionProxy.angleInterpolationWithSpeed(pNames, left_1(), 0.2)
