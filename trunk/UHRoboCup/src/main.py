@@ -64,17 +64,17 @@ def main():
             elif choice[k] == 15:
                 stand.standfromsit()
             elif choice[k] == 16:
-                track.findRedBall(1)
+                track.findRedBallandkick(1)
             elif choice[k] == 17:
-                track.findRedBall(2)
+                track.findRedBallandkick(2)
             elif choice[k] == 18:
-                track.findRedBall(3)
+                track.findRedBallandkick(3)
             elif choice[k] == 19:
-                track.findRedBall(4)
+                track.findRedBallandkick(4)
             elif choice[k] == 20:
-                track.findRedBall(5)
+                track.findRedBallandkick(5)
             elif choice[k] == 21:
-                track.findRedBall(6)
+                track.findRedBallandkick(6)
             elif choice[k] == 22:
                 track.stoptracker()
             elif choice[k] == 23:
@@ -90,7 +90,9 @@ def main():
             elif choice[k] == 28:
                 kalmanfilter.kalman_filter()
             elif choice[k] == 29:
-                goalie.goalieimproved()
+                goalie.goalieimproved(1)
+            elif choice[k] == 30:
+                goalie.goalieimproved(0)
             else:
                 texttospeechProxy.say(choice[k])
             k = k+1

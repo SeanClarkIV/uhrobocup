@@ -12,7 +12,7 @@ def goaliepose():   #This is the pose the goalie will be using.
     config.StiffnessOn()
     motionProxy.angleInterpolationWithSpeed(pNames, dive.goalieposition(), .5)
 def goalie():
-    walk.aligngoalie()
+    ##walk.aligngoalie()
     goaliepose()
     initialredballposition = redballtracker.getPosition() #Set the inital position as the first position the head is in,
     #assume the ball isnt the inital position
@@ -101,7 +101,7 @@ def goalie():
         initialredballposition= redballtracker.getPosition() #Resets the initial position so it looks for the ball again.
         count = 0
         counter = 0
-def goalieimproved():
+def goalieimproved(option):
     # Set stiffnes ON
     config.StiffnessOn()
     config.PoseInit()
@@ -165,10 +165,18 @@ def goalieimproved():
         foundredballposition2 = redballtracker.getPosition()
         print "Found red ball position: ", foundredballposition2
         blank = 1
-    walk.walkclockwise()
-    while foundredballposition2[1]<-.25:
-        foundredballposition2= redballtracker.getPosition()
-        print "Walking!", foundredballposition2[1]
-    redballtracker.stopTracker()
-    walk.stop()
+    if option == 1:
+        walk.walkclockwise()
+        while foundredballposition2[1]<-.25:
+            foundredballposition2= redballtracker.getPosition()
+            print "Walking!", foundredballposition2[1]
+        redballtracker.stopTracker()
+        walk.stop()
+    else:
+        walk.walkcounterclockwise()
+        while foundredballposition2[1] > .25:
+            foundredballposition2= redballtracker.getPosition()
+            print "counter", foundredballposition[1]
+        redballtracker.stopTracker()
+        walk.stop()
     goaliepose()
