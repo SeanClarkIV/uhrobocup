@@ -7,6 +7,7 @@ import camera
 import time
 motionProxy = config.loadProxy("ALMotion")
 redballtracker = config.loadProxy("ALRedBallTracker")
+texttospeechProxy = config.loadProxy("ALTextToSpeech")
 def kalman_filter():
     # Set stiffnes ON
     config.StiffnessOn()
@@ -82,7 +83,7 @@ def kalman_filter():
 
     Q = G*numpy.transpose(G)*math.pow(r1,2)
 
-    Pk_1 = numpy.matrix([[1000,0,0,0],[0,1000,0,0],[0,0,1000,0],[0,0,0,1000]]);
+    Pk_1 = numpy.matrix([[10,0,0,0],[0,10,0,0],[0,0,10,0],[0,0,0,10]]);
 
     xhk_1=numpy.matrix([[1],[0],[1],[2]]);
    
@@ -141,12 +142,14 @@ def kalman_filter():
         k=k+1
         xi=xhk[0][0]
         yi=xhk[1][0]
+    redballtracker.stopTracker()
+    texttospeechProxy.say("done")
     pyplot.plot(T,z2,'r',T,ypre,'g',T,yb1,'b--')
     pyplot.legend(('Sensed Position', 'Kalman Estimate', 'Velocity'))
     pyplot.xlabel('Itterations')
     pyplot.ylabel('value')
     pyplot.show()
-
+    
         #if k>5000:
         #    break
 

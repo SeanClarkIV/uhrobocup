@@ -107,3 +107,13 @@ def walkclockwise():
     Theta = -.15
     Frequency = 1
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
+def walkcounterclockwise():
+    #This walk walks for a walkTime amount of time and then stops.
+    useSensors = True
+    motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
+    angles = motionProxy.getAngles("Head", useSensors)
+    X = 0.0
+    Y = 1.1 * .76
+    Theta = .15
+    Frequency = 1
+    motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)

@@ -8,7 +8,7 @@ motionProxy = config.loadProxy("ALMotion")
 
 redballtracker = config.loadProxy("ALRedBallTracker")
 
-def findRedBall(option):
+def findRedBallandkick(option):
     # Set stiffnes ON
     config.StiffnessOn()
 
