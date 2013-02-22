@@ -45,7 +45,7 @@ def find_red_ball():
             if number % 2 == 1:
                 if headpitchangle < 0:
                     headpitchangle = 1.433
-                    walk.ultimatewalkto(0, 0, 2)
+                    walk.ultimate_walk_to(0, 0, 2)
                 elif headpitchangle > .5:
                     headpitchangle = .2
                 else:

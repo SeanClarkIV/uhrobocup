@@ -1,3 +1,4 @@
+import kalmanthreaded
 import config
 import kick
 import stand
@@ -7,6 +8,7 @@ import dive
 import goalie
 import mapping
 import kalmanfilter
+from thread import start_new_thread
 motionProxy = config.load_proxy("ALMotion")
 texttospeechProxy = config.load_proxy("ALTextToSpeech")
 def main():
@@ -84,7 +86,7 @@ def main():
             elif choice[k] == 26:
                 mapping.map()
             elif choice[k] == 27:
-                kalmanfilter.kalman_filter()
+                kalmanthreaded.kalman().start()
             elif choice[k] == 28:
                 goalie.goalie_improved(1)
             elif choice[k] == 29:
