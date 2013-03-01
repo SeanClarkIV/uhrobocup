@@ -3,11 +3,12 @@ import kick
 import camera
 import config
 import walk
-
+import threading
 motionProxy = config.load_proxy("ALMotion")
 
 redballtracker = config.load_proxy("ALRedBallTracker")
-def find_red_ball():
+def find_red_ball(trackstop=threading.Event()): #added the trackstop so that if you want to use this
+                                                #in a thread you can stop it. 
     #This code finds the red ball.
     # Set stiffnes ON
     config.stiffness_on()
@@ -53,6 +54,9 @@ def find_red_ball():
                 print headpitchangle
             else:
                 pass
+        if trackstop.is_set():
+            initialredballposition=[-1000,-1000,-1000]
+            print "stopped at tracking"
     print "found red ball"
     redballposition=redballtracker.getPosition()
     redballtracker.stopTracker()

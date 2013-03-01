@@ -8,8 +8,15 @@ from matplotlib import pyplot
 motionProxy = config.load_proxy("ALMotion")
 redballtracker = config.load_proxy("ALRedBallTracker")
 texttospeechProxy = config.load_proxy("ALTextToSpeech")
+kalmanstop=threading.Event() #creates events so that we can stop it later
+trackstop=threading.Event()
+def stop():
+    trackstop.set()#sets a flag that stops this if its looking for the ball
+    kalmanstop.set()#sets the flag to stop the kalman filter
 class kalman(threading.Thread):
     def run(self):
+        kalmanstop.clear() #clears the flag that seting the event does.
+        trackstop.clear()
         #initializing the vectors that store the variables.
         xvelocity = [0]
         yvelocity = [0]
@@ -39,20 +46,20 @@ class kalman(threading.Thread):
         k=1
         iterations=500 #the number of iterations you want
         #now we look for and find the ball
-        redballposition=track.find_red_ball()
+        redballposition=track.find_red_ball(trackstop)
         redballtracker.startTracker() #you have to start the tracker after using the find_red_ball function
-        while k<iterations:
-            redballposition=redballtracker.getPosition()
+        while(not kalmanstop.is_set()):
+            redballposition=redballtracker.getPosition();
             zk= H*numpy.matrix([[redballposition[0]],[redballposition[1]],[xb],[yb]]) ;
             xhbk =  A*xhk_1
             Pbk = A * Pk_1 * numpy.transpose(A) + Q;
 
-            Kk = Pbk*numpy.transpose(H)*numpy.linalg.inv((H * Pbk * numpy.transpose(H)) + R)
+            Kk = Pbk*numpy.transpose(H)*numpy.linalg.inv((H * Pbk * numpy.transpose(H)) + R);
             xhk = xhbk + Kk*(zk-H*xhbk);
-            print xhk[0][0] #prints the kalman estimate of the x position
+            #print xhk[0][0] #prints the kalman estimate of the x position
             Pk = (numpy.matrix([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]) - Kk*H)*Pbk;
-            Pk_1=Pk
-            xhk_1=xhk
+            Pk_1=Pk;
+            xhk_1=xhk;
             xb=xhk[2][0] #updates the x velocity
             yb=xhk[3][0] #updates the y velocity
 
@@ -67,6 +74,8 @@ class kalman(threading.Thread):
             aj=aj+t
             T.append(aj)
 
-            k=k+1
+            k=k+1;
         redballtracker.stopTracker()
+        kalmanstop.clear()
+        trackstop.clear()
         print 'done'
