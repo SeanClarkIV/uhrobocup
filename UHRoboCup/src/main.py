@@ -91,6 +91,8 @@ def main():
                 goalie.goalie_improved(1)
             elif choice[k] == 29:
                 goalie.goalie_improved(0)
+            elif choice[k] == 30:
+                kalmanthreaded.stop()
             else:
                 texttospeechProxy.say(choice[k])
             k = k+1
