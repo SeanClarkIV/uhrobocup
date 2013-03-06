@@ -1,9 +1,14 @@
+# Included in Python
 import threading
-import track
 import math
-import config
+
+# Need to get from online
 import numpy
 from matplotlib import pyplot
+
+# local classes
+import track
+import config
 
 motionProxy = config.load_proxy("ALMotion")
 redballtracker = config.load_proxy("ALRedBallTracker")
