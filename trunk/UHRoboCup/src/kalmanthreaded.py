@@ -5,7 +5,6 @@ import math
 # Need to get from online
 import numpy
 from matplotlib import pyplot
-
 # local classes
 import track
 import config
@@ -23,11 +22,14 @@ class kalman(threading.Thread):
         kalmanstop.clear() #clears the flag that seting the event does.
         trackstop.clear()
         #initializing the vectors that store the variables.
+        global xkalman, ykalman, xvelocity, yvelocity #these variables are made global, so we can call on them
+                                                      #Whenever we want.
         xvelocity = [0]
         yvelocity = [0]
         T  = [0] #Time elapsed
         xsensed=[1]
         ysensed=[0]
+        
         xkalman=[1]
         ykalman=[1]
 
@@ -48,8 +50,6 @@ class kalman(threading.Thread):
         xb=0.1
         yb=0.1
         aj=0  #the time in loop
-        k=1
-        iterations=500 #the number of iterations you want
         #now we look for and find the ball
         redballposition=track.find_red_ball(trackstop)
         redballtracker.startTracker() #you have to start the tracker after using the find_red_ball function
@@ -61,13 +61,14 @@ class kalman(threading.Thread):
 
             Kk = Pbk*numpy.transpose(H)*numpy.linalg.inv((H * Pbk * numpy.transpose(H)) + R);
             xhk = xhbk + Kk*(zk-H*xhbk);
-            #print xhk[0][0] #prints the kalman estimate of the x position
+
             Pk = (numpy.matrix([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]) - Kk*H)*Pbk;
             Pk_1=Pk;
             xhk_1=xhk;
             xb=xhk[2][0] #updates the x velocity
             yb=xhk[3][0] #updates the y velocity
 
+            #all this appends the new found positons/velocity to their respective vectors.
             xvelocity.append(xb)
             yvelocity.append(yb)
 
@@ -79,8 +80,21 @@ class kalman(threading.Thread):
             aj=aj+t
             T.append(aj)
 
-            k=k+1;
         redballtracker.stopTracker()
         kalmanstop.clear()
         trackstop.clear()
         print 'done'
+def get(input):  #This function gets the last value stored by the kalman filer. input is what you want as a string.
+    if input=='xposition':
+        print xkalman[-1]   #[-1] gets the last one in the vector.
+        return xkalman[-1]
+    elif input == 'yposition':
+        return ykalman[-1]        
+        print ykalman[-1]
+    elif input == 'xvelocity':
+        print xvelocity[-1]
+        return xvelocity[-1]
+    elif input == 'yvelocity':
+        print yvelocity[-1]
+        return yvelocity[-1]
+
