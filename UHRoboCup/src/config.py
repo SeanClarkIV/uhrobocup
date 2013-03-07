@@ -1,7 +1,7 @@
 from naoqi import motion
 from naoqi import ALProxy
 
-IP = "172.25.202.178" # Robot IP Adress to establish connection.
+IP = "172.25.38.23" # Robot IP Adress to establish connection.
 
 PORT = 9559
 
@@ -30,8 +30,8 @@ def stiffness_on():
     else:
         print "Smart Stiffness NOT Enabled"
 
-def stiffness_off():
-    pNames = "Body"         # Body is used for collection of all joints.
+def stiffness_off(pNames = "Body"):# Body is used for collection of all joints.
+             
     pStiffnessLists = 0.0   # No stiffness.
     pTimeLists = 1.0
     motionProxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
