@@ -9,9 +9,9 @@ from matplotlib import pyplot
 import track
 import config
 
-motionProxy = config.load_proxy("ALMotion")
-redballtracker = config.load_proxy("ALRedBallTracker")
-texttospeechProxy = config.load_proxy("ALTextToSpeech")
+motionProxy = config.loadProxy("ALMotion")
+redballtracker = config.loadProxy("ALRedBallTracker")
+texttospeechProxy = config.loadProxy("ALTextToSpeech")
 kalmanstop=threading.Event() #creates events so that we can stop it later
 trackstop=threading.Event()
 def stop():
@@ -51,7 +51,7 @@ class kalman(threading.Thread):
         yb=0.1
         aj=0  #the time in loop
         #now we look for and find the ball
-        redballposition=track.find_red_ball(trackstop)
+        redballposition=track.findRedBall(trackstop)
         redballtracker.startTracker() #you have to start the tracker after using the find_red_ball function
         while(not kalmanstop.is_set()):
             redballposition=redballtracker.getPosition();

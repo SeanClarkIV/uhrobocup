@@ -9,14 +9,14 @@ if (IP == ""):
     print "IP Address is blank, or not defined in", __file__
     exit("FUNCTION ABORTED - No IP address defined.")
 
-def load_proxy(proxyName):
+def loadProxy(proxyName):
   print "----- Loading " + proxyName + " -----"
   proxy = ALProxy(proxyName, IP, PORT)
   return proxy
 
-motionProxy = load_proxy("ALMotion")
+motionProxy = loadProxy("ALMotion")
 
-def stiffness_on():
+def stiffnessOn():
     pNames = "Body"       # Body is used for collection of all joints.
     pStiffnessLists = 1.0 # Maximum stiffness.
     pTimeLists = 1.0
@@ -30,7 +30,7 @@ def stiffness_on():
     else:
         print "Smart Stiffness NOT Enabled"
 
-def stiffness_off(pNames = "Body"):# Body is used for collection of all joints.
+def stiffnessOff(pNames = "Body"):# Body is used for collection of all joints.
              
     pStiffnessLists = 0.0   # No stiffness.
     pTimeLists = 1.0
@@ -44,8 +44,8 @@ def stiffness_off(pNames = "Body"):# Body is used for collection of all joints.
     else:
         print "Smart Stiffness NOT Disabled"
 
-def pose_init():
-    stiffness_on()
+def poseInit():
+    stiffnessOn()
 
     Head     = [+0, +0]
 

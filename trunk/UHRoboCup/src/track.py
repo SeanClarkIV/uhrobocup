@@ -4,17 +4,17 @@ import camera
 import config
 import walk
 import threading
-motionProxy = config.load_proxy("ALMotion")
+motionProxy = config.loadProxy("ALMotion")
 
-redballtracker = config.load_proxy("ALRedBallTracker")
-def find_red_ball(trackstop=threading.Event()): #added the trackstop so that if you want to use this
+redballtracker = config.loadProxy("ALRedBallTracker")
+def findRedBall(trackstop=threading.Event()): #added the trackstop so that if you want to use this
                                                 #in a thread you can stop it. 
     #This code finds the red ball.
     # Set stiffnes ON
-    config.stiffness_on()
+    config.stiffnessOn()
 
     #Make sure top camera is active
-    camera.top_camera()
+    camera.topCamera()
     # Start looking for red ball to track.
     redballtracker.stopTracker()
     redballtracker.startTracker()
@@ -46,7 +46,7 @@ def find_red_ball(trackstop=threading.Event()): #added the trackstop so that if 
             if number % 2 == 1:
                 if headpitchangle < 0:
                     headpitchangle = 1.433
-                    walk.ultimate_walk_to(0, 0, 2)
+                    walk.ultimateWalkTo(0, 0, 2)
                 elif headpitchangle > .5:
                     headpitchangle = .2
                 else:
@@ -61,12 +61,12 @@ def find_red_ball(trackstop=threading.Event()): #added the trackstop so that if 
     redballposition=redballtracker.getPosition()
     redballtracker.stopTracker()
     return redballposition
-def find_red_ball_and_kick(option):
+def findRedBallAndKick(option):
     # Set stiffnes ON
-    config.stiffness_on()
+    config.stiffnessOn()
 
     #Make sure top camera is active
-    camera.top_camera()
+    camera.topCamera()
 
     # Start looking for red ball to track.
     redballtracker.startTracker()
@@ -103,7 +103,7 @@ def find_red_ball_and_kick(option):
                 if number % 2 == 1:
                     if headpitchangle < 0:
                         headpitchangle = 1.433
-                        walk.ultimate_walk_to(0, 0, 2)
+                        walk.ultimateWalkTo(0, 0, 2)
                     elif headpitchangle > .5:
                         headpitchangle = .2
                     else:
@@ -130,34 +130,34 @@ def find_red_ball_and_kick(option):
         elif cameras == 0 and foundredballposition2[0] < .57 and foundredballposition[0]/foundredballposition2[0] <= 2:
             walk.stop()
             print "I made it"
-            walk.ultimate_walk_to(0.28, foundredballposition2[1]/1.5, foundredballposition2[2]/2.1)
+            walk.ultimateWalkTo(0.28, foundredballposition2[1]/1.5, foundredballposition2[2]/2.1)
             redballtracker.stopTracker()
             print "I made it"
             if option == 1:
-                walk.ultimate_walk_to(0, -.01, 0)
-                kick.kick_left_foot()
+                walk.ultimateWalkTo(0, -.01, 0)
+                kick.kickLeftFoot()
             elif option == 2:
-                walk.ultimate_walk_to(0, -.075, 0)
-                kick.kick_left_foot()
+                walk.ultimateWalkTo(0, -.075, 0)
+                kick.kickLeftFoot()
             elif option == 3:
-                walk.ultimate_walk_to(0, -.14, 0)
-                kick.kick_left_foot()
+                walk.ultimateWalkTo(0, -.14, 0)
+                kick.kickLeftFoot()
             if option == 4:
-                walk.ultimate_walk_to(0, .01, 0)
-                kick.kick_right_foot()
+                walk.ultimateWalkTo(0, .01, 0)
+                kick.kickRightFoot()
             elif option == 5:
-                walk.ultimate_walk_to(0, .075, 0)
-                kick.kick_right_foot()
+                walk.ultimateWalkTo(0, .075, 0)
+                kick.kickRightFoot()
             elif option == 6:
-                walk.ultimate_walk_to(0, .14, 0)
-                kick.kick_right_foot()
-            config.pose_init()
+                walk.ultimateWalkTo(0, .14, 0)
+                kick.kickRightFoot()
+            config.poseInit()
         elif cameras == 1 and foundredballposition2[0] < .4 and foundredballposition[0]/foundredballposition2[0] <= 2:
             walk.stop()
             print "I made it, bottom camera"
-            kick.kick_right_foot()
+            kick.kickRightFoot()
             redballtracker.stopTracker()
-            config.pose_init()
+            config.poseInit()
         elif redballtracker.isNewData() == True and foundredballposition2[0] >= .4:
             count = 2
 
@@ -165,5 +165,5 @@ def find_red_ball_and_kick(option):
             count += 1
             print count
 
-def stop_tracker():
+def stopTracker():
     redballtracker.stopTracker()

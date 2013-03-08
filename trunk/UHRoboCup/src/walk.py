@@ -2,8 +2,8 @@ import walk
 import config
 import camera
 import time
-motionProxy = config.load_proxy("ALMotion")
-redballtracker = config.load_proxy("ALRedBallTracker")
+motionProxy = config.loadProxy("ALMotion")
+redballtracker = config.loadProxy("ALRedBallTracker")
 def ewalk():
 
     #This walk walks for a walkTime amount of time and then stops.
@@ -27,9 +27,9 @@ def stop():
 
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
 
-def ultimate_walk_to(x, y, z):
+def ultimateWalkTo(x, y, z):
     # Set NAO in stiffness On
-    config.stiffness_on()
+    config.stiffnessOn()
 
     # This example show customization for the both foot
     # with all the possible gait parameters
@@ -41,9 +41,9 @@ def ultimate_walk_to(x, y, z):
           ["StepHeight", 0.015],       # step height of x cm
           ["TorsoWx", 0],           # default value
           ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
-def slow_walk_to(x, y, z):
+def slowWalkTo(x, y, z):
     # Set NAO in stiffness On
-    config.stiffness_on()
+    config.stiffnessOn()
 
     # This example show customization for the both foot
     # with all the possible gait parameters
@@ -55,11 +55,11 @@ def slow_walk_to(x, y, z):
           ["StepHeight", 0.015],       # step height of x cm
           ["TorsoWx", 0],           # default value
           ["TorsoWy", -0.1] ])         # torso bend 0.1 rad in front
-def align_goalie():
-    config.stiffness_on()
-    config.pose_init()
+def alignGoalie():
+    config.stiffnessOn()
+    config.poseInit()
     #Make sure top camera is active
-    camera.top_camera()
+    camera.topCamera()
 
     # Start looking for red ball to track.
     redballtracker.stopTracker()
@@ -97,7 +97,7 @@ def align_goalie():
                 if number % 2 == 1:
                     if headpitchangle < 0:
                         headpitchangle = 1.433
-                        walk.ultimate_walk_to(0, 0, 2)
+                        walk.ultimateWalkTo(0, 0, 2)
                     elif headpitchangle > .5:
                         headpitchangle = .2
                     else:
@@ -109,7 +109,7 @@ def align_goalie():
         print "Found red ball position: ", foundredballposition
         redballtracker.stopTracker()
     walk.ultimatewalkto(0, foundredballposition[1], 0)
-def walk_clockwise():
+def walkClockwise():
     #This walk walks for a walkTime amount of time and then stops.
     useSensors = True
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])
@@ -119,7 +119,7 @@ def walk_clockwise():
     Theta = -.15
     Frequency = 1
     motionProxy.setWalkTargetVelocity(X, Y, Theta, Frequency)
-def walk_counterclockwise():
+def walkCounterclockwise():
     #This walk walks for a walkTime amount of time and then stops.
     useSensors = True
     motionProxy.setMotionConfig([["ENABLE_FOOT_CONTACT_PROTECTION", True]])

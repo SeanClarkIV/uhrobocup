@@ -8,7 +8,7 @@ import config
 def redballdetection():
     origImage = getImage()                      # Get image from NAO Robot
 
-    filteredImage = colorpick(origImage)        # Remove any pixels that are not red
+    filteredImage = colorPick(origImage)        # Remove any pixels that are not red
 
     #TODO: Identify ball from filtered image
 
@@ -59,7 +59,7 @@ def getImage():
 
   return origImage
 
-def colorpick(origIm):
+def colorPick(origIm):
     outfile = open('file.txt', 'w') # Open original image
 
     origWidth = origIm.size[0]      # Get original image's width.

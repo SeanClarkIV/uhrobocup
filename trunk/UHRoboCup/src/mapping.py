@@ -6,13 +6,13 @@ import localization
 import config
 
 def map():
-    config.stiffness_on()
-    config.pose_init()
-    redballposition = track.find_red_ball()
-    maplocation(localization.get_nao_location(),(redballposition[0],redballposition[1]))
+    config.stiffnessOn()
+    config.poseInit()
+    redballposition = track.findRedBall()
+    maplocation(localization.getNaoLocation(),(redballposition[0],redballposition[1]))
 
 
-def map_location((naoX, naoY, naoZ, naoID), (ballX, ballY)):
+def mapLocation((naoX, naoY, naoZ, naoID), (ballX, ballY)):
     currentFolder = (os.getcwd() + "\\")
     field = Image.open(currentFolder + "robocupfield.jpg")  # Open field image
     draw = ImageDraw.Draw(field)    # Select field image to draw to
