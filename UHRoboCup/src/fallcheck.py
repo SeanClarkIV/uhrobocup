@@ -1,25 +1,25 @@
 import config
 import stand
-motionProxy = config.load_proxy("ALMotion")
+motionProxy = config.loadProxy("ALMotion")
 
-def handle_fall():
-    proxy = config.load_proxy("ALRobotPose")
+def handleFall():
+    proxy = config.loadProxy("ALRobotPose")
     temp = proxy.getActualPoseAndTime()
     pose = temp[0]
     print "\n" + pose
     if pose == "Belly": #Checks to see if he is on his belly or back.
         stand.stand_upon_front()
     elif pose == "Back":
-        stand.stand_up()
+        stand.standUp()
     else:
-        stand.stand_up()
-        config.pose_init()
+        stand.standUp()
+        config.poseInit()
     print "Fall handled"
 
-def check_fall():
-    memoryProxy = config.load_proxy("ALMemory")
+def checkFall():
+    memoryProxy = config.loadProxy("ALMemory")
     onfeet = True
     onfeet = memoryProxy.getData("footContact") #Checks to see if there is any footcontact.
     if not onfeet: #If there is no contact then it runs the code that picks a stand up. 
         print "fall detected"
-        handle_fall()
+        handleFall()

@@ -4,10 +4,10 @@ import config
 import numpy
 from matplotlib import pyplot
 
-motionProxy = config.load_proxy("ALMotion")
-redballtracker = config.load_proxy("ALRedBallTracker")
-texttospeechProxy = config.load_proxy("ALTextToSpeech")
-def kalman_filter():
+motionProxy = config.loadProxy("ALMotion")
+redballtracker = config.loadProxy("ALRedBallTracker")
+texttospeechProxy = config.loadProxy("ALTextToSpeech")
+def kalmanFilter():
     #initializing the vectors that store the variables.
     xvelocity = [0]
     yvelocity = [0]
@@ -37,7 +37,7 @@ def kalman_filter():
     k=1
     iterations=500 #the number of iterations you want
     #now we look for and find the ball
-    redballposition=track.find_red_ball()
+    redballposition=track.findRedBall()
     redballtracker.startTracker() #you have to start the tracker after using the find_red_ball function
     while k<iterations:
         redballposition=redballtracker.getPosition()

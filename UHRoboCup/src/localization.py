@@ -1,9 +1,9 @@
 import config
 
-motionProxy = config.load_proxy("ALMotion")
-redballtracker = config.load_proxy("ALRedBallTracker")
+motionProxy = config.loadProxy("ALMotion")
+redballtracker = config.loadProxy("ALRedBallTracker")
 
-def get_nao_location():
+def getNaoLocation():
     naoID = "goalie"
     (naoX, naoY, naoZ) = motionProxy.getRobotPosition(False)
     return (naoX, naoY, naoZ, naoID)
