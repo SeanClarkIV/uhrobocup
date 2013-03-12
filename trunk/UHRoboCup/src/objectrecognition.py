@@ -114,4 +114,4 @@ def findandanalyseBall(collumns, rows, matrix):
                         ballCenter = [int(foundballEnd[0]),(int(foundballStart[1]))+(foundDiameter/2)]  # Setting quadrant of center of ball at calculated quadrant using [y,x] format
 
     ''' Output '''
-    return "Biggest Diameter:", ballStart, ballEnd, ballCenter, ballDiameter
+    return (ballStart, ballEnd, ballCenter, ballDiameter)
