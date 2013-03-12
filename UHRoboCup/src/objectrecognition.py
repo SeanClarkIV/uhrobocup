@@ -6,22 +6,21 @@ import numpy
 import config
 
 def redballdetection():
-    origImage = getImage()                      # Get image from NAO Robot
+    # Get image from NAO Robot
+    origImage = getImage()
 
-    filteredImage = colorPick(origImage)        # Remove any pixels that are not red
+    # Function returns a matrix with 0s and 1s where 1s represent red pixels
+    (imgWidth, imgHeight, matrix) = pixelMatrix(origImage)
 
-    #TODO: Identify ball from filtered image
-
-    #TODO: Calculate diameter
+    # Identify ball from filtered image and Calculate diameter and center of ball
+    (ballStart, ballEnd, ballCenter, ballDiameter) = findandanalyseBall(imgWidth, imgHeight, matrix)
 
     #TODO: Calculate distance and angle
 
     return
 
 def getImage():
-  """
-  First get an image from Nao, then show it on the screen with PIL.
-  """
+  ''' First get an image from Nao, then show it on the screen with PIL '''
 
   camProxy = config.loadProxy("ALVideoDevice")
   resolution = 1    # 320x240
@@ -59,12 +58,12 @@ def getImage():
 
   return origImage
 
-def colorPick(origIm):
+def pixelMatrix(origIm):
     outfile = open('file.txt', 'w') # Open original image
 
     origWidth = origIm.size[0]      # Get original image's width.
     origHeight = origIm.size[1]     # Get original image's height.
-    print "Dimensions - w:", imgWidth, "h:",
+    print "Dimensions - w:", imgWidth, "h:", imgHeight
 
 #    analysedIm = Image.new("RGB", (origWidth,origHeight), "white")  # Create blank image with same dimendions as original image
 
@@ -72,22 +71,47 @@ def colorPick(origIm):
 
     matrix = numpy.zeros(shape=(origHeight,origWidth))
     for height in range(0, (origHeight), 1):    # Iterate up to down on image through each pixel.
-        outfile.write("\n")
+        if height > 0:
+            outfile.write("\n")
         for width in range (0, (origWidth), 1): # Iterate left to righ on image through each pixel.
             r, g, b = origIm.getpixel((width,height)) # Save each pixel color to variables r,g,b.
 
             if (r >= 85) and (g <= ((r/4)*3)):  # Find all pixels that have a red hue.
                 matrix[height][width] = 1
-                matrix = str(matrix)
                 outfile.write("1")
             else:
                 outfile.write("0")
 
-#                draw.point((width,height), fill=(r,g,b))    # Export only red hue pixels to blank image.
-#                del draw    # Stop draw process.
+    return (imgWidth, imgHeight, matrix)
 
-#     analysedIm.save("analysed.jpg", "JPEG")
-#     analysedIm.show()
-#     print "done"
+def findandanalyseBall(collumns, rows, matrix):
+    ''' List of variables we want to find '''
+    ballStart = [0,0]   # Setting quadrant where image of ball starts at zero using [y,x] format
+    ballEnd = [0,0]     # Setting quadrant where image of ball ends at zero using [y,x] format
+    ballDiameter = 0    # Setting Diameter variable to zero
+    ballCenter = [0,0]  # Setting quadrant of center of ball at zero using [y,x] format
 
-    return matrix
+    ''' Function to find variables '''
+    for row in range(0, (rows), 1):                         # Iterate up to down on image through each pixel represented by number in matrix
+        for collumn in range (0, (collumns), 1):            # Iterate left to righ on image through each pixel represented by number in matrix
+            if collumn < collumns-1:                        # Parameter used in order to not do the foloowing for the last collumn
+                iniPixel = int(matrix[row][collumn])        # Setting variable for current pixel being checked
+                nextPixel = int(matrix[row][collumn+1])     # Setting variable for the pixel adjacent to the current one being checked
+                if (iniPixel - nextPixel) == -1:            # If pixel pattern is [0,1] we found the start of the red pixels
+                    foundballStart =  [row+1, collumn+2]    # Setting array variable containing location of the start of the red pixels
+#                    print foundballStart                    # Print array variable for DEBUGING purposes
+                elif (iniPixel - nextPixel) == 1:           # If pixel pattern is [1,0] we found the end of the red pixels
+                    foundballEnd = [row+1, collumn+1]       # Setting array variable containing location of the end of the red pixels
+#                    print foundballEnd                      # Print array variable for DEBUGING purposes
+
+                    foundDiameter = (int(foundballEnd[1]) - ((int(foundballStart[1]))+1))   # Checking how many red pixels wide were found together
+#                    print foundDiameter                     # Print variable for DEBUGING purposes
+
+                    if foundDiameter > ballDiameter:        # Comparing if the number of red pixels found is bigger than what was found before
+                        ballDiameter = foundDiameter        # Setting Diameter variable to new found diameter
+                        ballStart = foundballStart          # Setting quadrant where image of ball starts at to found quadrant using [y,x] format
+                        ballEnd = foundballEnd              # Setting quadrant where image of ball ends at to found quadrant using [y,x] format
+                        ballCenter = [int(foundballEnd[0]),(int(foundballStart[1]))+(foundDiameter/2)]  # Setting quadrant of center of ball at calculated quadrant using [y,x] format
+
+    ''' Output '''
+    return "Biggest Diameter:", ballStart, ballEnd, ballCenter, ballDiameter
