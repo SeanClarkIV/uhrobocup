@@ -1,7 +1,7 @@
 from naoqi import motion
 from naoqi import ALProxy
 
-IP = "172.25.38.23" # Robot IP Adress to establish connection.
+IP = "127.0.0.1" # Robot IP Adress to establish connection.
 
 PORT = 9559
 
@@ -14,7 +14,9 @@ def loadProxy(proxyName):
   proxy = ALProxy(proxyName, IP, PORT)
   return proxy
 
-motionProxy = loadProxy("ALMotion")
+motionProxy = ALProxy("ALMotion", IP, PORT)
+videoProxy = ALProxy("ALVideoDevice", IP, PORT)
+speechProxy = ALProxy("ALTextToSpeech", IP, PORT)
 
 def stiffnessOn():
     pNames = "Body"       # Body is used for collection of all joints.
